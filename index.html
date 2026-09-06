@@ -3,17 +3,12 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>For Tulasi ❤️</title>
 
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
 
 *{
     margin:0;
@@ -26,16 +21,13 @@ html{
 }
 
 body{
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
     background:#05000d;
     color:white;
     overflow-x:hidden;
 }
 
-
-/* =====================================================
-   OPENING SCREEN
-===================================================== */
+/* ================= OPENING ================= */
 
 #opening{
     position:fixed;
@@ -48,17 +40,15 @@ body{
     justify-content:center;
 
     background:
-        radial-gradient(
-            circle at 50% 25%,
-            #3b1768 0%,
-            #16052e 35%,
-            #070012 70%,
-            #020006 100%
-        );
+    radial-gradient(
+        circle at 50% 25%,
+        #3b1768 0%,
+        #16052e 35%,
+        #070012 70%,
+        #020006 100%
+    );
 
-    transition:
-        opacity 1.4s ease,
-        transform 1.4s ease;
+    transition:opacity 1.4s ease,transform 1.4s ease;
 }
 
 #opening.hide{
@@ -67,350 +57,243 @@ body{
     pointer-events:none;
 }
 
-
-/* =====================================================
-   BIG CSS BUTTERFLY
-===================================================== */
+/* ================= BIG BUTTERFLY ================= */
 
 .big-butterfly{
     position:absolute;
-
     left:50%;
     top:52%;
-
     width:clamp(280px,45vw,650px);
     height:clamp(240px,38vw,520px);
-
     z-index:35;
-
     opacity:0;
 
     transform:
-        translate(-50%,-50%)
-        scale(.25)
-        rotate(-8deg);
+    translate(-50%,-50%)
+    scale(.25)
+    rotate(-8deg);
 
     animation:
-        butterflyJourney 8s cubic-bezier(.2,.7,.2,1)
-        forwards;
+    butterflyJourney 8s cubic-bezier(.2,.7,.2,1)
+    forwards;
 
     filter:
-        drop-shadow(0 0 8px #ffb3f4)
-        drop-shadow(0 0 25px #ff28d7)
-        drop-shadow(0 0 60px #a600ff)
-        drop-shadow(0 0 110px rgba(161,0,255,.8));
+    drop-shadow(0 0 8px #ffb3f4)
+    drop-shadow(0 0 25px #ff28d7)
+    drop-shadow(0 0 60px #a600ff)
+    drop-shadow(0 0 110px rgba(161,0,255,.8));
 }
-
-
-/* =====================================================
-   BUTTERFLY BODY
-===================================================== */
 
 .butterfly-body{
     position:absolute;
-
     width:7%;
     height:48%;
-
     left:50%;
     top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
+    transform:translate(-50%,-50%);
     border-radius:50%;
 
     background:
-        linear-gradient(
-            180deg,
-            #fff,
-            #f5b9ff 25%,
-            #7d28a9 65%,
-            #260632
-        );
+    linear-gradient(
+        180deg,
+        #fff,
+        #f5b9ff 25%,
+        #7d28a9 65%,
+        #260632
+    );
 
     box-shadow:
-        0 0 10px white,
-        0 0 25px #ff7ae9,
-        0 0 50px #a900ff;
+    0 0 10px white,
+    0 0 25px #ff7ae9,
+    0 0 50px #a900ff;
 
     z-index:10;
 }
 
 .butterfly-body:before{
-
     content:"";
-
     position:absolute;
-
     width:100%;
     height:15%;
-
     top:-8%;
     left:0;
-
     border-radius:50%;
-
     background:white;
 
     box-shadow:
-        0 0 10px white,
-        0 0 25px #ff9aee;
+    0 0 10px white,
+    0 0 25px #ff9aee;
 }
-
-
-/* =====================================================
-   ANTENNA
-===================================================== */
 
 .antenna{
     position:absolute;
-
     width:32%;
     height:25%;
-
     left:34%;
     top:18%;
-
     z-index:12;
 }
 
 .antenna:before,
 .antenna:after{
-
     content:"";
-
     position:absolute;
-
     width:48%;
     height:3px;
-
     top:40%;
 
     background:
-        linear-gradient(
-            90deg,
-            #f9c7ff,
-            #ff40dd
-        );
+    linear-gradient(
+        90deg,
+        #f9c7ff,
+        #ff40dd
+    );
 
-    box-shadow:
-        0 0 8px #ff42df;
+    box-shadow:0 0 8px #ff42df;
 }
 
 .antenna:before{
-
     left:-8%;
-
-    transform:
-        rotate(-42deg);
+    transform:rotate(-42deg);
 }
 
 .antenna:after{
-
     right:-8%;
-
-    transform:
-        rotate(42deg);
+    transform:rotate(42deg);
 }
 
-
-/* =====================================================
-   WINGS
-===================================================== */
+/* ================= WINGS ================= */
 
 .wing{
-
     position:absolute;
-
     width:50%;
     height:70%;
-
     top:13%;
-
     z-index:5;
 
-    transform-origin:
-        100% 85%;
-
     background:
-        radial-gradient(
-            ellipse at 65% 55%,
-            rgba(255,255,255,.95) 0%,
-            rgba(255,169,244,.75) 8%,
-            rgba(213,52,255,.7) 25%,
-            rgba(116,0,215,.65) 50%,
-            rgba(50,0,100,.8) 75%,
-            rgba(10,0,30,.2) 100%
-        );
+    radial-gradient(
+        ellipse at 65% 55%,
+        rgba(255,255,255,.95) 0%,
+        rgba(255,169,244,.75) 8%,
+        rgba(213,52,255,.7) 25%,
+        rgba(116,0,215,.65) 50%,
+        rgba(50,0,100,.8) 75%,
+        rgba(10,0,30,.2) 100%
+    );
 
-    border:
-        2px solid rgba(255,190,250,.85);
+    border:2px solid rgba(255,190,250,.85);
 
     box-shadow:
-        inset 0 0 25px rgba(255,255,255,.4),
-        inset 0 0 70px rgba(255,0,230,.5),
-        0 0 20px #ff4bdf,
-        0 0 50px rgba(159,0,255,.8);
+    inset 0 0 25px rgba(255,255,255,.4),
+    inset 0 0 70px rgba(255,0,230,.5),
+    0 0 20px #ff4bdf,
+    0 0 50px rgba(159,0,255,.8);
 
     overflow:hidden;
 
-    animation:
-        wingFlap .8s ease-in-out infinite alternate;
+    animation:wingFlap .8s ease-in-out infinite alternate;
 }
-
-
-/* Wing shapes */
 
 .wing.left{
-
     left:0;
-
     border-radius:
-        75% 25% 55% 45%
-        / 65% 45% 55% 35%;
+    75% 25% 55% 45% /
+    65% 45% 55% 35%;
 
-    transform-origin:
-        100% 82%;
-
-    transform:
-        rotate(-8deg);
+    transform-origin:100% 82%;
 }
 
 .wing.right{
-
     right:0;
-
     border-radius:
-        25% 75% 45% 55%
-        / 45% 65% 35% 55%;
+    25% 75% 45% 55% /
+    45% 65% 35% 55%;
 
-    transform-origin:
-        0% 82%;
-
-    transform:
-        rotate(8deg);
-}
-
-
-/* =====================================================
-   WING PATTERNS
-===================================================== */
-
-.wing:before{
-
-    content:"";
-
-    position:absolute;
-
-    width:65%;
-    height:65%;
-
-    top:12%;
-    left:17%;
-
-    border-radius:50%;
-
-    border:
-        3px solid rgba(255,225,255,.65);
-
-    box-shadow:
-        0 0 15px rgba(255,255,255,.5),
-        inset 0 0 20px rgba(255,0,220,.35);
-}
-
-.wing:after{
-
-    content:"";
-
-    position:absolute;
-
-    width:30%;
-    height:30%;
-
-    bottom:8%;
-    left:35%;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #fff,
-            #ff8be9 25%,
-            #b300ff 55%,
-            transparent 70%
-        );
-
-    box-shadow:
-        0 0 20px #ff67e4;
-}
-
-
-/* Mirror effect */
-
-.wing.right:before{
-    left:18%;
-}
-
-
-/* Wing animation */
-
-@keyframes wingFlap{
-
-    from{
-        transform:
-            rotateY(0deg)
-            rotateZ(-5deg)
-            scaleY(1);
-    }
-
-    to{
-        transform:
-            rotateY(38deg)
-            rotateZ(-2deg)
-            scaleY(.93);
-    }
-}
-
-.wing.right{
+    transform-origin:0% 82%;
     animation-name:wingFlapRight;
 }
 
-@keyframes wingFlapRight{
+.wing:before{
+    content:"";
+    position:absolute;
+    width:65%;
+    height:65%;
+    top:12%;
+    left:17%;
+    border-radius:50%;
+    border:3px solid rgba(255,225,255,.65);
 
+    box-shadow:
+    0 0 15px rgba(255,255,255,.5),
+    inset 0 0 20px rgba(255,0,220,.35);
+}
+
+.wing:after{
+    content:"";
+    position:absolute;
+    width:30%;
+    height:30%;
+    bottom:8%;
+    left:35%;
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        #fff,
+        #ff8be9 25%,
+        #b300ff 55%,
+        transparent 70%
+    );
+
+    box-shadow:0 0 20px #ff67e4;
+}
+
+@keyframes wingFlap{
     from{
         transform:
-            rotateY(0deg)
-            rotateZ(5deg)
-            scaleY(1);
+        rotateY(0deg)
+        rotateZ(-5deg)
+        scaleY(1);
     }
 
     to{
         transform:
-            rotateY(-38deg)
-            rotateZ(2deg)
-            scaleY(.93);
+        rotateY(38deg)
+        rotateZ(-2deg)
+        scaleY(.93);
     }
 }
 
+@keyframes wingFlapRight{
+    from{
+        transform:
+        rotateY(0deg)
+        rotateZ(5deg)
+        scaleY(1);
+    }
 
-/* =====================================================
-   BUTTERFLY JOURNEY
-===================================================== */
+    to{
+        transform:
+        rotateY(-38deg)
+        rotateZ(2deg)
+        scaleY(.93);
+    }
+}
+
+/* ================= BUTTERFLY JOURNEY ================= */
 
 @keyframes butterflyJourney{
 
     0%{
         opacity:0;
-
         left:50%;
         top:70%;
-
         transform:
-            translate(-50%,-50%)
-            scale(.2)
-            rotate(-18deg);
+        translate(-50%,-50%)
+        scale(.2)
+        rotate(-18deg);
     }
 
     8%{
@@ -418,108 +301,84 @@ body{
     }
 
     20%{
-
         left:43%;
         top:57%;
-
         transform:
-            translate(-50%,-50%)
-            scale(.48)
-            rotate(8deg);
+        translate(-50%,-50%)
+        scale(.48)
+        rotate(8deg);
     }
 
     38%{
-
         left:57%;
         top:43%;
-
         transform:
-            translate(-50%,-50%)
-            scale(.72)
-            rotate(-7deg);
+        translate(-50%,-50%)
+        scale(.72)
+        rotate(-7deg);
     }
 
     55%{
-
         left:44%;
         top:31%;
-
         transform:
-            translate(-50%,-50%)
-            scale(.95)
-            rotate(9deg);
+        translate(-50%,-50%)
+        scale(.95)
+        rotate(9deg);
     }
 
     70%{
-
         left:60%;
         top:23%;
-
         transform:
-            translate(-50%,-50%)
-            scale(1.05)
-            rotate(-8deg);
+        translate(-50%,-50%)
+        scale(1.05)
+        rotate(-8deg);
     }
 
     84%{
-
         left:76%;
         top:13%;
-
         transform:
-            translate(-50%,-50%)
-            scale(.85)
-            rotate(12deg);
+        translate(-50%,-50%)
+        scale(.85)
+        rotate(12deg);
     }
 
     100%{
-
         left:115%;
         top:-12%;
-
         transform:
-            translate(-50%,-50%)
-            scale(.3)
-            rotate(25deg);
-
+        translate(-50%,-50%)
+        scale(.3)
+        rotate(25deg);
         opacity:0;
     }
 }
 
-
-/* =====================================================
-   BUTTERFLY GLOW
-===================================================== */
+/* ================= GLOW ================= */
 
 .butterfly-glow{
-
     position:absolute;
-
     width:clamp(320px,55vw,750px);
     height:clamp(320px,55vw,750px);
-
     left:50%;
     top:50%;
-
-    transform:
-        translate(-50%,-50%);
-
+    transform:translate(-50%,-50%);
     border-radius:50%;
 
     background:
-        radial-gradient(
-            circle,
-            rgba(255,52,222,.35),
-            rgba(133,0,255,.18) 35%,
-            transparent 70%
-        );
+    radial-gradient(
+        circle,
+        rgba(255,52,222,.35),
+        rgba(133,0,255,.18) 35%,
+        transparent 70%
+    );
 
     filter:blur(35px);
-
     z-index:20;
 
-    animation:
-        glowPulse 1.5s ease-in-out infinite alternate;
+    animation:glowPulse 1.5s ease-in-out infinite alternate;
 }
 
 @keyframes glowPulse{
@@ -527,102 +386,53 @@ body{
     from{
         opacity:.45;
         transform:
-            translate(-50%,-50%)
-            scale(.8);
+        translate(-50%,-50%)
+        scale(.8);
     }
 
     to{
         opacity:.9;
         transform:
-            translate(-50%,-50%)
-            scale(1.2);
+        translate(-50%,-50%)
+        scale(1.2);
     }
 }
 
-
-/* =====================================================
-   MAGIC PARTICLES
-===================================================== */
+/* ================= PARTICLES ================= */
 
 .magic-particles{
     position:absolute;
-
     inset:0;
-
     z-index:28;
-
     pointer-events:none;
 }
 
 .magic-particles span{
-
     position:absolute;
-
     font-size:clamp(14px,2vw,25px);
-
     color:#fff;
-
     opacity:0;
 
     animation:
-        magicParticle 4s ease-in-out infinite;
+    magicParticle 4s ease-in-out infinite;
 }
 
-.magic-particles span:nth-child(1){
-    left:35%;
-    top:60%;
-    animation-delay:.3s;
-}
-
-.magic-particles span:nth-child(2){
-    left:62%;
-    top:53%;
-    animation-delay:.8s;
-}
-
-.magic-particles span:nth-child(3){
-    left:42%;
-    top:39%;
-    animation-delay:1.2s;
-}
-
-.magic-particles span:nth-child(4){
-    left:68%;
-    top:32%;
-    animation-delay:1.7s;
-}
-
-.magic-particles span:nth-child(5){
-    left:30%;
-    top:45%;
-    animation-delay:2.1s;
-}
-
-.magic-particles span:nth-child(6){
-    left:55%;
-    top:25%;
-    animation-delay:2.5s;
-}
-
-.magic-particles span:nth-child(7){
-    left:75%;
-    top:43%;
-    animation-delay:3s;
-}
-
-.magic-particles span:nth-child(8){
-    left:25%;
-    top:28%;
-    animation-delay:3.5s;
-}
+.magic-particles span:nth-child(1){left:35%;top:60%;animation-delay:.3s}
+.magic-particles span:nth-child(2){left:62%;top:53%;animation-delay:.8s}
+.magic-particles span:nth-child(3){left:42%;top:39%;animation-delay:1.2s}
+.magic-particles span:nth-child(4){left:68%;top:32%;animation-delay:1.7s}
+.magic-particles span:nth-child(5){left:30%;top:45%;animation-delay:2.1s}
+.magic-particles span:nth-child(6){left:55%;top:25%;animation-delay:2.5s}
+.magic-particles span:nth-child(7){left:75%;top:43%;animation-delay:3s}
+.magic-particles span:nth-child(8){left:25%;top:28%;animation-delay:3.5s}
 
 @keyframes magicParticle{
 
     0%{
         opacity:0;
         transform:
-            scale(.2)
-            translateY(30px);
+        scale(.2)
+        translateY(30px);
     }
 
     25%{
@@ -632,64 +442,47 @@ body{
     70%{
         opacity:.8;
         transform:
-            scale(1.3)
-            translateY(-40px);
+        scale(1.3)
+        translateY(-40px);
     }
 
     100%{
         opacity:0;
         transform:
-            scale(.2)
-            translateY(-100px);
+        scale(.2)
+        translateY(-100px);
     }
 }
 
-
-/* =====================================================
-   MOON
-===================================================== */
+/* ================= MOON ================= */
 
 .moon{
-
     position:absolute;
-
     width:130px;
     height:130px;
-
     border-radius:50%;
-
     background:#fff4cf;
-
     top:9%;
     right:12%;
 
     box-shadow:
-        0 0 25px white,
-        0 0 60px #ffe7a3,
-        0 0 100px #ffcf70;
+    0 0 25px white,
+    0 0 60px #ffe7a3,
+    0 0 100px #ffcf70;
 }
 
-
-/* =====================================================
-   STARS
-===================================================== */
+/* ================= STARS ================= */
 
 .star{
-
     position:absolute;
-
     width:3px;
     height:3px;
-
     background:white;
-
     border-radius:50%;
-
-    box-shadow:
-        0 0 10px white;
+    box-shadow:0 0 10px white;
 
     animation:
-        twinkle 2s infinite alternate;
+    twinkle 2s infinite alternate;
 }
 
 .s1{top:12%;left:10%}
@@ -716,101 +509,69 @@ body{
     }
 }
 
-
-/* =====================================================
-   SEOUL
-===================================================== */
+/* ================= SEOUL ================= */
 
 .seoul{
-
     position:absolute;
-
     top:20%;
     left:50%;
-
-    transform:
-        translateX(-50%);
+    transform:translateX(-50%);
 
     font-size:18px;
-
     letter-spacing:7px;
-
     color:#ff8bea;
 
     text-shadow:
-        0 0 10px #ff00d4,
-        0 0 25px #ff00d4,
-        0 0 50px #9d00ff;
+    0 0 10px #ff00d4,
+    0 0 25px #ff00d4,
+    0 0 50px #9d00ff;
 
-    animation:
-        neon 2s infinite alternate;
+    animation:neon 2s infinite alternate;
 }
 
 @keyframes neon{
 
-    from{
-        opacity:.6;
-    }
-
-    to{
-        opacity:1;
-    }
+    from{opacity:.6}
+    to{opacity:1}
 }
 
-
-/* =====================================================
-   CITY
-===================================================== */
+/* ================= CITY ================= */
 
 .city{
-
     position:absolute;
-
     bottom:0;
-
     width:100%;
     height:42%;
 
     display:flex;
-
     justify-content:center;
-
     align-items:flex-end;
-
     gap:6px;
 }
 
 .building{
-
     width:35px;
-
     background:#080816;
-
     position:relative;
-
-    border-top:
-        2px solid #332b5b;
+    border-top:2px solid #332b5b;
 }
 
 .building:after{
-
     content:"";
-
     position:absolute;
-
     top:12px;
     left:8px;
     right:8px;
     bottom:10px;
 
     background:
-        repeating-linear-gradient(
-            to bottom,
-            #ffd85a 0px,
-            #ffd85a 4px,
-            transparent 4px,
-            transparent 14px
-        );
+    repeating-linear-gradient(
+        to bottom,
+        #ffd85a 0px,
+        #ffd85a 4px,
+        transparent 4px,
+        transparent 14px
+    );
 
     opacity:.45;
 }
@@ -827,45 +588,25 @@ body{
 .b10{height:56%;width:50px}
 .b11{height:44%}
 
-
-/* =====================================================
-   SMALL BUTTERFLIES
-===================================================== */
+/* ================= SMALL BUTTERFLIES ================= */
 
 .butterfly{
-
     position:absolute;
-
     font-size:28px;
-
     z-index:15;
 
     animation:
-        butterflyFly 8s linear infinite;
+    butterflyFly 8s linear infinite;
 }
 
-.bt1{
-    left:8%;
-    bottom:20%;
-}
-
-.bt2{
-    left:75%;
-    bottom:15%;
-    animation-delay:2s;
-}
-
-.bt3{
-    left:40%;
-    bottom:10%;
-    animation-delay:4s;
-}
+.bt1{left:8%;bottom:20%}
+.bt2{left:75%;bottom:15%;animation-delay:2s}
+.bt3{left:40%;bottom:10%;animation-delay:4s}
 
 @keyframes butterflyFly{
 
     0%{
-        transform:
-            translate(0,0);
+        transform:translate(0,0);
         opacity:0;
     }
 
@@ -875,36 +616,27 @@ body{
 
     50%{
         transform:
-            translate(80px,-180px)
-            rotate(15deg);
+        translate(80px,-180px)
+        rotate(15deg);
     }
 
     100%{
         transform:
-            translate(-20px,-400px)
-            rotate(-15deg);
-
+        translate(-20px,-400px)
+        rotate(-15deg);
         opacity:0;
     }
 }
 
-
-/* =====================================================
-   OPEN CONTENT
-===================================================== */
+/* ================= OPEN CONTENT ================= */
 
 .open-content{
-
     position:relative;
-
     z-index:40;
-
     text-align:center;
-
     padding:25px;
 
-    animation:
-        introAppear 2s ease;
+    animation:introAppear 2s ease;
 }
 
 @keyframes introAppear{
@@ -921,146 +653,104 @@ body{
 }
 
 .open-content h1{
-
-    font-size:
-        clamp(45px,9vw,90px);
-
+    font-size:clamp(45px,9vw,90px);
     color:white;
 
     text-shadow:
-        0 0 10px #ff73d5,
-        0 0 30px #ff00cc,
-        0 0 70px #8f00ff;
+    0 0 10px #ff73d5,
+    0 0 30px #ff00cc,
+    0 0 70px #8f00ff;
 
     margin-bottom:18px;
 }
 
 .open-content p{
-
     color:#f2d8f0;
-
     font-size:20px;
-
     margin-bottom:20px;
 }
 
 .from{
-
     color:#dcb3ff;
-
     font-size:18px;
-
     margin-bottom:30px;
 }
 
-
-/* =====================================================
-   BUTTON
-===================================================== */
-
 .heart-btn{
-
     border:none;
-
     padding:18px 36px;
-
     border-radius:50px;
-
     font-size:16px;
-
     font-weight:bold;
-
     color:white;
 
     background:
-        linear-gradient(
-            90deg,
-            #ff1493,
-            #8a2be2
-        );
+    linear-gradient(
+        90deg,
+        #ff1493,
+        #8a2be2
+    );
 
     cursor:pointer;
 
     box-shadow:
-        0 0 15px #ff1493,
-        0 0 40px #8a2be2;
+    0 0 15px #ff1493,
+    0 0 40px #8a2be2;
 
     transition:.3s;
-
-    animation:
-        buttonPulse 2s infinite;
+    animation:buttonPulse 2s infinite;
 }
 
 .heart-btn:hover{
-
     transform:scale(1.1);
 
     box-shadow:
-        0 0 30px #ff1493,
-        0 0 70px #8a2be2;
+    0 0 30px #ff1493,
+    0 0 70px #8a2be2;
 }
 
 @keyframes buttonPulse{
-
     50%{
         transform:scale(1.04);
     }
 }
 
-
-/* =====================================================
-   MAIN WEBSITE
-===================================================== */
+/* ================= MAIN WEBSITE ================= */
 
 #mainWebsite{
-
     display:none;
-
     min-height:100vh;
 
     background:
+    radial-gradient(
+        circle at 10% 10%,
+        rgba(255,0,180,.18),
+        transparent 30%
+    ),
 
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(255,0,180,.18),
-            transparent 30%
-        ),
+    radial-gradient(
+        circle at 90% 30%,
+        rgba(110,0,255,.2),
+        transparent 35%
+    ),
 
-        radial-gradient(
-            circle at 90% 30%,
-            rgba(110,0,255,.2),
-            transparent 35%
-        ),
-
-        #07000e;
+    #07000e;
 }
 
-
-/* =====================================================
-   HERO
-===================================================== */
+/* ================= HERO ================= */
 
 .hero{
-
     min-height:100vh;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     text-align:center;
-
     position:relative;
-
     padding:30px;
 }
 
 .hero-content{
-
-    animation:
-        heroIn 2s ease;
+    animation:heroIn 2s ease;
 }
 
 @keyframes heroIn{
@@ -1077,71 +767,49 @@ body{
 }
 
 .hero-small{
-
     color:#d6a8ff;
-
     font-size:18px;
-
     letter-spacing:4px;
-
     margin-bottom:20px;
 }
 
 .hero h1{
-
-    font-size:
-        clamp(45px,9vw,90px);
+    font-size:clamp(45px,9vw,90px);
 
     background:
-        linear-gradient(
-            90deg,
-            #ff9de2,
-            #ffffff,
-            #c28cff
-        );
+    linear-gradient(
+        90deg,
+        #ff9de2,
+        #ffffff,
+        #c28cff
+    );
 
     -webkit-background-clip:text;
-
     color:transparent;
 
     text-shadow:
-        0 0 30px rgba(255,70,220,.5);
+    0 0 30px rgba(255,70,220,.5);
 }
 
 .hero p{
-
     max-width:650px;
-
     margin:25px auto;
-
     line-height:1.8;
-
     color:#dbc8df;
-
     font-size:18px;
 }
 
-
-/* =====================================================
-   KOREAN
-===================================================== */
-
 .korean-love{
-
     margin-top:35px;
-
-    font-size:
-        clamp(28px,6vw,48px);
-
+    font-size:clamp(28px,6vw,48px);
     color:#ffb7ef;
 
     text-shadow:
-        0 0 5px white,
-        0 0 15px #ff4fd8,
-        0 0 35px #b000ff;
+    0 0 5px white,
+    0 0 15px #ff4fd8,
+    0 0 35px #b000ff;
 
-    animation:
-        koreanGlow 2s infinite alternate;
+    animation:koreanGlow 2s infinite alternate;
 }
 
 @keyframes koreanGlow{
@@ -1157,622 +825,455 @@ body{
     }
 }
 
-
-/* =====================================================
-   SCROLL
-===================================================== */
-
 .scroll-text{
-
     position:absolute;
-
     bottom:35px;
-
     left:50%;
-
-    transform:
-        translateX(-50%);
-
+    transform:translateX(-50%);
     color:#a88cac;
 
-    animation:
-        scrollBounce 1.8s infinite;
+    animation:scrollBounce 1.8s infinite;
 }
 
 @keyframes scrollBounce{
 
     50%{
         transform:
-            translate(-50%,10px);
+        translate(-50%,10px);
     }
 }
 
-
-/* =====================================================
-   SECTIONS
-===================================================== */
+/* ================= SECTIONS ================= */
 
 .section{
-
     max-width:1100px;
-
     margin:auto;
-
     padding:100px 20px;
 }
 
 .section-title{
-
     text-align:center;
-
-    font-size:
-        clamp(32px,6vw,48px);
-
+    font-size:clamp(32px,6vw,48px);
     color:#ffb5ed;
 
     text-shadow:
-        0 0 20px #ff1493;
+    0 0 20px #ff1493;
 
     margin-bottom:60px;
 }
 
-
-/* =====================================================
-   ENVELOPE
-===================================================== */
+/* ================= ENVELOPE ================= */
 
 .envelope-area{
-
     text-align:center;
-
     padding:30px 0 80px;
 }
 
 .envelope{
-
     width:280px;
-
     height:190px;
-
     margin:auto;
-
     position:relative;
-
     cursor:pointer;
-
     perspective:800px;
 }
 
 .envelope-back{
-
     position:absolute;
-
     inset:0;
 
     background:
-        linear-gradient(
-            135deg,
-            #7c166c,
-            #32104e
-        );
+    linear-gradient(
+        135deg,
+        #7c166c,
+        #32104e
+    );
 
     border-radius:8px;
 
     box-shadow:
-        0 0 30px
-        rgba(255,0,200,.35);
+    0 0 30px
+    rgba(255,0,200,.35);
 }
 
 .envelope-flap{
-
     position:absolute;
-
     top:0;
     left:0;
-
     width:0;
     height:0;
 
-    border-left:
-        140px solid transparent;
-
-    border-right:
-        140px solid transparent;
-
-    border-top:
-        100px solid #b42b91;
+    border-left:140px solid transparent;
+    border-right:140px solid transparent;
+    border-top:100px solid #b42b91;
 
     transform-origin:top;
-
     transition:1s;
-
     z-index:4;
 }
 
 .envelope-letter{
-
     position:absolute;
-
     width:240px;
     height:150px;
-
     left:20px;
     top:20px;
 
     background:#fff5fc;
-
     color:#63235c;
 
     padding:25px;
-
     border-radius:6px;
 
     transition:1s;
-
     z-index:2;
 
     font-size:14px;
-
     line-height:1.6;
 }
 
 .envelope.open .envelope-flap{
-
-    transform:
-        rotateX(180deg);
+    transform:rotateX(180deg);
 }
 
 .envelope.open .envelope-letter{
-
-    transform:
-        translateY(-110px);
+    transform:translateY(-110px);
 }
 
 .envelope-hint{
-
     margin-top:30px;
-
     color:#d8afd8;
 }
 
-
-/* =====================================================
-   PHOTO
-===================================================== */
+/* ================= PHOTO ================= */
 
 .photo-section{
-
     text-align:center;
 }
 
 .photo-frame{
-
-    width:
-        min(340px,85vw);
-
+    width:min(340px,85vw);
     margin:auto;
-
     padding:12px;
 
     background:
-        linear-gradient(
-            135deg,
-            #ff25b7,
-            #8b36ff,
-            #ff8fe7
-        );
+    linear-gradient(
+        135deg,
+        #ff25b7,
+        #8b36ff,
+        #ff8fe7
+    );
 
     border-radius:28px;
 
     box-shadow:
-        0 0 25px #ff25b7,
-        0 0 70px
-        rgba(130,40,255,.5);
+    0 0 25px #ff25b7,
+    0 0 70px rgba(130,40,255,.5);
 
     animation:
-        photoFloat 4s ease-in-out infinite;
+    photoFloat 4s ease-in-out infinite;
 }
 
 .photo-frame img{
-
     width:100%;
-
     display:block;
-
     border-radius:20px;
+}
+
+/* IMPORTANT: exact GitHub filename */
+.photo-frame img{
+    object-fit:cover;
 }
 
 @keyframes photoFloat{
 
     50%{
         transform:
-            translateY(-15px)
-            rotate(2deg);
+        translateY(-15px)
+        rotate(2deg);
     }
 }
 
 .photo-caption{
-
     margin-top:30px;
-
     color:#dcb9dd;
-
     font-size:18px;
 }
 
-
-/* =====================================================
-   LOVE CARDS
-===================================================== */
+/* ================= LOVE CARDS ================= */
 
 .cards{
-
     display:grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(220px,1fr)
-        );
+    repeat(
+        auto-fit,
+        minmax(220px,1fr)
+    );
 
     gap:25px;
 }
 
 .card{
-
     min-height:230px;
-
     padding:35px 25px;
-
     border-radius:28px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.1),
-            rgba(255,255,255,.03)
-        );
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.1),
+        rgba(255,255,255,.03)
+    );
 
     border:
-        1px solid
-        rgba(255,150,240,.2);
+    1px solid
+    rgba(255,150,240,.2);
 
-    backdrop-filter:
-        blur(15px);
+    backdrop-filter:blur(15px);
 
     text-align:center;
-
     transition:.5s;
-
     position:relative;
-
     overflow:hidden;
 }
 
 .card:before{
-
     content:"";
-
     position:absolute;
-
     width:100px;
     height:100px;
-
     background:#ff1cae;
-
     filter:blur(70px);
-
     opacity:.2;
-
     top:-30px;
     right:-30px;
 }
 
 .card:hover{
-
     transform:
-        translateY(-15px)
-        rotateX(5deg)
-        rotateY(-5deg);
+    translateY(-15px)
+    rotateX(5deg)
+    rotateY(-5deg);
 
     box-shadow:
-        0 0 30px
-        rgba(255,30,190,.35);
+    0 0 30px
+    rgba(255,30,190,.35);
 }
 
 .card-icon{
-
     font-size:50px;
-
     margin-bottom:20px;
 }
 
 .card h3{
-
     color:#ffb9eb;
-
     margin-bottom:15px;
-
     font-size:22px;
 }
 
 .card p{
-
     color:#d8c5da;
-
     line-height:1.7;
 }
 
-
-/* =====================================================
-   TIMELINE
-===================================================== */
+/* ================= TIMELINE ================= */
 
 .timeline{
-
     max-width:750px;
-
     margin:auto;
-
     position:relative;
 }
 
 .timeline:before{
-
     content:"";
-
     position:absolute;
-
     left:50%;
-
     top:0;
     bottom:0;
-
     width:2px;
 
     background:
-        linear-gradient(
-            transparent,
-            #ff54cb,
-            #9b45ff,
-            transparent
-        );
+    linear-gradient(
+        transparent,
+        #ff54cb,
+        #9b45ff,
+        transparent
+    );
 }
 
 .memory{
-
     width:50%;
-
     padding:25px;
-
     position:relative;
 }
 
 .memory:nth-child(odd){
-
     left:0;
-
     text-align:right;
 }
 
 .memory:nth-child(even){
-
     left:50%;
 }
 
 .memory-box{
-
     padding:25px;
-
     border-radius:20px;
 
     background:
-        rgba(255,255,255,.06);
+    rgba(255,255,255,.06);
 
     border:
-        1px solid
-        rgba(255,150,240,.18);
+    1px solid
+    rgba(255,150,240,.18);
 
     transition:.4s;
 }
 
 .memory-box:hover{
-
     transform:scale(1.04);
 
     box-shadow:
-        0 0 25px
-        rgba(255,40,190,.3);
+    0 0 25px
+    rgba(255,40,190,.3);
 }
 
 .memory h3{
-
     color:#ffb7e9;
-
     margin-bottom:10px;
 }
 
 .memory p{
-
     color:#cdbbd0;
-
     line-height:1.6;
 }
 
-
-/* =====================================================
-   LETTER
-===================================================== */
+/* ================= LETTER ================= */
 
 .letter{
-
     max-width:800px;
-
     margin:auto;
-
     padding:45px;
-
     border-radius:30px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(255,30,180,.09),
-            rgba(130,40,255,.08)
-        );
+    linear-gradient(
+        135deg,
+        rgba(255,30,180,.09),
+        rgba(130,40,255,.08)
+    );
 
     border:
-        1px solid
-        rgba(255,180,240,.2);
+    1px solid
+    rgba(255,180,240,.2);
 
     box-shadow:
-        0 0 40px
-        rgba(255,0,180,.1);
+    0 0 40px
+    rgba(255,0,180,.1);
 
     line-height:2;
-
     color:#ead9ea;
-
     font-size:18px;
 }
 
 .letter p{
-
     margin-bottom:20px;
 }
 
 .letter strong{
-
     color:#ff9de2;
 }
 
-
-/* =====================================================
-   MUSIC
-===================================================== */
+/* ================= MUSIC ================= */
 
 .music-card{
-
     max-width:700px;
-
     margin:auto;
-
     padding:50px 25px;
-
     text-align:center;
-
     border-radius:35px;
 
     background:
-        radial-gradient(
-            circle,
-            rgba(255,0,190,.16),
-            rgba(100,0,180,.08)
-        );
+    radial-gradient(
+        circle,
+        rgba(255,0,190,.16),
+        rgba(100,0,180,.08)
+    );
 
     border:
-        1px solid
-        rgba(255,150,240,.2);
+    1px solid
+    rgba(255,150,240,.2);
 }
 
 .music-icon{
-
     font-size:75px;
-
     display:inline-block;
 
     animation:
-        musicPulse 1.4s infinite;
+    musicPulse 1.4s infinite;
 }
 
 @keyframes musicPulse{
 
     50%{
-
         transform:scale(1.2);
 
         filter:
-            drop-shadow(
-                0 0 20px #ff4fd8
-            );
+        drop-shadow(
+            0 0 20px #ff4fd8
+        );
     }
 }
 
 .music-card p{
-
     color:#d9c4dc;
-
     margin:20px 0;
 }
 
 audio{
-
     width:100%;
-
     margin-top:20px;
 }
 
-
-/* =====================================================
-   FINAL
-===================================================== */
+/* ================= FINAL ================= */
 
 .final{
-
     min-height:100vh;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     text-align:center;
-
     padding:30px;
-
     position:relative;
 }
 
 .final-content{
-
-    animation:
-        finalAppear 2s ease;
+    animation:finalAppear 2s ease;
 }
 
 @keyframes finalAppear{
 
     from{
-
         opacity:0;
-
-        transform:
-            scale(.6);
+        transform:scale(.6);
     }
 
     to{
-
         opacity:1;
-
-        transform:
-            scale(1);
+        transform:scale(1);
     }
 }
 
 .final-heart{
-
     font-size:110px;
 
     animation:
-        heartbeat 1.3s infinite;
+    heartbeat 1.3s infinite;
 
     filter:
-        drop-shadow(
-            0 0 20px #ff1493
-        )
-        drop-shadow(
-            0 0 50px #ff1493
-        );
+    drop-shadow(0 0 20px #ff1493)
+    drop-shadow(0 0 50px #ff1493);
 }
 
 @keyframes heartbeat{
@@ -1795,55 +1296,39 @@ audio{
 }
 
 .final h2{
-
-    font-size:
-        clamp(35px,7vw,65px);
-
+    font-size:clamp(35px,7vw,65px);
     color:#ffb6e9;
-
     margin:25px 0;
 
     text-shadow:
-        0 0 25px #ff1493;
+    0 0 25px #ff1493;
 }
 
 .final p{
-
     color:#d7c1d9;
-
     font-size:18px;
-
     line-height:1.8;
 }
 
-
-/* =====================================================
-   FLOATING HEARTS
-===================================================== */
+/* ================= FLOATING HEARTS ================= */
 
 .floating-heart{
-
     position:fixed;
-
     bottom:-50px;
-
     pointer-events:none;
-
     z-index:500;
-
     font-size:22px;
 
     animation:
-        heartUp 7s linear forwards;
+    heartUp 7s linear forwards;
 }
 
 @keyframes heartUp{
 
     0%{
-
         transform:
-            translateY(0)
-            scale(.6);
+        translateY(0)
+        scale(.6);
 
         opacity:0;
     }
@@ -1853,115 +1338,90 @@ audio{
     }
 
     100%{
-
         transform:
-            translateY(-110vh)
-            translateX(100px)
-            scale(1.5);
+        translateY(-110vh)
+        translateX(100px)
+        scale(1.5);
 
         opacity:0;
     }
 }
 
-
-/* =====================================================
-   SPARKLES
-===================================================== */
+/* ================= SPARKLES ================= */
 
 .sparkle{
-
     position:fixed;
-
     pointer-events:none;
-
     z-index:1000;
-
     font-size:14px;
 
     animation:
-        sparkle 2s linear forwards;
+    sparkle 2s linear forwards;
 }
 
 @keyframes sparkle{
 
     from{
-
         opacity:1;
 
         transform:
-            scale(.5)
-            rotate(0deg);
+        scale(.5)
+        rotate(0deg);
     }
 
     to{
-
         opacity:0;
 
         transform:
-            scale(1.6)
-            rotate(180deg)
-            translateY(-80px);
+        scale(1.6)
+        rotate(180deg)
+        translateY(-80px);
     }
 }
 
-
-/* =====================================================
-   MOBILE
-===================================================== */
+/* ================= MOBILE ================= */
 
 @media(max-width:650px){
 
     .moon{
-
         width:85px;
         height:85px;
-
         right:8%;
     }
 
     .seoul{
-
         font-size:12px;
-
         letter-spacing:4px;
     }
 
     .big-butterfly{
-
         width:310px;
         height:270px;
     }
 
     .butterfly-glow{
-
         width:420px;
         height:420px;
     }
 
     .open-content h1{
-
         font-size:50px;
     }
 
     .open-content p{
-
         font-size:16px;
     }
 
     .hero{
-
         min-height:90vh;
     }
 
     .letter{
-
         padding:25px;
-
         font-size:16px;
     }
 
     .timeline:before{
-
         left:8px;
     }
 
@@ -1970,47 +1430,30 @@ audio{
     .memory:nth-child(odd){
 
         width:100%;
-
         left:0;
-
         padding-left:30px;
-
         text-align:left;
     }
 
     .memory-box{
-
         width:100%;
     }
 
     .section{
-
         padding:75px 18px;
     }
-
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     OPENING
-===================================================== -->
+<!-- ================= OPENING ================= -->
 
 <div id="opening">
 
-
-    <!-- BIG BUTTERFLY GLOW -->
-
     <div class="butterfly-glow"></div>
-
-
-    <!-- BIG CSS BUTTERFLY -->
 
     <div class="big-butterfly">
 
@@ -2023,9 +1466,6 @@ audio{
         <div class="butterfly-body"></div>
 
     </div>
-
-
-    <!-- MAGIC PARTICLES -->
 
     <div class="magic-particles">
 
@@ -2040,13 +1480,7 @@ audio{
 
     </div>
 
-
-    <!-- MOON -->
-
     <div class="moon"></div>
-
-
-    <!-- STARS -->
 
     <div class="star s1"></div>
     <div class="star s2"></div>
@@ -2059,30 +1493,13 @@ audio{
     <div class="star s9"></div>
     <div class="star s10"></div>
 
-
-    <!-- SEOUL -->
-
     <div class="seoul">
         SEOUL • 서울
     </div>
 
-
-    <!-- SMALL BUTTERFLIES -->
-
-    <div class="butterfly bt1">
-        🦋
-    </div>
-
-    <div class="butterfly bt2">
-        🦋
-    </div>
-
-    <div class="butterfly bt3">
-        🦋
-    </div>
-
-
-    <!-- CITY -->
+    <div class="butterfly bt1">🦋</div>
+    <div class="butterfly bt2">🦋</div>
+    <div class="butterfly bt3">🦋</div>
 
     <div class="city">
 
@@ -2100,14 +1517,9 @@ audio{
 
     </div>
 
-
-    <!-- OPENING CONTENT -->
-
     <div class="open-content">
 
-        <h1>
-            For Tulasi ❤️
-        </h1>
+        <h1>For Tulasi ❤️</h1>
 
         <p>
             A little piece of my heart,
@@ -2131,13 +1543,9 @@ audio{
 </div>
 
 
-
-<!-- =====================================================
-     MAIN WEBSITE
-===================================================== -->
+<!-- ================= MAIN WEBSITE ================= -->
 
 <div id="mainWebsite">
-
 
     <!-- HERO -->
 
@@ -2154,11 +1562,9 @@ audio{
             </h1>
 
             <p>
-
                 You are not just a person in my story...
                 you became one of the most beautiful
                 chapters in it. 💜
-
             </p>
 
             <div class="korean-love">
@@ -2172,7 +1578,6 @@ audio{
         </div>
 
     </section>
-
 
 
     <!-- ENVELOPE -->
@@ -2219,7 +1624,6 @@ audio{
     </section>
 
 
-
     <!-- PHOTO -->
 
     <section class="section photo-section">
@@ -2230,8 +1634,7 @@ audio{
 
         <div class="photo-frame">
 
-            <!-- FIXED: GitHub file is photo.jpeg -->
-
+            <!-- EXACT GITHUB FILE NAME -->
             <img
                 src="photo.jpeg"
                 alt="Varshitha">
@@ -2249,7 +1652,6 @@ audio{
     </section>
 
 
-
     <!-- LOVE CARDS -->
 
     <section class="section">
@@ -2259,7 +1661,6 @@ audio{
         </h2>
 
         <div class="cards">
-
 
             <div class="card">
 
@@ -2272,11 +1673,9 @@ audio{
                 </h3>
 
                 <p>
-
                     One smile from you can
                     completely change the mood
                     of an ordinary day.
-
                 </p>
 
             </div>
@@ -2293,11 +1692,9 @@ audio{
                 </h3>
 
                 <p>
-
                     Somehow everything feels
                     a little different when
                     you are around.
-
                 </p>
 
             </div>
@@ -2314,11 +1711,9 @@ audio{
                 </h3>
 
                 <p>
-
                     There is something about you
                     that makes you impossible
                     to forget.
-
                 </p>
 
             </div>
@@ -2335,20 +1730,16 @@ audio{
                 </h3>
 
                 <p>
-
                     I hope you always chase
                     the beautiful things
                     your heart dreams about.
-
                 </p>
 
             </div>
 
-
         </div>
 
     </section>
-
 
 
     <!-- MEMORIES -->
@@ -2361,7 +1752,6 @@ audio{
 
         <div class="timeline">
 
-
             <div class="memory">
 
                 <div class="memory-box">
@@ -2371,10 +1761,8 @@ audio{
                     </h3>
 
                     <p>
-
                         Every beautiful story
                         starts somewhere.
-
                     </p>
 
                 </div>
@@ -2391,10 +1779,8 @@ audio{
                     </h3>
 
                     <p>
-
                         Sometimes a simple conversation
                         becomes a memory you never forget.
-
                     </p>
 
                 </div>
@@ -2411,10 +1797,8 @@ audio{
                     </h3>
 
                     <p>
-
                         It is often the smallest moments
                         that stay in the heart the longest.
-
                     </p>
 
                 </div>
@@ -2431,22 +1815,18 @@ audio{
                     </h3>
 
                     <p>
-
                         And here I am,
                         still writing another little
                         page for you.
-
                     </p>
 
                 </div>
 
             </div>
 
-
         </div>
 
     </section>
-
 
 
     <!-- LOVE LETTER -->
@@ -2464,51 +1844,40 @@ audio{
             </p>
 
             <p>
-
                 I don't know if words can ever
                 completely explain what you mean
                 to me.
-
             </p>
 
             <p>
-
                 But if I had to describe it,
                 I would say that you became a
                 beautiful feeling that I carry
                 quietly inside my heart.
-
             </p>
 
             <p>
-
                 Every little conversation,
                 every laugh and every memory
                 has its own tiny place in my heart.
-
             </p>
 
             <p>
-
                 Maybe this website is just code,
                 animations and pictures...
 
                 but behind every line of code
                 there is a little feeling from me.
-
             </p>
 
             <p>
-
                 And if you ever wonder whether
                 someone really cared...
 
                 remember this little page. ❤️
-
             </p>
 
             <p>
-
                 With all my heart,
 
                 <br>
@@ -2516,13 +1885,11 @@ audio{
                 <strong>
                     — Bunny 💜
                 </strong>
-
             </p>
 
         </div>
 
     </section>
-
 
 
     <!-- MUSIC -->
@@ -2540,16 +1907,13 @@ audio{
             </div>
 
             <p>
-
                 Press play and let this little
                 moment stay with you. 💜
-
             </p>
 
             <audio controls>
 
-                <!-- FIXED: GitHub file is Sahana Sahana.mp3 -->
-
+                <!-- EXACT GITHUB FILE NAME -->
                 <source
                     src="Sahana Sahana.mp3"
                     type="audio/mpeg">
@@ -2561,7 +1925,6 @@ audio{
         </div>
 
     </section>
-
 
 
     <!-- FINAL -->
@@ -2608,17 +1971,12 @@ audio{
 
     </section>
 
-
 </div>
-
 
 
 <script>
 
-
-/* =====================================================
-   OPEN WEBSITE
-===================================================== */
+/* ================= OPEN WEBSITE ================= */
 
 function openHeart(){
 
@@ -2628,26 +1986,21 @@ function openHeart(){
     const website =
         document.getElementById("mainWebsite");
 
-
     opening.classList.add("hide");
-
 
     setTimeout(function(){
 
-        opening.style.display = "none";
+        opening.style.display="none";
 
-        website.style.display = "block";
+        website.style.display="block";
 
         window.scrollTo(0,0);
 
     },1400);
-
 }
 
 
-/* =====================================================
-   ENVELOPE
-===================================================== */
+/* ================= ENVELOPE ================= */
 
 function openEnvelope(){
 
@@ -2655,79 +2008,58 @@ function openEnvelope(){
         document.getElementById("envelope");
 
     envelope.classList.toggle("open");
-
 }
 
 
-/* =====================================================
-   FLOATING HEARTS
-===================================================== */
+/* ================= FLOATING HEARTS ================= */
 
 function createHeart(){
 
     const website =
         document.getElementById("mainWebsite");
 
-
     if(
         website.style.display !== "block"
     ){
-
         return;
-
     }
-
 
     const heart =
         document.createElement("div");
 
-
     heart.className =
         "floating-heart";
 
-
-    const hearts = [
-
+    const hearts=[
         "❤️",
         "💜",
         "💗",
         "💕",
         "💖",
         "💘"
-
     ];
-
 
     heart.innerHTML =
         hearts[
             Math.floor(
-                Math.random() *
-                hearts.length
+                Math.random()*hearts.length
             )
         ];
 
-
     heart.style.left =
-        Math.random()*100 + "vw";
-
+        Math.random()*100+"vw";
 
     heart.style.animationDuration =
-        (5 + Math.random()*4) + "s";
+        (5+Math.random()*4)+"s";
 
-
-    document.body.appendChild(
-        heart
-    );
-
+    document.body.appendChild(heart);
 
     setTimeout(function(){
 
         heart.remove();
 
     },9000);
-
 }
-
 
 setInterval(
     createHeart,
@@ -2735,9 +2067,7 @@ setInterval(
 );
 
 
-/* =====================================================
-   MOUSE SPARKLES
-===================================================== */
+/* ================= MOUSE SPARKLES ================= */
 
 document.addEventListener(
     "mousemove",
@@ -2748,57 +2078,44 @@ document.addEventListener(
                 "mainWebsite"
             ).style.display !== "block"
         ){
-
             return;
-
         }
 
-
         if(
-            Math.random() > .75
+            Math.random()>.75
         ){
 
             const sparkle =
                 document.createElement("div");
 
-
             sparkle.className =
                 "sparkle";
-
 
             sparkle.innerHTML =
                 "✨";
 
-
             sparkle.style.left =
-                e.clientX + "px";
-
+                e.clientX+"px";
 
             sparkle.style.top =
-                e.clientY + "px";
-
+                e.clientY+"px";
 
             document.body.appendChild(
                 sparkle
             );
-
 
             setTimeout(function(){
 
                 sparkle.remove();
 
             },2000);
-
         }
 
     }
 );
 
-
 </script>
 
-
 </body>
-
 </html>
 ```
