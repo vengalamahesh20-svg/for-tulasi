@@ -1,16 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>For Tulasi ❤️</title>
 
 <style>
-
-/* =========================
-   RESET
-========================= */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
 * {
     margin: 0;
@@ -23,1608 +20,1230 @@ html {
 }
 
 body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: #080511;
-    color: white;
+    font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
+    color: #573b58;
+    background: #fff7fb;
 }
 
 /* =========================
-   INTRO SCREEN
-========================= */
-
-.intro {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-
-    background:
-        radial-gradient(circle at 50% 30%, rgba(150,80,190,.25), transparent 30%),
-        linear-gradient(to bottom, #09051a 0%, #130921 45%, #05030b 100%);
-}
-
-.intro.hide {
-    animation: introOut 1.5s forwards;
-}
-
-@keyframes introOut {
-    to {
-        opacity: 0;
-        visibility: hidden;
-        transform: scale(1.08);
-    }
-}
-
-/* =========================
-   STARS
-========================= */
-
-.stars,
-.stars2 {
-    position: absolute;
-    inset: 0;
-    background-image:
-        radial-gradient(2px 2px at 10% 20%, white, transparent),
-        radial-gradient(1px 1px at 20% 70%, white, transparent),
-        radial-gradient(2px 2px at 30% 35%, white, transparent),
-        radial-gradient(1px 1px at 40% 15%, white, transparent),
-        radial-gradient(2px 2px at 55% 55%, white, transparent),
-        radial-gradient(1px 1px at 65% 25%, white, transparent),
-        radial-gradient(2px 2px at 75% 65%, white, transparent),
-        radial-gradient(1px 1px at 85% 20%, white, transparent),
-        radial-gradient(2px 2px at 92% 50%, white, transparent);
-    animation: starsMove 5s ease-in-out infinite alternate;
-}
-
-.stars2 {
-    opacity: .45;
-    transform: scale(1.5);
-    animation-duration: 8s;
-}
-
-@keyframes starsMove {
-    from {
-        opacity: .35;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* =========================
-   MOON
-========================= */
-
-.moon {
-    position: absolute;
-    top: 12%;
-    right: 12%;
-
-    width: 120px;
-    height: 120px;
-
-    border-radius: 50%;
-
-    background: #fff9df;
-
-    box-shadow:
-        0 0 25px #fff8d6,
-        0 0 70px rgba(255,240,180,.55),
-        0 0 120px rgba(180,130,255,.25);
-
-    animation: moonGlow 4s ease-in-out infinite;
-}
-
-@keyframes moonGlow {
-    0%,100% {
-        transform: scale(1);
-        box-shadow:
-            0 0 25px #fff8d6,
-            0 0 70px rgba(255,240,180,.55);
-    }
-
-    50% {
-        transform: scale(1.06);
-        box-shadow:
-            0 0 35px #fff8d6,
-            0 0 100px rgba(255,240,180,.75);
-    }
-}
-
-/* =========================
-   SEOUL SKYLINE
-========================= */
-
-.skyline {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-    height: 25%;
-
-    background:
-        linear-gradient(to top, #030207, transparent),
-        repeating-linear-gradient(
-            90deg,
-            #05040b 0px,
-            #05040b 45px,
-            #090812 45px,
-            #090812 70px
-        );
-
-    opacity: .9;
-}
-
-.buildings {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-    height: 30%;
-}
-
-.building {
-    position: absolute;
-    bottom: 0;
-    background: #06050b;
-    box-shadow: inset 0 0 20px rgba(120,70,160,.15);
-}
-
-.b1 {
-    left: 3%;
-    width: 9%;
-    height: 65%;
-}
-
-.b2 {
-    left: 14%;
-    width: 12%;
-    height: 85%;
-}
-
-.b3 {
-    left: 29%;
-    width: 8%;
-    height: 55%;
-}
-
-.b4 {
-    left: 40%;
-    width: 15%;
-    height: 90%;
-}
-
-.b5 {
-    left: 58%;
-    width: 10%;
-    height: 70%;
-}
-
-.b6 {
-    left: 71%;
-    width: 14%;
-    height: 88%;
-}
-
-.b7 {
-    left: 88%;
-    width: 9%;
-    height: 60%;
-}
-
-/* =========================
-   KOREAN NEON SIGNS
-========================= */
-
-.neon {
-    position: absolute;
-    color: #eebcff;
-
-    text-shadow:
-        0 0 5px #d76cff,
-        0 0 15px #d76cff,
-        0 0 30px #a63dff;
-
-    animation: neonBlink 2.5s infinite;
-}
-
-.neon.one {
-    bottom: 17%;
-    left: 18%;
-}
-
-.neon.two {
-    bottom: 25%;
-    right: 20%;
-    color: #ffc5e9;
-}
-
-@keyframes neonBlink {
-    0%, 18%, 22%, 60%, 100% {
-        opacity: 1;
-    }
-
-    20%, 21% {
-        opacity: .35;
-    }
-}
-
-/* =========================
-   FLYING BIRDS
-========================= */
-
-.bird {
-    position: absolute;
-    z-index: 5;
-
-    width: 70px;
-    height: 35px;
-
-    opacity: .9;
-
-    animation: flyAcross 16s linear infinite;
-}
-
-.bird::before,
-.bird::after {
-    content: "";
-    position: absolute;
-
-    width: 35px;
-    height: 18px;
-
-    border-top: 3px solid rgba(255,255,255,.9);
-
-    border-radius: 50%;
-}
-
-.bird::before {
-    left: 0;
-    transform: rotate(20deg);
-}
-
-.bird::after {
-    right: 0;
-    transform: rotate(-20deg);
-}
-
-.bird1 {
-    top: 28%;
-    left: -100px;
-    animation-delay: 1s;
-}
-
-.bird2 {
-    top: 42%;
-    left: -160px;
-    transform: scale(.7);
-    animation-duration: 21s;
-    animation-delay: 5s;
-}
-
-.bird3 {
-    top: 20%;
-    left: -200px;
-    transform: scale(.5);
-    animation-duration: 25s;
-    animation-delay: 9s;
-}
-
-@keyframes flyAcross {
-    0% {
-        left: -120px;
-        transform: translateY(0) scale(1);
-    }
-
-    25% {
-        transform: translateY(-30px) scale(1);
-    }
-
-    50% {
-        transform: translateY(20px) scale(1.03);
-    }
-
-    75% {
-        transform: translateY(-20px) scale(1);
-    }
-
-    100% {
-        left: 110%;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* =========================
-   SHOOTING STAR
-========================= */
-
-.shooting-star {
-    position: absolute;
-
-    width: 100px;
-    height: 2px;
-
-    background: linear-gradient(to right, white, transparent);
-
-    transform: rotate(-30deg);
-
-    top: 15%;
-    left: -120px;
-
-    animation: shooting 6s linear infinite;
-}
-
-@keyframes shooting {
-    0% {
-        left: -150px;
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 1;
-    }
-
-    25% {
-        left: 120%;
-        top: 55%;
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-/* =========================
-   CHERRY BLOSSOMS
-========================= */
-
-.petal {
-    position: fixed;
-    top: -30px;
-    z-index: 10;
-
-    width: 12px;
-    height: 8px;
-
-    background: #ffb6d9;
-
-    border-radius: 80% 20% 80% 20%;
-
-    opacity: .8;
-
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-
-    0% {
-        transform:
-            translateY(-50px)
-            translateX(0)
-            rotate(0deg);
-    }
-
-    50% {
-        transform:
-            translateY(55vh)
-            translateX(100px)
-            rotate(180deg);
-    }
-
-    100% {
-        transform:
-            translateY(110vh)
-            translateX(-100px)
-            rotate(360deg);
-    }
-}
-
-.p1 { left: 5%; animation-duration: 9s; }
-.p2 { left: 15%; animation-duration: 12s; animation-delay: 2s; }
-.p3 { left: 25%; animation-duration: 10s; animation-delay: 4s; }
-.p4 { left: 40%; animation-duration: 14s; animation-delay: 1s; }
-.p5 { left: 55%; animation-duration: 11s; animation-delay: 5s; }
-.p6 { left: 70%; animation-duration: 13s; animation-delay: 3s; }
-.p7 { left: 85%; animation-duration: 10s; animation-delay: 6s; }
-.p8 { left: 95%; animation-duration: 15s; animation-delay: 2s; }
-
-/* =========================
-   INTRO CONTENT
-========================= */
-
-.intro-content {
-    position: relative;
-    z-index: 20;
-
-    animation: introFloat 4s ease-in-out infinite;
-}
-
-@keyframes introFloat {
-    0%,100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-.korean-small {
-    font-size: 15px;
-    letter-spacing: 7px;
-    color: #d9b4ff;
-
-    opacity: 0;
-
-    animation: reveal 1.5s forwards;
-    animation-delay: 1s;
-}
-
-.intro-content h1 {
-    margin: 20px 0;
-
-    font-size: clamp(65px, 13vw, 150px);
-
-    font-weight: 400;
-    letter-spacing: 8px;
-
-    color: white;
-
-    text-shadow:
-        0 0 20px rgba(255,255,255,.4),
-        0 0 60px rgba(190,100,255,.5);
-
-    opacity: 0;
-
-    animation:
-        titleReveal 2s forwards,
-        titleGlow 3s ease-in-out infinite;
-
-    animation-delay: 1.5s, 3.5s;
-}
-
-@keyframes titleReveal {
-    from {
-        opacity: 0;
-        transform: scale(.75);
-        filter: blur(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-        filter: blur(0);
-    }
-}
-
-@keyframes titleGlow {
-    0%,100% {
-        text-shadow:
-            0 0 20px rgba(255,255,255,.4),
-            0 0 60px rgba(190,100,255,.5);
-    }
-
-    50% {
-        text-shadow:
-            0 0 30px white,
-            0 0 100px rgba(220,130,255,.9);
-    }
-}
-
-.intro-korean {
-    font-size: 21px;
-    color: #ffd9ef;
-
-    opacity: 0;
-
-    animation: reveal 2s forwards;
-    animation-delay: 2.8s;
-}
-
-.intro-english {
-    margin-top: 10px;
-
-    color: #c6b9d2;
-    font-size: 14px;
-    letter-spacing: 2px;
-
-    opacity: 0;
-
-    animation: reveal 2s forwards;
-    animation-delay: 3.5s;
-}
-
-@keyframes reveal {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* =========================
-   BUTTON
-========================= */
-
-.intro-button {
-    margin-top: 45px;
-
-    padding: 17px 35px;
-
-    border: 1px solid rgba(255,255,255,.5);
-    border-radius: 50px;
-
-    background: rgba(255,255,255,.08);
-    backdrop-filter: blur(10px);
-
-    color: white;
-
-    font-size: 14px;
-    letter-spacing: 3px;
-
-    cursor: pointer;
-
-    opacity: 0;
-
-    animation:
-        reveal 2s forwards,
-        buttonPulse 2s ease-in-out infinite;
-
-    animation-delay: 4.5s, 6.5s;
-
-    transition: .4s;
-}
-
-.intro-button:hover {
-    background: rgba(220,150,255,.25);
-    box-shadow:
-        0 0 25px rgba(220,150,255,.5);
-    transform: scale(1.08);
-}
-
-@keyframes buttonPulse {
-    0%,100% {
-        box-shadow: 0 0 10px rgba(220,150,255,.15);
-    }
-
-    50% {
-        box-shadow: 0 0 35px rgba(220,150,255,.5);
-    }
-}
-
-/* =========================
-   MAIN WEBSITE
-========================= */
-
-#main {
-    display: none;
-    background:
-        radial-gradient(circle at 20% 10%, rgba(130,70,180,.18), transparent 30%),
-        radial-gradient(circle at 80% 50%, rgba(190,70,140,.12), transparent 35%),
-        #080511;
-}
-
-.hero {
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 40px 20px;
-
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(circle, rgba(255,170,220,.08) 1px, transparent 1px);
-
-    background-size: 40px 40px;
-
-    animation: gridMove 20s linear infinite;
-}
-
-@keyframes gridMove {
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(40px);
-    }
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-
-    animation: heroAppear 1.8s ease;
-}
-
-@keyframes heroAppear {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero small {
-    color: #c9a5df;
-    letter-spacing: 5px;
-}
-
-.hero h1 {
-    margin: 25px 0 10px;
-
-    font-size: clamp(45px, 9vw, 100px);
-
-    font-weight: 400;
-
-    background: linear-gradient(
-        90deg,
-        #fff,
-        #e8b9ff,
-        #fff
-    );
-
-    background-size: 200% auto;
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    animation: shineText 4s linear infinite;
-}
-
-@keyframes shineText {
-    to {
-        background-position: 200% center;
-    }
-}
-
-.hero .korean {
-    font-size: 25px;
-    color: #ffbfe0;
-
-    animation: heartbeat 2s infinite;
-}
-
-@keyframes heartbeat {
-    0%,100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.08);
-    }
-}
-
-/* =========================
-   SECTIONS
+   GLOBAL
 ========================= */
 
 section {
-    padding: 100px 20px;
-    max-width: 1000px;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
     margin: auto;
 }
 
 .section-title {
+    font-size: 38px;
+    color: #9b5b91;
+    margin-bottom: 12px;
     text-align: center;
-    margin-bottom: 55px;
 }
 
-.section-title span {
-    color: #d39aff;
-    letter-spacing: 4px;
-    font-size: 13px;
+.section-subtitle {
+    text-align: center;
+    color: #92778e;
+    margin-bottom: 45px;
 }
 
-.section-title h2 {
-    font-size: clamp(35px, 7vw, 60px);
+.korean {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* =========================
+   PETALS
+========================= */
+
+.petal {
+    position: fixed;
+    top: -40px;
+    width: 13px;
+    height: 9px;
+    background: #ffb7d5;
+    border-radius: 100% 0 100% 0;
+    transform: rotate(30deg);
+    opacity: .8;
+    z-index: 50;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+.petal:nth-child(2n) {
+    background: #ffd0e4;
+}
+
+.petal:nth-child(3n) {
+    background: #e7b9ff;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) translateX(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(50vh) translateX(80px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(110vh) translateX(-80px) rotate(360deg);
+    }
+}
+
+/* =========================
+   OPENING
+========================= */
+
+#opening {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at 20% 20%, #ffe0ef 0%, transparent 30%),
+        radial-gradient(circle at 80% 20%, #ddd2ff 0%, transparent 32%),
+        linear-gradient(135deg, #fff5fb, #f4efff, #eaf8ff);
+}
+
+.sun {
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background: #ffd9b8;
+    right: 12%;
+    top: 13%;
+    opacity: .75;
+    box-shadow: 0 0 70px #ffd6b5;
+    animation: sunFloat 5s ease-in-out infinite;
+}
+
+@keyframes sunFloat {
+    50% {
+        transform: translateY(18px);
+    }
+}
+
+.cloud {
+    position: absolute;
+    width: 180px;
+    height: 55px;
+    background: rgba(255,255,255,.75);
+    border-radius: 50px;
+    filter: blur(1px);
+    animation: cloudMove 16s linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 80px;
+    height: 80px;
+    left: 25px;
+    top: -35px;
+}
+
+.cloud::after {
+    width: 100px;
+    height: 100px;
+    right: 20px;
+    top: -50px;
+}
+
+.cloud.one {
+    top: 20%;
+    left: -220px;
+}
+
+.cloud.two {
+    top: 35%;
+    left: -300px;
+    animation-delay: 6s;
+    transform: scale(.7);
+}
+
+@keyframes cloudMove {
+    from { left: -300px; }
+    to { left: 110%; }
+}
+
+/* Birds */
+
+.bird {
+    position: absolute;
+    font-size: 28px;
+    z-index: 2;
+    animation: birdFly 12s linear infinite;
+}
+
+.bird.one {
+    top: 20%;
+    left: -80px;
+}
+
+.bird.two {
+    top: 30%;
+    left: -150px;
+    animation-delay: 4s;
+    font-size: 21px;
+}
+
+.bird.three {
+    top: 16%;
+    left: -220px;
+    animation-delay: 7s;
+    font-size: 18px;
+}
+
+@keyframes birdFly {
+    0% {
+        left: -100px;
+        transform: translateY(0) rotate(5deg);
+    }
+    50% {
+        transform: translateY(-35px) rotate(-4deg);
+    }
+    100% {
+        left: 110%;
+        transform: translateY(20px) rotate(5deg);
+    }
+}
+
+.opening-content {
+    position: relative;
+    z-index: 5;
+    padding: 30px;
+    animation: openingAppear 2s ease forwards;
+}
+
+@keyframes openingAppear {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.small-korean {
+    font-size: 18px;
+    color: #a46c9e;
+    letter-spacing: 5px;
+    margin-bottom: 18px;
+    animation: fadeText 2s ease 1s both;
+}
+
+.opening-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(65px, 12vw, 125px);
     font-weight: 400;
-    margin-top: 15px;
+    color: #a45591;
+    text-shadow: 0 8px 25px rgba(164,85,145,.2);
+    animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    50% {
+        text-shadow: 0 8px 35px rgba(225,129,185,.55);
+    }
+}
+
+.opening-content p {
+    margin: 15px 0 30px;
+    font-size: 17px;
+    color: #765b73;
+}
+
+.begin-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(135deg, #d979b1, #9d7bd4);
+    padding: 15px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 12px 30px rgba(170,105,180,.3);
+    animation: heartbeat 2s infinite;
+    transition: .3s;
+}
+
+.begin-btn:hover {
+    transform: scale(1.08);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.scroll-note {
+    margin-top: 35px;
+    font-size: 12px;
+    color: #aa8ca6;
+    letter-spacing: 2px;
+}
+
+@keyframes fadeText {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* =========================
+   STORY
+========================= */
+
+#story {
+    padding: 110px 0;
+    background:
+        radial-gradient(circle at 5% 10%, #ffe0ed, transparent 25%),
+        radial-gradient(circle at 95% 90%, #ded5ff, transparent 25%),
+        #fffafc;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 45px;
+}
+
+.story-card {
+    padding: 35px;
+    border-radius: 28px;
+    background: rgba(255,255,255,.8);
+    border: 1px solid rgba(225,184,220,.5);
+    box-shadow: 0 15px 45px rgba(170,110,160,.12);
+    transition: .5s;
+    position: relative;
+}
+
+.story-card:hover {
+    transform: translateY(-12px) rotate(1deg);
+    box-shadow: 0 25px 55px rgba(170,110,160,.22);
+}
+
+.story-card span {
+    font-size: 35px;
+}
+
+.story-card h3 {
+    color: #a35e98;
+    margin: 15px 0;
+}
+
+.story-card p {
+    line-height: 1.8;
+    color: #725f70;
 }
 
 /* =========================
    PHOTO
 ========================= */
 
-.photo-container {
-    display: flex;
-    justify-content: center;
+#photo-section {
+    padding: 110px 0;
+    background: linear-gradient(135deg, #f9efff, #fff5fa, #eefaff);
+    text-align: center;
 }
 
 .photo-frame {
+    display: inline-block;
+    padding: 15px 15px 45px;
+    background: white;
+    box-shadow: 0 20px 60px rgba(130,90,150,.2);
+    transform: rotate(-3deg);
+    transition: .6s;
     position: relative;
-
-    width: min(380px, 90vw);
-
-    padding: 12px;
-
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.3),
-            rgba(150,80,200,.25),
-            rgba(255,255,255,.08)
-        );
-
-    box-shadow:
-        0 0 30px rgba(190,110,255,.25),
-        0 25px 80px rgba(0,0,0,.6);
-
-    animation: photoFloat 5s ease-in-out infinite;
+    animation: photoFloat 4s ease-in-out infinite;
 }
 
-@keyframes photoFloat {
-    0%,100% {
-        transform: translateY(0) rotate(-1deg);
-    }
-
-    50% {
-        transform: translateY(-15px) rotate(1deg);
-    }
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.05);
 }
 
-.photo-frame::before {
-    content: "";
-
+.photo-frame::after {
+    content: "♡ Varshitha ♡";
     position: absolute;
-    inset: -4px;
-
-    border-radius: 28px;
-
-    border: 1px solid rgba(255,190,230,.4);
-
-    animation: borderGlow 3s infinite;
-}
-
-@keyframes borderGlow {
-    0%,100% {
-        box-shadow: 0 0 10px rgba(220,130,255,.2);
-    }
-
-    50% {
-        box-shadow: 0 0 35px rgba(220,130,255,.65);
-    }
+    bottom: 13px;
+    left: 0;
+    width: 100%;
+    font-family: 'Great Vibes', cursive;
+    font-size: 23px;
+    color: #a25b96;
 }
 
 .photo-frame img {
+    width: min(75vw, 360px);
+    height: 440px;
+    object-fit: cover;
     display: block;
-
-    width: 100%;
-
-    border-radius: 18px;
-
-    transition: 1s;
+    border-radius: 5px;
 }
 
-.photo-frame:hover img {
-    transform: scale(1.05);
+@keyframes photoFloat {
+    50% {
+        transform: translateY(-10px) rotate(-3deg);
+    }
+}
+
+.photo-caption {
+    margin-top: 35px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 34px;
+    color: #a25b96;
 }
 
 /* =========================
-   LOVE CARDS
+   BUTTERFLIES
 ========================= */
 
-.cards {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(230px, 1fr));
-
-    gap: 25px;
-}
-
-.card {
-    padding: 35px 25px;
-
-    text-align: center;
-
-    border-radius: 25px;
-
-    background: rgba(255,255,255,.045);
-
-    border: 1px solid rgba(255,255,255,.1);
-
-    backdrop-filter: blur(15px);
-
-    transition: .5s;
-
-    position: relative;
-    overflow: hidden;
-}
-
-.card::before {
-    content: "";
-
+.butterfly {
     position: absolute;
-
-    width: 100px;
-    height: 100px;
-
-    background: rgba(210,120,255,.15);
-
-    border-radius: 50%;
-
-    top: -50px;
-    right: -50px;
-
-    transition: .6s;
+    font-size: 30px;
+    animation: butterflyMove 8s ease-in-out infinite;
+    opacity: .7;
 }
 
-.card:hover {
-    transform: translateY(-12px);
+.b1 { left: 7%; top: 20%; }
+.b2 { right: 8%; top: 60%; animation-delay: 2s; }
+.b3 { left: 20%; bottom: 10%; animation-delay: 4s; }
 
-    border-color: rgba(230,170,255,.4);
-
-    box-shadow:
-        0 20px 50px rgba(150,70,190,.2);
-}
-
-.card:hover::before {
-    transform: scale(3);
-}
-
-.card .icon {
-    font-size: 38px;
-    margin-bottom: 20px;
-}
-
-.card h3 {
-    font-weight: 400;
-    margin-bottom: 12px;
-}
-
-.card p {
-    color: #b9adbf;
-    line-height: 1.7;
+@keyframes butterflyMove {
+    0%,100% {
+        transform: translate(0,0) rotate(5deg);
+    }
+    50% {
+        transform: translate(35px,-40px) rotate(-8deg);
+    }
 }
 
 /* =========================
    LOVE LETTER
 ========================= */
 
-.letter {
-    max-width: 750px;
+#letter {
+    padding: 110px 0;
+    background: #fff8f5;
+}
+
+.envelope {
+    max-width: 760px;
     margin: auto;
-
-    padding: 50px 35px;
-
+    padding: 55px;
     border-radius: 30px;
-
     background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.07),
-            rgba(160,80,190,.06)
-        );
-
-    border: 1px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.4);
-
-    line-height: 2;
-
-    color: #ddd1e2;
-
-    text-align: center;
+        linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,240,249,.9));
+    box-shadow: 0 25px 70px rgba(190,130,170,.18);
+    border: 1px solid #f0d6e8;
+    position: relative;
 }
 
-.letter .korean-letter {
-    color: #ffb9dd;
-    font-size: 22px;
-    margin-bottom: 25px;
+.envelope::before {
+    content: "💌";
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 55px;
+    animation: envelopeBounce 2s infinite;
 }
 
-.letter p {
-    margin: 18px 0;
+@keyframes envelopeBounce {
+    50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+.letter-content {
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    line-height: 1.8;
+    color: #80546f;
+}
+
+.letter-content p {
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: 1s;
+}
+
+.revealed .letter-content p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.revealed .letter-content p:nth-child(2) {
+    transition-delay: .5s;
+}
+
+.revealed .letter-content p:nth-child(3) {
+    transition-delay: 1s;
+}
+
+.signature {
+    text-align: right;
+    color: #a25492;
+    font-size: 35px;
+}
+
+/* =========================
+   MEMORIES
+========================= */
+
+#memories {
+    padding: 110px 0;
+    background: linear-gradient(160deg, #eefaff, #fff5fb, #f5efff);
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.memory {
+    min-height: 220px;
+    padding: 30px;
+    border-radius: 25px;
+    background: rgba(255,255,255,.72);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 40px rgba(130,100,160,.13);
+    transition: .5s;
+}
+
+.memory:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.memory .emoji {
+    font-size: 38px;
+}
+
+.memory h3 {
+    color: #9b6295;
+    margin: 15px 0 10px;
+}
+
+.memory p {
+    line-height: 1.7;
+    color: #756479;
 }
 
 /* =========================
    MUSIC
 ========================= */
 
-.music-box {
-    max-width: 600px;
-    margin: auto;
-
-    padding: 40px 25px;
-
-    border-radius: 30px;
-
+#music {
+    padding: 110px 0;
     text-align: center;
-
     background:
-        linear-gradient(
-            135deg,
-            rgba(140,80,190,.15),
-            rgba(255,150,210,.06)
-        );
+        radial-gradient(circle at 20% 30%, #ffdce9, transparent 25%),
+        radial-gradient(circle at 80% 70%, #ddd6ff, transparent 25%),
+        #fffafd;
+}
 
-    border: 1px solid rgba(255,255,255,.12);
-
-    box-shadow:
-        0 20px 70px rgba(120,60,180,.15);
+.music-card {
+    width: min(90%, 600px);
+    margin: auto;
+    padding: 40px;
+    border-radius: 35px;
+    background: rgba(255,255,255,.75);
+    box-shadow: 0 25px 60px rgba(170,120,180,.18);
+    backdrop-filter: blur(15px);
 }
 
 .music-icon {
     font-size: 55px;
-
-    animation:
-        musicPulse 1.5s ease-in-out infinite;
+    animation: musicBounce 1.5s ease-in-out infinite;
 }
 
-@keyframes musicPulse {
-    0%,100% {
-        transform: scale(1);
-    }
+@keyframes musicBounce {
+    50% { transform: translateY(-10px); }
+}
 
-    50% {
-        transform: scale(1.15);
-    }
+.music-card h3 {
+    margin: 15px 0 25px;
+    color: #965b91;
 }
 
 audio {
     width: 100%;
-    margin-top: 25px;
+}
+
+.equalizer {
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.equalizer span {
+    width: 6px;
+    height: 20px;
+    background: #c78ac0;
+    border-radius: 10px;
+    animation: equalize .8s ease-in-out infinite alternate;
+}
+
+.equalizer span:nth-child(2) { animation-delay: .15s; }
+.equalizer span:nth-child(3) { animation-delay: .3s; }
+.equalizer span:nth-child(4) { animation-delay: .45s; }
+.equalizer span:nth-child(5) { animation-delay: .6s; }
+
+@keyframes equalize {
+    from { height: 10px; }
+    to { height: 50px; }
 }
 
 /* =========================
    FINAL
 ========================= */
 
-.final {
-    min-height: 80vh;
-
+#final {
+    min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-
+    align-items: center;
     text-align: center;
-
-    position: relative;
+    background:
+        radial-gradient(circle at 50% 30%, #ffd6e6, transparent 30%),
+        linear-gradient(160deg, #fff0f6, #eee8ff, #e7f7ff);
 }
 
-.final-content h2 {
-    font-size: clamp(45px, 9vw, 90px);
-
-    font-weight: 400;
-
-    animation:
-        heartbeat 2s infinite;
+.final-content {
+    position: relative;
+    z-index: 3;
+    padding: 30px;
 }
 
 .final-korean {
-    margin-top: 25px;
-
-    font-size: 25px;
-
-    color: #ffb9dc;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #9d6a9c;
+    font-size: 18px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
 }
 
-.final p {
-    margin-top: 20px;
-    color: #a99dad;
+.final-content h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(70px, 13vw, 140px);
+    font-weight: 400;
+    color: #a65391;
+    animation: finalGlow 3s ease-in-out infinite;
+}
+
+@keyframes finalGlow {
+    50% {
+        transform: scale(1.04);
+        text-shadow: 0 0 35px rgba(215,110,180,.45);
+    }
+}
+
+.final-content p {
+    font-size: 18px;
+    color: #765c73;
+    margin-top: 15px;
 }
 
 .big-heart {
-    font-size: 75px;
-
+    font-size: 65px;
     margin-top: 30px;
-
-    animation:
-        heartbeat 1.2s infinite;
-
-    filter:
-        drop-shadow(0 0 20px rgba(255,100,180,.7));
+    display: inline-block;
+    animation: heartBeat 1.4s infinite;
 }
 
-/* =========================
-   SCROLL REVEAL
-========================= */
+@keyframes heartBeat {
+    0%,100% { transform: scale(1); }
+    20% { transform: scale(1.18); }
+    40% { transform: scale(1); }
+}
+
+/* Floating hearts */
+
+.heart {
+    position: absolute;
+    font-size: 25px;
+    opacity: .6;
+    animation: heartFloat 7s linear infinite;
+}
+
+@keyframes heartFloat {
+    from {
+        bottom: -50px;
+        transform: translateX(0) rotate(0);
+    }
+    to {
+        bottom: 110%;
+        transform: translateX(80px) rotate(360deg);
+    }
+}
+
+/* Scroll reveal */
 
 .reveal {
     opacity: 0;
     transform: translateY(60px);
-
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
+    transition: 1s ease;
 }
 
-.reveal.active {
+.reveal.show {
     opacity: 1;
     transform: translateY(0);
 }
 
 /* =========================
-   MOBILE
+   RESPONSIVE
 ========================= */
 
-@media(max-width:600px) {
+@media (max-width: 800px) {
 
-    .moon {
-        width: 80px;
-        height: 80px;
-        right: 8%;
-        top: 10%;
+    .story-grid {
+        grid-template-columns: 1fr;
     }
 
-    .korean-small {
-        font-size: 11px;
-        letter-spacing: 4px;
+    .memory-grid {
+        grid-template-columns: 1fr;
     }
 
-    .intro-korean {
-        font-size: 17px;
-        padding: 0 20px;
+    .opening-content h1 {
+        font-size: 75px;
     }
 
-    .intro-english {
-        font-size: 11px;
+    .photo-frame img {
+        width: 75vw;
+        height: 400px;
     }
 
-    .intro-button {
-        padding: 15px 25px;
-        font-size: 11px;
+    .envelope {
+        padding: 45px 25px;
     }
 
-    section {
-        padding: 75px 18px;
-    }
-
-    .letter {
-        padding: 35px 22px;
-    }
-
-    .bird {
-        transform: scale(.7);
+    .letter-content {
+        font-size: 24px;
     }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     INTRO
-===================================================== -->
+<!-- =========================
+     FALLING PETALS
+========================= -->
 
-<div class="intro" id="intro">
+<div class="petal" style="left:5%;animation-duration:8s;"></div>
+<div class="petal" style="left:15%;animation-duration:11s;animation-delay:2s;"></div>
+<div class="petal" style="left:28%;animation-duration:9s;animation-delay:4s;"></div>
+<div class="petal" style="left:40%;animation-duration:12s;animation-delay:1s;"></div>
+<div class="petal" style="left:55%;animation-duration:10s;animation-delay:5s;"></div>
+<div class="petal" style="left:70%;animation-duration:13s;animation-delay:3s;"></div>
+<div class="petal" style="left:85%;animation-duration:9s;animation-delay:6s;"></div>
+<div class="petal" style="left:95%;animation-duration:11s;animation-delay:2s;"></div>
 
-    <div class="stars"></div>
-    <div class="stars2"></div>
+<!-- =========================
+     OPENING
+========================= -->
 
-    <div class="moon"></div>
+<section id="opening">
 
-    <div class="shooting-star"></div>
+    <div class="sun"></div>
 
-    <!-- Birds -->
-    <div class="bird bird1"></div>
-    <div class="bird bird2"></div>
-    <div class="bird bird3"></div>
+    <div class="cloud one"></div>
+    <div class="cloud two"></div>
 
-    <!-- Petals -->
-    <div class="petal p1"></div>
-    <div class="petal p2"></div>
-    <div class="petal p3"></div>
-    <div class="petal p4"></div>
-    <div class="petal p5"></div>
-    <div class="petal p6"></div>
-    <div class="petal p7"></div>
-    <div class="petal p8"></div>
+    <div class="bird one">🕊️</div>
+    <div class="bird two">🕊️</div>
+    <div class="bird three">🕊️</div>
 
-    <!-- Skyline -->
-    <div class="buildings">
-        <div class="building b1"></div>
-        <div class="building b2"></div>
-        <div class="building b3"></div>
-        <div class="building b4"></div>
-        <div class="building b5"></div>
-        <div class="building b6"></div>
-        <div class="building b7"></div>
-    </div>
+    <div class="opening-content">
 
-    <div class="skyline"></div>
-
-    <div class="neon one">사랑</div>
-    <div class="neon two">행복</div>
-
-    <!-- Intro Text -->
-    <div class="intro-content">
-
-        <div class="korean-small">
-            서울 · 대한민국
+        <div class="small-korean korean">
+            우리의 이야기 ♡
         </div>
 
-        <h1>Seoul</h1>
+        <h1>Tulasi</h1>
 
-        <div class="intro-korean">
-            어느 날, 운명처럼 너를 만났어.
+        <p>
+            Some stories are written in books...<br>
+            but ours is written in my heart.
+        </p>
+
+        <a href="#story" class="begin-btn">
+            Begin Our Story ♡
+        </a>
+
+        <div class="scroll-note">
+            ✦ scroll slowly ✦
         </div>
-
-        <div class="intro-english">
-            One day, I met you like destiny.
-        </div>
-
-        <button
-            class="intro-button"
-            onclick="enterStory()">
-            BEGIN OUR STORY ♡
-        </button>
 
     </div>
+</section>
 
-</div>
+<!-- =========================
+     STORY
+========================= -->
 
+<section id="story">
 
-<!-- =====================================================
-     MAIN WEBSITE
-===================================================== -->
+    <div class="container">
 
-<div id="main">
+        <div class="reveal">
+            <h2 class="section-title">It All Started With You</h2>
 
-    <!-- HERO -->
-
-    <div class="hero">
-
-        <div class="hero-content">
-
-            <small>
-                THIS STORY IS ONLY FOR YOU
-            </small>
-
-            <h1>
-                Hey Tulasi ❤️
-            </h1>
-
-            <div class="korean">
-                사랑해, 바르샤 ❤️
-            </div>
-
-            <p style="
-                margin-top:25px;
-                color:#aaa0b0;
-                letter-spacing:2px;
-            ">
-                You are my favorite story.
+            <p class="section-subtitle korean">
+                너와 나의 특별한 이야기
             </p>
-
         </div>
 
-    </div>
+        <div class="story-grid">
 
-
-    <!-- PHOTO -->
-
-    <section class="reveal">
-
-        <div class="section-title">
-
-            <span>
-                MY FAVORITE PERSON
-            </span>
-
-            <h2>
-                The Girl I Adore
-            </h2>
-
-        </div>
-
-        <div class="photo-container">
-
-            <div class="photo-frame">
-
-                <img
-                    src="photo.jpg"
-                    alt="Varshitha">
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- LOVE CARDS -->
-
-    <section class="reveal">
-
-        <div class="section-title">
-
-            <span>
-                THREE LITTLE THINGS
-            </span>
-
-            <h2>
-                Why You Are Special
-            </h2>
-
-        </div>
-
-
-        <div class="cards">
-
-            <div class="card">
-
-                <div class="icon">
-                    🌙
-                </div>
-
-                <h3>
-                    Your Presence
-                </h3>
-
+            <div class="story-card reveal">
+                <span>🌸</span>
+                <h3>A Beautiful Beginning</h3>
                 <p>
-                    Even an ordinary day feels different
-                    when you are a part of it.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">
-                    🌸
-                </div>
-
-                <h3>
-                    Your Smile
-                </h3>
-
-                <p>
-                    Somehow your smile can make
-                    everything around me feel lighter.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="icon">
-                    🕊️
-                </div>
-
-                <h3>
-                    Our Story
-                </h3>
-
-                <p>
-                    Out of all the people in this world,
+                    Among all the people in this world,
                     somehow our paths crossed.
+                    And that little moment became something
+                    I never want to forget.
+                </p>
+            </div>
+
+            <div class="story-card reveal">
+                <span>🦋</span>
+                <h3>You Became My Favorite</h3>
+                <p>
+                    Slowly, without even realizing it,
+                    your smile became my favorite sight,
+                    your messages became my favorite notifications,
+                    and you became my favorite person.
+                </p>
+            </div>
+
+            <div class="story-card reveal">
+                <span>☁️</span>
+                <h3>My Safe Place</h3>
+                <p>
+                    With you, even ordinary moments feel special.
+                    Somehow you made simple days feel like
+                    little pieces of magic.
+                </p>
+            </div>
+
+            <div class="story-card reveal">
+                <span>💜</span>
+                <h3>And Then...</h3>
+                <p>
+                    I realized that I wasn't just happy
+                    because you were in my life.
+                    I was happy because you had become
+                    a part of my life.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="butterfly b1">🦋</div>
+    <div class="butterfly b2">🦋</div>
+    <div class="butterfly b3">🦋</div>
+
+</section>
+
+<!-- =========================
+     PHOTO
+========================= -->
+
+<section id="photo-section">
+
+    <div class="container">
+
+        <div class="reveal">
+
+            <h2 class="section-title">
+                My Favorite View
+            </h2>
+
+            <p class="section-subtitle">
+                Some pictures are more than pictures.
+            </p>
+
+        </div>
+
+        <div class="photo-frame reveal">
+
+            <img src="photo.jpg" alt="Varshitha">
+
+        </div>
+
+        <div class="photo-caption reveal">
+            My favorite person. My favorite smile. ❤️
+        </div>
+
+    </div>
+
+    <div class="butterfly b1">🦋</div>
+    <div class="butterfly b2">🦋</div>
+
+</section>
+
+<!-- =========================
+     LOVE LETTER
+========================= -->
+
+<section id="letter">
+
+    <div class="container">
+
+        <div class="reveal">
+
+            <h2 class="section-title">
+                A Little Letter For You
+            </h2>
+
+            <p class="section-subtitle korean">
+                너에게 쓰는 편지
+            </p>
+
+        </div>
+
+        <div class="envelope reveal">
+
+            <div class="letter-content">
+
+                <p>
+                    Dear Varshitha,
+                </p>
+
+                <p>
+                    I don't know if words can ever explain
+                    exactly what you mean to me.
+                    But if I had to choose one word,
+                    it would simply be <b>you</b>.
+                </p>
+
+                <p>
+                    Thank you for becoming a beautiful part
+                    of my story. Wherever life takes us,
+                    a part of my heart will always remember
+                    the moments we created together.
+                </p>
+
+                <p class="signature">
+                    With love,<br>
+                    Mahesh ❤️
                 </p>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
-    <!-- LOVE LETTER -->
+<!-- =========================
+     MEMORIES
+========================= -->
 
-    <section class="reveal">
+<section id="memories">
 
-        <div class="section-title">
+    <div class="container">
 
-            <span>
-                FROM MY HEART
-            </span>
+        <div class="reveal">
 
-            <h2>
-                A Little Letter
+            <h2 class="section-title">
+                Little Things I Love
             </h2>
 
+            <p class="section-subtitle">
+                It's the little things that make someone unforgettable.
+            </p>
+
         </div>
 
+        <div class="memory-grid">
 
-        <div class="letter">
-
-            <div class="korean-letter">
-                너는 나의 소중한 사람이야 ❤️
+            <div class="memory reveal">
+                <div class="emoji">💜</div>
+                <h3>Your Smile</h3>
+                <p>
+                    It has a way of making even an ordinary day
+                    feel a little brighter.
+                </p>
             </div>
 
-            <p>
-                Varshitha,
-            </p>
+            <div class="memory reveal">
+                <div class="emoji">🌸</div>
+                <h3>Your Presence</h3>
+                <p>
+                    Even when you don't say anything,
+                    somehow your presence feels special.
+                </p>
+            </div>
 
-            <p>
-                Sometimes I wonder how one person
-                can become such an important part
-                of another person's world.
-            </p>
+            <div class="memory reveal">
+                <div class="emoji">🦋</div>
+                <h3>Your Little Moments</h3>
+                <p>
+                    The random conversations, laughs,
+                    silly moments and memories.
+                </p>
+            </div>
 
-            <p>
-                But then I think about you,
-                and I don't need an answer.
-            </p>
+            <div class="memory reveal">
+                <div class="emoji">☁️</div>
+                <h3>Your Dreams</h3>
+                <p>
+                    I love seeing you dream about the future
+                    and the beautiful things you want.
+                </p>
+            </div>
 
-            <p>
-                You simply became a beautiful part
-                of my story.
-            </p>
+            <div class="memory reveal">
+                <div class="emoji">🎀</div>
+                <h3>Your Uniqueness</h3>
+                <p>
+                    There is something about you that
+                    simply cannot be replaced.
+                </p>
+            </div>
 
-            <p>
-                No matter how many days pass,
-                there will always be a special place
-                in my heart with your name on it.
-            </p>
-
-            <p>
-                사랑해.
-            </p>
-
-            <p>
-                I love you. ❤️
-            </p>
+            <div class="memory reveal">
+                <div class="emoji">❤️</div>
+                <h3>Just You</h3>
+                <p>
+                    At the end of everything,
+                    my favorite thing is simply having you.
+                </p>
+            </div>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
-    <!-- MUSIC -->
+<!-- =========================
+     MUSIC
+========================= -->
 
-    <section class="reveal">
+<section id="music">
 
-        <div class="section-title">
+    <div class="container">
 
-            <span>
-                OUR SONG
-            </span>
+        <div class="reveal">
 
-            <h2>
-                Press Play 🎵
+            <h2 class="section-title">
+                Our Little Song 🎵
             </h2>
 
+            <p class="section-subtitle">
+                Press play and stay here for a moment.
+            </p>
+
         </div>
 
+        <div class="music-card reveal">
 
-        <div class="music-box">
+            <div class="music-icon">🎧</div>
 
-            <div class="music-icon">
-                🎵
+            <h3>Sahana Sahana</h3>
+
+            <div class="equalizer">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-
-            <h3 style="
-                margin-top:20px;
-                font-weight:400;
-            ">
-                Sahana Sahana
-            </h3>
-
-            <p style="
-                margin-top:10px;
-                color:#a99dad;
-            ">
-                A song for this little story.
-            </p>
 
             <audio controls>
-
-                <source
-                    src="Sahana Sahana.mp3"
-                    type="audio/mpeg">
-
+                <source src="Sahana Sahana.mp3" type="audio/mpeg">
                 Your browser does not support audio.
-
             </audio>
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
-    <!-- FINAL -->
+<!-- =========================
+     FINAL
+========================= -->
 
-    <div class="final reveal">
+<section id="final">
 
-        <div class="final-content">
+    <div class="heart" style="left:10%;animation-delay:0s;">💗</div>
+    <div class="heart" style="left:25%;animation-delay:2s;">💜</div>
+    <div class="heart" style="left:45%;animation-delay:4s;">💕</div>
+    <div class="heart" style="left:65%;animation-delay:1s;">💗</div>
+    <div class="heart" style="left:82%;animation-delay:3s;">💜</div>
 
-            <h2>
-                Always You
-            </h2>
+    <div class="bird one">🕊️</div>
+    <div class="bird two">🕊️</div>
 
-            <div class="final-korean">
-                영원히 너야 ❤️
-            </div>
+    <div class="final-content reveal">
 
-            <p>
-                In every version of my story,
-                I would still choose you.
-            </p>
+        <div class="final-korean">
+            너와 나 · 영원히
+        </div>
 
-            <div class="big-heart">
-                ❤️
-            </div>
+        <h2>Always You</h2>
 
+        <p>
+            Out of all the stories I could have lived...
+            <br>
+            I'm glad one of them had you in it. ❤️
+        </p>
+
+        <div class="big-heart">
+            ❤️
         </div>
 
     </div>
 
-</div>
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+</section>
 
 <script>
 
 /* =========================
-   OPEN STORY
+   SCROLL REVEAL
 ========================= */
 
-function enterStory() {
+const reveals = document.querySelectorAll(".reveal");
 
-    const intro = document.getElementById("intro");
-    const main = document.getElementById("main");
+const revealObserver = new IntersectionObserver((entries) => {
 
-    intro.classList.add("hide");
+    entries.forEach(entry => {
 
-    setTimeout(() => {
-
-        intro.style.display = "none";
-
-        main.style.display = "block";
-
-        window.scrollTo(0, 0);
-
-        revealElements();
-
-    }, 1300);
-}
-
-
-/* =========================
-   SCROLL ANIMATIONS
-========================= */
-
-function revealElements() {
-
-    const elements =
-        document.querySelectorAll(".reveal");
-
-    const observer =
-        new IntersectionObserver(
-            (entries) => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add("active");
-
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.15
-            }
-        );
-
-    elements.forEach(el => {
-        observer.observe(el);
-    });
-}
-
-
-/* =========================
-   RANDOM SPARKLES
-========================= */
-
-document.addEventListener(
-    "click",
-    function(e) {
-
-        for (let i = 0; i < 6; i++) {
-
-            const sparkle =
-                document.createElement("span");
-
-            sparkle.innerHTML = "✦";
-
-            sparkle.style.position = "fixed";
-            sparkle.style.left =
-                e.clientX + "px";
-            sparkle.style.top =
-                e.clientY + "px";
-
-            sparkle.style.pointerEvents =
-                "none";
-
-            sparkle.style.zIndex =
-                "10000";
-
-            sparkle.style.color =
-                "#ffd5ed";
-
-            sparkle.style.fontSize =
-                "12px";
-
-            document.body.appendChild(
-                sparkle
-            );
-
-            const angle =
-                Math.random() * Math.PI * 2;
-
-            const distance =
-                30 + Math.random() * 50;
-
-            const x =
-                Math.cos(angle) * distance;
-
-            const y =
-                Math.sin(angle) * distance;
-
-            sparkle.animate(
-                [
-                    {
-                        transform:
-                            "translate(0,0) scale(1)",
-                        opacity: 1
-                    },
-
-                    {
-                        transform:
-                            `translate(${x}px,${y}px) scale(0)`,
-                        opacity: 0
-                    }
-                ],
-                {
-                    duration:
-                        700 + Math.random() * 500,
-                    easing:
-                        "ease-out"
-                }
-            );
-
-            setTimeout(() => {
-                sparkle.remove();
-            }, 1300);
-
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
         }
 
+    });
+
+}, {
+    threshold: 0.15
+});
+
+reveals.forEach(item => {
+    revealObserver.observe(item);
+});
+
+
+/* =========================
+   LOVE LETTER REVEAL
+========================= */
+
+const letter = document.querySelector(".envelope");
+
+const letterObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            letter.classList.add("revealed");
+        }
+
+    });
+
+}, {
+    threshold: 0.3
+});
+
+letterObserver.observe(letter);
+
+
+/* =========================
+   CLICK SPARKLES
+========================= */
+
+document.addEventListener("click", function(e) {
+
+    for (let i = 0; i < 6; i++) {
+
+        const sparkle = document.createElement("span");
+
+        sparkle.innerHTML = "✨";
+
+        sparkle.style.position = "fixed";
+        sparkle.style.left = e.clientX + "px";
+        sparkle.style.top = e.clientY + "px";
+        sparkle.style.pointerEvents = "none";
+        sparkle.style.zIndex = "9999";
+        sparkle.style.fontSize = "14px";
+
+        document.body.appendChild(sparkle);
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 30 + Math.random() * 50;
+
+        sparkle.animate([
+            {
+                transform: "translate(0,0) scale(1)",
+                opacity: 1
+            },
+            {
+                transform:
+                    `translate(${Math.cos(angle) * distance}px,
+                    ${Math.sin(angle) * distance}px) scale(0)`,
+                opacity: 0
+            }
+        ], {
+            duration: 700,
+            easing: "ease-out"
+        });
+
+        setTimeout(() => {
+            sparkle.remove();
+        }, 700);
     }
-);
+
+});
+
+
+/* =========================
+   MUSIC EQUALIZER
+========================= */
+
+const audio = document.querySelector("audio");
+const bars = document.querySelectorAll(".equalizer span");
+
+audio.addEventListener("play", () => {
+
+    bars.forEach(bar => {
+        bar.style.animationPlayState = "running";
+    });
+
+});
+
+audio.addEventListener("pause", () => {
+
+    bars.forEach(bar => {
+        bar.style.animationPlayState = "paused";
+    });
+
+});
 
 </script>
 
 </body>
 </html>
+```
