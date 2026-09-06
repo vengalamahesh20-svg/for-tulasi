@@ -57,20 +57,527 @@ section{
 }
 
 
-/* ================================
+/* ==================================================
+   PASSWORD SCREEN
+================================================== */
+
+#password-screen{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(circle at 15% 20%,#ffdbea,transparent 28%),
+        radial-gradient(circle at 85% 20%,#ddd2ff,transparent 30%),
+        radial-gradient(circle at 50% 100%,#dff7ff,transparent 32%),
+        linear-gradient(135deg,#fff5fa,#f5f0ff,#eefaff);
+
+    overflow:hidden;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+#password-screen.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+
+/* Password floating hearts */
+
+.secret-heart{
+    position:absolute;
+    bottom:-60px;
+
+    font-size:25px;
+
+    opacity:.55;
+
+    pointer-events:none;
+
+    animation:secretHeartFloat 8s linear infinite;
+}
+
+@keyframes secretHeartFloat{
+
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.6;
+    }
+
+    100%{
+        transform:
+            translateY(-115vh)
+            translateX(80px)
+            rotate(360deg);
+
+        opacity:0;
+    }
+}
+
+
+/* Password card */
+
+.secret-card{
+    position:relative;
+    z-index:10;
+
+    width:min(90%,430px);
+
+    padding:35px 30px 30px;
+
+    text-align:center;
+
+    border-radius:35px;
+
+    background:rgba(255,255,255,.72);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.85);
+
+    box-shadow:
+        0 30px 80px rgba(130,90,160,.22),
+        0 0 50px rgba(255,170,220,.25);
+
+    animation:secretCardAppear 1.2s ease;
+}
+
+@keyframes secretCardAppear{
+
+    from{
+        opacity:0;
+        transform:translateY(60px) scale(.82);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+
+/* Teddy stage */
+
+.teddy-stage{
+    position:relative;
+
+    height:145px;
+
+    margin-bottom:5px;
+}
+
+
+/* Teddy */
+
+.teddy{
+    position:absolute;
+
+    left:50%;
+    top:28px;
+
+    transform:translateX(-50%);
+
+    font-size:88px;
+
+    filter:drop-shadow(0 10px 10px rgba(120,80,100,.15));
+
+    animation:teddyFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes teddyFloat{
+
+    0%,100%{
+        transform:
+            translateX(-50%)
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    50%{
+        transform:
+            translateX(-50%)
+            translateY(-8px)
+            rotate(2deg);
+    }
+}
+
+
+/* Stick */
+
+.teddy-stick{
+    position:absolute;
+
+    left:calc(50% + 45px);
+    top:45px;
+
+    font-size:55px;
+
+    transform-origin:bottom center;
+
+    animation:stickIdle 2s ease-in-out infinite;
+
+    z-index:5;
+}
+
+@keyframes stickIdle{
+
+    0%,100%{
+        transform:rotate(-25deg);
+    }
+
+    50%{
+        transform:rotate(-10deg);
+    }
+}
+
+
+/* Bonk animation */
+
+.teddy-stage.bonking .teddy-stick{
+    animation:stickBonk .65s ease-in forwards;
+}
+
+@keyframes stickBonk{
+
+    0%{
+        transform:rotate(-25deg);
+    }
+
+    45%{
+        transform:rotate(58deg);
+    }
+
+    62%{
+        transform:rotate(-35deg);
+    }
+
+    78%{
+        transform:rotate(15deg);
+    }
+
+    100%{
+        transform:rotate(-25deg);
+    }
+}
+
+
+.teddy-stage.bonking .teddy{
+    animation:teddyBonk .8s ease-in-out;
+}
+
+@keyframes teddyBonk{
+
+    0%,100%{
+        transform:
+            translateX(-50%)
+            rotate(0);
+    }
+
+    20%{
+        transform:
+            translateX(-50%)
+            translateX(-8px)
+            rotate(-8deg);
+    }
+
+    40%{
+        transform:
+            translateX(-50%)
+            translateX(9px)
+            rotate(9deg);
+    }
+
+    60%{
+        transform:
+            translateX(-50%)
+            translateX(-6px)
+            rotate(-6deg);
+    }
+
+    80%{
+        transform:
+            translateX(-50%)
+            translateX(3px)
+            rotate(3deg);
+    }
+}
+
+
+/* Bonk stars */
+
+.bonk-star{
+    position:absolute;
+
+    left:50%;
+    top:25px;
+
+    font-size:30px;
+
+    opacity:0;
+
+    z-index:20;
+}
+
+.teddy-stage.bonking .bonk-star{
+    animation:bonkStars .8s ease-out forwards;
+}
+
+@keyframes bonkStars{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translate(-50%,0)
+            scale(.3)
+            rotate(0);
+    }
+
+    30%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translate(-50%,-50px)
+            scale(1.5)
+            rotate(30deg);
+    }
+}
+
+
+/* Secret text */
+
+.secret-korean{
+    font-size:15px;
+
+    letter-spacing:3px;
+
+    color:#a46b9b;
+
+    margin-bottom:8px;
+}
+
+.secret-card h2{
+    font-family:'Great Vibes',cursive;
+
+    font-size:48px;
+
+    font-weight:400;
+
+    color:#a45191;
+
+    margin-bottom:8px;
+}
+
+.secret-card p{
+    font-size:14px;
+
+    color:#806b7d;
+
+    margin-bottom:22px;
+
+    line-height:1.7;
+}
+
+
+/* Password input */
+
+#secret-password{
+    width:100%;
+
+    padding:15px 20px;
+
+    border-radius:50px;
+
+    border:2px solid #ead5e8;
+
+    outline:none;
+
+    text-align:center;
+
+    font-family:'Montserrat',sans-serif;
+
+    font-size:15px;
+
+    color:#654b63;
+
+    background:rgba(255,255,255,.85);
+
+    transition:.3s;
+}
+
+#secret-password:focus{
+    border-color:#c58ac0;
+
+    box-shadow:
+        0 0 20px rgba(190,120,180,.2);
+}
+
+
+/* Unlock button */
+
+.unlock-btn{
+    width:100%;
+
+    margin-top:15px;
+
+    padding:15px;
+
+    border:0;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-family:'Montserrat',sans-serif;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    background:
+        linear-gradient(135deg,#d779b2,#9d7bd5);
+
+    box-shadow:
+        0 15px 30px rgba(160,100,180,.25);
+
+    transition:.3s;
+
+    animation:unlockPulse 2s infinite;
+}
+
+.unlock-btn:hover{
+    transform:scale(1.04);
+}
+
+@keyframes unlockPulse{
+
+    50%{
+        box-shadow:
+            0 0 30px rgba(215,120,190,.5);
+    }
+}
+
+
+/* Wrong password */
+
+#password-error{
+    height:22px;
+
+    margin-top:10px;
+
+    font-size:12px;
+
+    color:#c45c91;
+
+    opacity:0;
+}
+
+#password-error.show{
+    opacity:1;
+
+    animation:errorShake .45s ease;
+}
+
+@keyframes errorShake{
+
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-8px);
+    }
+
+    75%{
+        transform:translateX(8px);
+    }
+}
+
+
+/* Unlock animation */
+
+#password-screen.unlocking .secret-card{
+    animation:unlockCard 1.1s ease forwards;
+}
+
+@keyframes unlockCard{
+
+    0%{
+        transform:scale(1);
+    }
+
+    35%{
+        transform:scale(1.08);
+    }
+
+    100%{
+        transform:scale(.65);
+        opacity:0;
+    }
+}
+
+
+/* Unlock glow */
+
+#password-screen.unlocking{
+    animation:unlockGlow 1.5s ease forwards;
+}
+
+@keyframes unlockGlow{
+
+    0%{
+        filter:brightness(1);
+    }
+
+    50%{
+        filter:brightness(1.15);
+    }
+
+    100%{
+        filter:brightness(1.8);
+    }
+}
+
+
+/* ==================================================
    FLOATING PETALS
-================================ */
+================================================== */
 
 .petal{
     position:fixed;
     top:-30px;
+
     width:13px;
     height:9px;
+
     border-radius:100% 0 100% 0;
+
     background:#f5a9cc;
+
     opacity:.75;
+
     pointer-events:none;
+
     z-index:100;
+
     animation:petalFall linear infinite;
 }
 
@@ -85,28 +592,40 @@ section{
 @keyframes petalFall{
 
     0%{
-        transform:translateY(-40px) translateX(0) rotate(0);
+        transform:
+            translateY(-40px)
+            translateX(0)
+            rotate(0);
     }
 
     50%{
-        transform:translateY(55vh) translateX(80px) rotate(180deg);
+        transform:
+            translateY(55vh)
+            translateX(80px)
+            rotate(180deg);
     }
 
     100%{
-        transform:translateY(110vh) translateX(-70px) rotate(360deg);
+        transform:
+            translateY(110vh)
+            translateX(-70px)
+            rotate(360deg);
     }
 }
 
 
-/* ================================
+/* ==================================================
    OPENING
-================================ */
+================================================== */
 
 #opening{
     min-height:100vh;
+
     display:flex;
+
     align-items:center;
     justify-content:center;
+
     text-align:center;
 
     background:
@@ -118,13 +637,17 @@ section{
 
 .sun{
     position:absolute;
+
     width:170px;
     height:170px;
+
     border-radius:50%;
+
     right:12%;
     top:12%;
 
     background:#ffd9b0;
+
     opacity:.7;
 
     box-shadow:0 0 70px #ffd8bd;
@@ -144,24 +667,32 @@ section{
 
 .cloud{
     position:absolute;
+
     width:190px;
     height:55px;
+
     border-radius:50px;
+
     background:rgba(255,255,255,.8);
+
     animation:cloudMove 18s linear infinite;
 }
 
 .cloud:before,
 .cloud:after{
     content:"";
+
     position:absolute;
+
     background:inherit;
+
     border-radius:50%;
 }
 
 .cloud:before{
     width:80px;
     height:80px;
+
     left:25px;
     top:-38px;
 }
@@ -169,6 +700,7 @@ section{
 .cloud:after{
     width:100px;
     height:100px;
+
     right:15px;
     top:-50px;
 }
@@ -181,7 +713,9 @@ section{
 .cloud.two{
     left:-300px;
     top:42%;
+
     animation-delay:7s;
+
     transform:scale(.7);
 }
 
@@ -201,9 +735,13 @@ section{
 
 .bird{
     position:absolute;
+
     z-index:4;
+
     font-size:27px;
+
     left:-100px;
+
     animation:birdFly 12s linear infinite;
 }
 
@@ -213,13 +751,17 @@ section{
 
 .bird.two{
     top:30%;
+
     animation-delay:4s;
+
     font-size:21px;
 }
 
 .bird.three{
     top:15%;
+
     animation-delay:7s;
+
     font-size:18px;
 }
 
@@ -227,6 +769,7 @@ section{
 
     0%{
         left:-100px;
+
         transform:translateY(0);
     }
 
@@ -236,6 +779,7 @@ section{
 
     100%{
         left:110%;
+
         transform:translateY(20px);
     }
 }
@@ -245,7 +789,9 @@ section{
 
 .opening-content{
     position:relative;
+
     z-index:10;
+
     padding:30px;
 
     animation:introAppear 2s ease forwards;
@@ -255,19 +801,28 @@ section{
 
     from{
         opacity:0;
-        transform:translateY(50px) scale(.95);
+
+        transform:
+            translateY(50px)
+            scale(.95);
     }
 
     to{
         opacity:1;
-        transform:translateY(0) scale(1);
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
 .opening-korean{
     font-size:18px;
+
     letter-spacing:5px;
+
     color:#a46b9b;
+
     margin-bottom:15px;
 
     animation:fadeIn 2s ease 1s both;
@@ -275,8 +830,11 @@ section{
 
 .opening-content h1{
     font-family:'Great Vibes',cursive;
+
     font-size:clamp(75px,13vw,140px);
+
     font-weight:400;
+
     color:#a45191;
 
     animation:nameGlow 3s ease-in-out infinite;
@@ -285,27 +843,37 @@ section{
 @keyframes nameGlow{
 
     50%{
-        text-shadow:0 0 35px rgba(218,111,183,.45);
+        text-shadow:
+            0 0 35px
+            rgba(218,111,183,.45);
     }
 }
 
 .opening-content p{
     margin:15px 0 30px;
+
     line-height:1.8;
+
     color:#765f73;
 }
 
 .begin-btn{
     display:inline-block;
+
     padding:16px 34px;
+
     border-radius:50px;
 
     text-decoration:none;
+
     color:white;
 
-    background:linear-gradient(135deg,#d779b2,#9d7bd5);
+    background:
+        linear-gradient(135deg,#d779b2,#9d7bd5);
 
-    box-shadow:0 15px 35px rgba(160,100,180,.25);
+    box-shadow:
+        0 15px 35px
+        rgba(160,100,180,.25);
 
     animation:buttonPulse 2s infinite;
 
@@ -319,21 +887,26 @@ section{
 @keyframes buttonPulse{
 
     50%{
-        box-shadow:0 0 35px rgba(215,120,190,.55);
+        box-shadow:
+            0 0 35px
+            rgba(215,120,190,.55);
     }
 }
 
 .scroll-text{
     margin-top:30px;
+
     font-size:11px;
+
     letter-spacing:3px;
+
     color:#a98ea5;
 }
 
 
-/* ================================
+/* ==================================================
    STORY
-================================ */
+================================================== */
 
 #story{
     padding:120px 0;
@@ -348,6 +921,7 @@ section{
     margin-top:60px;
 
     display:grid;
+
     grid-template-columns:1fr 1fr;
 
     gap:28px;
@@ -366,16 +940,21 @@ section{
 
     border:1px solid #f0d7e9;
 
-    box-shadow:0 20px 50px rgba(170,110,160,.12);
+    box-shadow:
+        0 20px 50px
+        rgba(170,110,160,.12);
 
     transition:.5s;
 }
 
 .story-card:hover{
-    transform:translateY(-12px) rotate(1deg);
+    transform:
+        translateY(-12px)
+        rotate(1deg);
 
     box-shadow:
-        0 25px 65px rgba(170,110,160,.23);
+        0 25px 65px
+        rgba(170,110,160,.23);
 }
 
 .story-card .icon{
@@ -384,11 +963,13 @@ section{
 
 .story-card h3{
     margin:15px 0;
+
     color:#a35e98;
 }
 
 .story-card p{
     line-height:1.8;
+
     color:#756378;
 }
 
@@ -397,9 +978,12 @@ section{
 
 .butterfly{
     position:absolute;
+
     font-size:30px;
 
-    animation:butterflyFly 7s ease-in-out infinite;
+    animation:
+        butterflyFly
+        7s ease-in-out infinite;
 }
 
 .b1{
@@ -410,43 +994,56 @@ section{
 .b2{
     right:8%;
     top:60%;
+
     animation-delay:2s;
 }
 
 .b3{
     left:20%;
     bottom:10%;
+
     animation-delay:4s;
 }
 
 @keyframes butterflyFly{
 
     0%,100%{
-        transform:translate(0,0) rotate(5deg);
+        transform:
+            translate(0,0)
+            rotate(5deg);
     }
 
     50%{
-        transform:translate(35px,-45px) rotate(-8deg);
+        transform:
+            translate(35px,-45px)
+            rotate(-8deg);
     }
 }
 
 
-/* ================================
+/* ==================================================
    PHOTO
-================================ */
+================================================== */
 
 #photo-section{
     padding:120px 0;
+
     text-align:center;
 
     background:
-        linear-gradient(135deg,#fff0f7,#f1edff,#edfaff);
+        linear-gradient(
+            135deg,
+            #fff0f7,
+            #f1edff,
+            #edfaff
+        );
 }
 
 .photo-area{
     margin-top:60px;
 
     display:flex;
+
     justify-content:center;
 }
 
@@ -462,10 +1059,15 @@ section{
     background:rgba(255,255,255,.72);
 
     box-shadow:
-        0 20px 50px rgba(120,70,140,.25),
-        0 0 35px rgba(255,180,220,.35);
+        0 20px 50px
+        rgba(120,70,140,.25),
 
-    animation:photoFloat 4s ease-in-out infinite;
+        0 0 35px
+        rgba(255,180,220,.35);
+
+    animation:
+        photoFloat
+        4s ease-in-out infinite;
 
     transition:.5s;
 }
@@ -489,11 +1091,15 @@ section{
 @keyframes photoFloat{
 
     0%,100%{
-        transform:translateY(0) rotate(-1deg);
+        transform:
+            translateY(0)
+            rotate(-1deg);
     }
 
     50%{
-        transform:translateY(-10px) rotate(1deg);
+        transform:
+            translateY(-10px)
+            rotate(1deg);
     }
 }
 
@@ -508,15 +1114,17 @@ section{
 }
 
 
-/* ================================
+/* ==================================================
    MAGIC LETTER
-================================ */
+================================================== */
 
 #letter{
     min-height:100vh;
+
     padding:120px 0;
 
     display:flex;
+
     align-items:center;
 
     background:
@@ -524,9 +1132,6 @@ section{
         radial-gradient(circle at 80% 80%,#ddd5ff,transparent 30%),
         #fff8f2;
 }
-
-
-/* Letter scene */
 
 .letter-scene{
     position:relative;
@@ -541,7 +1146,7 @@ section{
 }
 
 
-/* Closed envelope */
+/* Envelope */
 
 .envelope{
     position:absolute;
@@ -556,22 +1161,30 @@ section{
         translate(-50%,-50%)
         rotateX(0deg);
 
-    background:linear-gradient(145deg,#eab2d4,#caa9e9);
+    background:
+        linear-gradient(
+            145deg,
+            #eab2d4,
+            #caa9e9
+        );
 
     border-radius:18px;
 
     box-shadow:
-        0 30px 70px rgba(140,90,150,.25);
+        0 30px 70px
+        rgba(140,90,150,.25);
 
     transition:
-        transform 1.5s cubic-bezier(.2,.8,.2,1),
+        transform 1.5s
+        cubic-bezier(.2,.8,.2,1),
+
         opacity .8s;
 
     transform-style:preserve-3d;
 }
 
 
-/* Envelope flap */
+/* Flap */
 
 .flap{
     position:absolute;
@@ -582,9 +1195,19 @@ section{
     width:100%;
     height:100%;
 
-    background:linear-gradient(145deg,#f4c6df,#d6c0f3);
+    background:
+        linear-gradient(
+            145deg,
+            #f4c6df,
+            #d6c0f3
+        );
 
-    clip-path:polygon(0 0,50% 58%,100% 0);
+    clip-path:
+        polygon(
+            0 0,
+            50% 58%,
+            100% 0
+        );
 
     transform-origin:top;
 
@@ -605,7 +1228,14 @@ section{
     width:100%;
     height:100%;
 
-    clip-path:polygon(0 100%,0 35%,50% 72%,100% 35%,100% 100%);
+    clip-path:
+        polygon(
+            0 100%,
+            0 35%,
+            50% 72%,
+            100% 35%,
+            100% 100%
+        );
 
     background:#d49ec8;
 
@@ -621,12 +1251,14 @@ section{
     left:50%;
     top:48%;
 
-    transform:translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     width:70px;
     height:70px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
@@ -643,10 +1275,15 @@ section{
     cursor:pointer;
 
     box-shadow:
-        0 0 0 10px rgba(255,255,255,.25),
-        0 0 35px rgba(180,80,150,.5);
+        0 0 0 10px
+        rgba(255,255,255,.25),
 
-    animation:sealPulse 1.7s infinite;
+        0 0 35px
+        rgba(180,80,150,.5);
+
+    animation:
+        sealPulse
+        1.7s infinite;
 
     transition:.4s;
 }
@@ -654,7 +1291,9 @@ section{
 @keyframes sealPulse{
 
     50%{
-        transform:translate(-50%,-50%) scale(1.12);
+        transform:
+            translate(-50%,-50%)
+            scale(1.12);
     }
 }
 
@@ -668,16 +1307,22 @@ section{
     top:50%;
 
     width:min(82vw,560px);
+
     min-height:400px;
 
     padding:50px 45px;
 
     background:
-        linear-gradient(#fffdf8,#fff8f0);
+        linear-gradient(
+            #fffdf8,
+            #fff8f0
+        );
 
     border-radius:8px;
 
-    box-shadow:0 25px 60px rgba(120,90,100,.18);
+    box-shadow:
+        0 25px 60px
+        rgba(120,90,100,.18);
 
     transform:
         translate(-50%,-50%)
@@ -690,21 +1335,25 @@ section{
     z-index:2;
 
     transition:
-        transform 1.5s cubic-bezier(.2,.8,.2,1),
+        transform 1.5s
+        cubic-bezier(.2,.8,.2,1),
+
         opacity 1s;
 
     pointer-events:none;
 }
 
 
-/* Open state */
+/* Open */
 
 .letter-scene.open .flap{
     transform:rotateX(180deg);
 }
 
 .letter-scene.open .seal{
-    transform:translate(-50%,-50%) scale(0);
+    transform:
+        translate(-50%,-50%)
+        scale(0);
 
     opacity:0;
 
@@ -822,7 +1471,9 @@ section{
 }
 
 .letter-scene.open .magic-particle{
-    animation:magicBurst 1.3s ease-out forwards;
+    animation:
+        magicBurst
+        1.3s ease-out forwards;
 }
 
 .magic-particle:nth-child(2){
@@ -849,7 +1500,10 @@ section{
 
     0%{
         opacity:1;
-        transform:translate(-50%,-50%) scale(.4);
+
+        transform:
+            translate(-50%,-50%)
+            scale(.4);
     }
 
     100%{
@@ -865,15 +1519,20 @@ section{
 }
 
 
-/* ================================
+/* ==================================================
    MEMORIES
-================================ */
+================================================== */
 
 #memories{
     padding:120px 0;
 
     background:
-        linear-gradient(150deg,#eefaff,#fff4fa,#f5efff);
+        linear-gradient(
+            150deg,
+            #eefaff,
+            #fff4fa,
+            #f5efff
+        );
 }
 
 .memory-grid{
@@ -881,7 +1540,8 @@ section{
 
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap:25px;
 }
@@ -895,11 +1555,16 @@ section{
 
     border-radius:28px;
 
-    background:rgba(255,255,255,.76);
+    background:
+        rgba(255,255,255,.76);
 
-    border:1px solid rgba(220,190,220,.5);
+    border:
+        1px solid
+        rgba(220,190,220,.5);
 
-    box-shadow:0 18px 45px rgba(130,100,160,.12);
+    box-shadow:
+        0 18px 45px
+        rgba(130,100,160,.12);
 
     transition:.5s;
 
@@ -927,10 +1592,13 @@ section{
 }
 
 .memory:hover{
-    transform:translateY(-12px) rotate(-1deg);
+    transform:
+        translateY(-12px)
+        rotate(-1deg);
 
     box-shadow:
-        0 25px 60px rgba(130,100,160,.22);
+        0 25px 60px
+        rgba(130,100,160,.22);
 }
 
 .memory:hover:before{
@@ -943,18 +1611,20 @@ section{
 
 .memory h3{
     margin:15px 0 10px;
+
     color:#9c6094;
 }
 
 .memory p{
     line-height:1.7;
+
     color:#756579;
 }
 
 
-/* ================================
+/* ==================================================
    MUSIC
-================================ */
+================================================== */
 
 #music{
     padding:120px 0;
@@ -976,30 +1646,40 @@ section{
 
     border-radius:35px;
 
-    background:rgba(255,255,255,.78);
+    background:
+        rgba(255,255,255,.78);
 
     backdrop-filter:blur(15px);
 
-    box-shadow:0 25px 65px rgba(160,110,180,.18);
+    box-shadow:
+        0 25px 65px
+        rgba(160,110,180,.18);
 
-    border:1px solid rgba(230,205,230,.7);
+    border:
+        1px solid
+        rgba(230,205,230,.7);
 }
 
 .music-icon{
     font-size:55px;
 
-    animation:headphoneFloat 2s ease-in-out infinite;
+    animation:
+        headphoneFloat
+        2s ease-in-out infinite;
 }
 
 @keyframes headphoneFloat{
 
     50%{
-        transform:translateY(-10px) rotate(3deg);
+        transform:
+            translateY(-10px)
+            rotate(3deg);
     }
 }
 
 .music-card h3{
     margin:15px 0 25px;
+
     color:#96598d;
 }
 
@@ -1009,7 +1689,6 @@ section{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     gap:7px;
@@ -1025,7 +1704,9 @@ section{
 
     background:#c78cc0;
 
-    animation:equalizer .8s ease-in-out infinite alternate;
+    animation:
+        equalizer
+        .8s ease-in-out infinite alternate;
 }
 
 .equalizer span:nth-child(2){
@@ -1060,9 +1741,9 @@ audio{
 }
 
 
-/* ================================
+/* ==================================================
    FINAL
-================================ */
+================================================== */
 
 #final{
     min-height:100vh;
@@ -1070,6 +1751,7 @@ audio{
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
     text-align:center;
@@ -1077,7 +1759,12 @@ audio{
     background:
         radial-gradient(circle at 50% 25%,#ffd7e8,transparent 30%),
         radial-gradient(circle at 20% 80%,#ddd4ff,transparent 25%),
-        linear-gradient(160deg,#fff0f7,#eee9ff,#e8f8ff);
+        linear-gradient(
+            160deg,
+            #fff0f7,
+            #eee9ff,
+            #e8f8ff
+        );
 }
 
 .final-content{
@@ -1103,13 +1790,16 @@ audio{
 .final-content h2{
     font-family:'Great Vibes',cursive;
 
-    font-size:clamp(75px,14vw,150px);
+    font-size:
+        clamp(75px,14vw,150px);
 
     font-weight:400;
 
     color:#a65391;
 
-    animation:finalGlow 3s ease-in-out infinite;
+    animation:
+        finalGlow
+        3s ease-in-out infinite;
 }
 
 @keyframes finalGlow{
@@ -1118,7 +1808,8 @@ audio{
         transform:scale(1.04);
 
         text-shadow:
-            0 0 35px rgba(215,110,180,.45);
+            0 0 35px
+            rgba(215,110,180,.45);
     }
 }
 
@@ -1139,7 +1830,9 @@ audio{
 
     font-size:65px;
 
-    animation:heartBeat 1.4s infinite;
+    animation:
+        heartBeat
+        1.4s infinite;
 }
 
 @keyframes heartBeat{
@@ -1169,7 +1862,9 @@ audio{
 
     opacity:.6;
 
-    animation:heartFloat 8s linear infinite;
+    animation:
+        heartFloat
+        8s linear infinite;
 }
 
 @keyframes heartFloat{
@@ -1184,9 +1879,9 @@ audio{
 }
 
 
-/* ================================
+/* ==================================================
    SCROLL REVEAL
-================================ */
+================================================== */
 
 .reveal{
     opacity:0;
@@ -1205,9 +1900,9 @@ audio{
 }
 
 
-/* ================================
+/* ==================================================
    MOBILE
-================================ */
+================================================== */
 
 @media(max-width:800px){
 
@@ -1233,6 +1928,7 @@ audio{
 
     .letter-paper{
         min-height:430px;
+
         padding:40px 25px;
     }
 
@@ -1244,7 +1940,23 @@ audio{
         padding:30px 20px;
     }
 
+    .secret-card{
+        padding:
+            30px 22px 25px;
+    }
+
+    .teddy{
+        font-size:80px;
+    }
+
+    .teddy-stick{
+        left:calc(50% + 38px);
+
+        font-size:48px;
+    }
+
 }
+
 
 @media(max-width:480px){
 
@@ -1268,6 +1980,10 @@ audio{
         font-size:20px;
     }
 
+    .secret-card h2{
+        font-size:43px;
+    }
+
 }
 
 </style>
@@ -1277,34 +1993,167 @@ audio{
 <body>
 
 
-<!-- ================================
-     PETALS
-================================ -->
+<!-- ==================================================
+     PASSWORD SCREEN
+================================================== -->
 
-<div class="petal" style="left:5%;animation-duration:8s;"></div>
-<div class="petal" style="left:16%;animation-duration:11s;animation-delay:2s;"></div>
-<div class="petal" style="left:28%;animation-duration:9s;animation-delay:4s;"></div>
-<div class="petal" style="left:40%;animation-duration:12s;animation-delay:1s;"></div>
-<div class="petal" style="left:55%;animation-duration:10s;animation-delay:5s;"></div>
-<div class="petal" style="left:70%;animation-duration:13s;animation-delay:3s;"></div>
-<div class="petal" style="left:85%;animation-duration:9s;animation-delay:6s;"></div>
-<div class="petal" style="left:95%;animation-duration:11s;animation-delay:2s;"></div>
+<div id="password-screen">
+
+    <div class="secret-heart"
+         style="left:5%;animation-delay:0s;">
+        💗
+    </div>
+
+    <div class="secret-heart"
+         style="left:20%;animation-delay:2s;">
+        💜
+    </div>
+
+    <div class="secret-heart"
+         style="left:38%;animation-delay:4s;">
+        💕
+    </div>
+
+    <div class="secret-heart"
+         style="left:60%;animation-delay:1s;">
+        💗
+    </div>
+
+    <div class="secret-heart"
+         style="left:80%;animation-delay:3s;">
+        💜
+    </div>
 
 
-<!-- ================================
+    <div class="secret-card">
+
+        <div class="teddy-stage" id="teddyStage">
+
+            <div class="teddy">
+                🧸
+            </div>
+
+            <div class="teddy-stick">
+                🪵
+            </div>
+
+            <div class="bonk-star">
+                💫
+            </div>
+
+        </div>
+
+
+        <div class="secret-korean korean">
+            우리의 작은 비밀 ♡
+        </div>
+
+
+        <h2>
+            A Little Secret
+        </h2>
+
+
+        <p>
+            Some things are meant to be<br>
+            opened only by the right person. ❤️
+        </p>
+
+
+        <input
+            type="password"
+            id="secret-password"
+            placeholder="Enter the secret password"
+            autocomplete="off"
+        >
+
+
+        <button
+            class="unlock-btn"
+            id="unlockBtn">
+
+            Unlock My Heart ❤️
+
+        </button>
+
+
+        <div id="password-error">
+            That's not the secret... try again 💕
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     ACTUAL WEBSITE
+================================================== -->
+
+<div id="siteContent">
+
+
+<!-- ==================================================
+     FLOATING PETALS
+================================================== -->
+
+<div class="petal"
+     style="left:5%;animation-duration:8s;">
+</div>
+
+<div class="petal"
+     style="left:16%;animation-duration:11s;animation-delay:2s;">
+</div>
+
+<div class="petal"
+     style="left:28%;animation-duration:9s;animation-delay:4s;">
+</div>
+
+<div class="petal"
+     style="left:40%;animation-duration:12s;animation-delay:1s;">
+</div>
+
+<div class="petal"
+     style="left:55%;animation-duration:10s;animation-delay:5s;">
+</div>
+
+<div class="petal"
+     style="left:70%;animation-duration:13s;animation-delay:3s;">
+</div>
+
+<div class="petal"
+     style="left:85%;animation-duration:9s;animation-delay:6s;">
+</div>
+
+<div class="petal"
+     style="left:95%;animation-duration:11s;animation-delay:2s;">
+</div>
+
+
+<!-- ==================================================
      OPENING
-================================ -->
+================================================== -->
 
 <section id="opening">
 
     <div class="sun"></div>
 
     <div class="cloud one"></div>
+
     <div class="cloud two"></div>
 
-    <div class="bird one">🕊️</div>
-    <div class="bird two">🕊️</div>
-    <div class="bird three">🕊️</div>
+    <div class="bird one">
+        🕊️
+    </div>
+
+    <div class="bird two">
+        🕊️
+    </div>
+
+    <div class="bird three">
+        🕊️
+    </div>
+
 
     <div class="opening-content">
 
@@ -1312,16 +2161,25 @@ audio{
             우리의 이야기 ♡
         </div>
 
-        <h1>Tulasi</h1>
+
+        <h1>
+            Tulasi
+        </h1>
+
 
         <p>
             Some stories are written in books...<br>
             but ours is written in my heart.
         </p>
 
-        <a href="#story" class="begin-btn">
+
+        <a href="#story"
+           class="begin-btn">
+
             Begin Our Story ♡
+
         </a>
+
 
         <div class="scroll-text">
             ✦ SCROLL SLOWLY ✦
@@ -1332,9 +2190,9 @@ audio{
 </section>
 
 
-<!-- ================================
+<!-- ==================================================
      STORY
-================================ -->
+================================================== -->
 
 <section id="story">
 
@@ -1355,11 +2213,16 @@ audio{
 
         <div class="story-grid">
 
+
             <div class="story-card reveal">
 
-                <div class="icon">🌸</div>
+                <div class="icon">
+                    🌸
+                </div>
 
-                <h3>A Beautiful Beginning</h3>
+                <h3>
+                    A Beautiful Beginning
+                </h3>
 
                 <p>
                     Among all the people in this world,
@@ -1373,9 +2236,13 @@ audio{
 
             <div class="story-card reveal">
 
-                <div class="icon">🦋</div>
+                <div class="icon">
+                    🦋
+                </div>
 
-                <h3>You Became My Favorite</h3>
+                <h3>
+                    You Became My Favorite
+                </h3>
 
                 <p>
                     Slowly, without even realizing it,
@@ -1389,9 +2256,13 @@ audio{
 
             <div class="story-card reveal">
 
-                <div class="icon">☁️</div>
+                <div class="icon">
+                    ☁️
+                </div>
 
-                <h3>My Safe Place</h3>
+                <h3>
+                    My Safe Place
+                </h3>
 
                 <p>
                     With you, even ordinary moments feel special.
@@ -1404,9 +2275,13 @@ audio{
 
             <div class="story-card reveal">
 
-                <div class="icon">💜</div>
+                <div class="icon">
+                    💜
+                </div>
 
-                <h3>And Then...</h3>
+                <h3>
+                    And Then...
+                </h3>
 
                 <p>
                     I realized that I wasn't just happy
@@ -1422,16 +2297,24 @@ audio{
     </div>
 
 
-    <div class="butterfly b1">🦋</div>
-    <div class="butterfly b2">🦋</div>
-    <div class="butterfly b3">🦋</div>
+    <div class="butterfly b1">
+        🦋
+    </div>
+
+    <div class="butterfly b2">
+        🦋
+    </div>
+
+    <div class="butterfly b3">
+        🦋
+    </div>
 
 </section>
 
 
-<!-- ================================
+<!-- ==================================================
      PHOTO
-================================ -->
+================================================== -->
 
 <section id="photo-section">
 
@@ -1454,7 +2337,10 @@ audio{
 
             <div class="photo-card reveal">
 
-                <img src="photo.jpg" alt="Tulasi">
+                <img
+                    src="photo.jpg"
+                    alt="Tulasi"
+                >
 
             </div>
 
@@ -1463,22 +2349,28 @@ audio{
 
         <div class="photo-caption reveal">
 
-            My favorite person. My favorite smile. ❤️
+            My favorite person.
+            My favorite smile. ❤️
 
         </div>
 
     </div>
 
 
-    <div class="butterfly b1">🦋</div>
-    <div class="butterfly b2">🦋</div>
+    <div class="butterfly b1">
+        🦋
+    </div>
+
+    <div class="butterfly b2">
+        🦋
+    </div>
 
 </section>
 
 
-<!-- ================================
+<!-- ==================================================
      MAGIC LOVE LETTER
-================================ -->
+================================================== -->
 
 <section id="letter">
 
@@ -1497,16 +2389,48 @@ audio{
         </div>
 
 
-        <div class="letter-scene reveal" id="letterScene">
+        <div
+            class="letter-scene reveal"
+            id="letterScene">
+
 
             <!-- MAGIC PARTICLES -->
 
-            <span class="magic-particle" style="--x:-180px;--y:-100px;">✨</span>
-            <span class="magic-particle" style="--x:160px;--y:-110px;">💜</span>
-            <span class="magic-particle" style="--x:-220px;--y:40px;">🌸</span>
-            <span class="magic-particle" style="--x:210px;--y:50px;">✨</span>
-            <span class="magic-particle" style="--x:-120px;--y:130px;">💕</span>
-            <span class="magic-particle" style="--x:130px;--y:140px;">🌸</span>
+            <span
+                class="magic-particle"
+                style="--x:-180px;--y:-100px;">
+                ✨
+            </span>
+
+            <span
+                class="magic-particle"
+                style="--x:160px;--y:-110px;">
+                💜
+            </span>
+
+            <span
+                class="magic-particle"
+                style="--x:-220px;--y:40px;">
+                🌸
+            </span>
+
+            <span
+                class="magic-particle"
+                style="--x:210px;--y:50px;">
+                ✨
+            </span>
+
+            <span
+                class="magic-particle"
+                style="--x:-120px;--y:130px;">
+                💕
+            </span>
+
+            <span
+                class="magic-particle"
+                style="--x:130px;--y:140px;">
+                🌸
+            </span>
 
 
             <!-- ENVELOPE -->
@@ -1517,28 +2441,37 @@ audio{
 
                 <div class="envelope-bottom"></div>
 
-                <div class="seal" id="seal">
+                <div
+                    class="seal"
+                    id="seal">
+
                     ❤️
+
                 </div>
 
             </div>
 
 
-            <!-- PAPER -->
+            <!-- LETTER PAPER -->
 
             <div class="letter-paper">
 
-                <h3>Dear Varshitha,</h3>
+                <h3>
+                    Dear Varshitha,
+                </h3>
+
 
                 <p class="letter-line">
                     I don't know if words can ever explain
                     exactly what you mean to me.
                 </p>
 
+
                 <p class="letter-line">
                     But if I had to choose one word,
                     it would simply be <b>you</b>.
                 </p>
+
 
                 <p class="letter-line">
                     Thank you for becoming a beautiful part
@@ -1546,9 +2479,12 @@ audio{
                     but some people stay in the heart forever.
                 </p>
 
+
                 <div class="signature">
+
                     With love,<br>
                     Bunny ❤️
+
                 </div>
 
             </div>
@@ -1560,9 +2496,9 @@ audio{
 </section>
 
 
-<!-- ================================
+<!-- ==================================================
      MEMORIES
-================================ -->
+================================================== -->
 
 <section id="memories">
 
@@ -1583,11 +2519,16 @@ audio{
 
         <div class="memory-grid">
 
+
             <div class="memory reveal">
 
-                <div class="emoji">💜</div>
+                <div class="emoji">
+                    💜
+                </div>
 
-                <h3>Your Smile</h3>
+                <h3>
+                    Your Smile
+                </h3>
 
                 <p>
                     It has a way of making even an ordinary day
@@ -1599,9 +2540,13 @@ audio{
 
             <div class="memory reveal">
 
-                <div class="emoji">🌸</div>
+                <div class="emoji">
+                    🌸
+                </div>
 
-                <h3>Your Presence</h3>
+                <h3>
+                    Your Presence
+                </h3>
 
                 <p>
                     Even when you don't say anything,
@@ -1613,9 +2558,13 @@ audio{
 
             <div class="memory reveal">
 
-                <div class="emoji">🦋</div>
+                <div class="emoji">
+                    🦋
+                </div>
 
-                <h3>Your Little Moments</h3>
+                <h3>
+                    Your Little Moments
+                </h3>
 
                 <p>
                     Random conversations, laughs,
@@ -1627,9 +2576,13 @@ audio{
 
             <div class="memory reveal">
 
-                <div class="emoji">☁️</div>
+                <div class="emoji">
+                    ☁️
+                </div>
 
-                <h3>Your Dreams</h3>
+                <h3>
+                    Your Dreams
+                </h3>
 
                 <p>
                     I love seeing you dream about the future
@@ -1641,9 +2594,13 @@ audio{
 
             <div class="memory reveal">
 
-                <div class="emoji">🎀</div>
+                <div class="emoji">
+                    🎀
+                </div>
 
-                <h3>Your Uniqueness</h3>
+                <h3>
+                    Your Uniqueness
+                </h3>
 
                 <p>
                     There is something about you
@@ -1655,9 +2612,13 @@ audio{
 
             <div class="memory reveal">
 
-                <div class="emoji">❤️</div>
+                <div class="emoji">
+                    ❤️
+                </div>
 
-                <h3>Just You</h3>
+                <h3>
+                    Just You
+                </h3>
 
                 <p>
                     At the end of everything,
@@ -1673,9 +2634,9 @@ audio{
 </section>
 
 
-<!-- ================================
+<!-- ==================================================
      MUSIC
-================================ -->
+================================================== -->
 
 <section id="music">
 
@@ -1700,7 +2661,10 @@ audio{
                 🎧
             </div>
 
-            <h3>Sahana Sahana</h3>
+
+            <h3>
+                Sahana Sahana
+            </h3>
 
 
             <div class="equalizer">
@@ -1732,30 +2696,55 @@ audio{
 </section>
 
 
-<!-- ================================
+<!-- ==================================================
      FINAL
-================================ -->
+================================================== -->
 
 <section id="final">
 
-    <div class="floating-heart" style="left:8%;animation-delay:0s;">
+
+    <div
+        class="floating-heart"
+        style="left:8%;animation-delay:0s;">
+
         💗
+
     </div>
 
-    <div class="floating-heart" style="left:22%;animation-delay:2s;">
+
+    <div
+        class="floating-heart"
+        style="left:22%;animation-delay:2s;">
+
         💜
+
     </div>
 
-    <div class="floating-heart" style="left:40%;animation-delay:4s;">
+
+    <div
+        class="floating-heart"
+        style="left:40%;animation-delay:4s;">
+
         💕
+
     </div>
 
-    <div class="floating-heart" style="left:62%;animation-delay:1s;">
+
+    <div
+        class="floating-heart"
+        style="left:62%;animation-delay:1s;">
+
         💗
+
     </div>
 
-    <div class="floating-heart" style="left:82%;animation-delay:3s;">
+
+    <div
+        class="floating-heart"
+        style="left:82%;animation-delay:3s;">
+
         💜
+
     </div>
 
 
@@ -1774,15 +2763,18 @@ audio{
             너와 나 · 영원히
         </div>
 
+
         <h2>
             Always You
         </h2>
+
 
         <p>
             Out of all the stories I could have lived...
             <br>
             I'm glad one of them had you in it. ❤️
         </p>
+
 
         <div class="final-heart">
             ❤️
@@ -1793,35 +2785,145 @@ audio{
 </section>
 
 
+</div>
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
 <script>
+
+
+/* =================================
+   PASSWORD + TEDDY UNLOCK
+================================= */
+
+const passwordScreen =
+    document.getElementById("password-screen");
+
+const secretPassword =
+    document.getElementById("secret-password");
+
+const unlockBtn =
+    document.getElementById("unlockBtn");
+
+const passwordError =
+    document.getElementById("password-error");
+
+const teddyStage =
+    document.getElementById("teddyStage");
+
+
+function unlockWebsite(){
+
+    if(secretPassword.value === "Destiny"){
+
+        passwordError.classList.remove("show");
+
+
+        /* Teddy bonk */
+
+        teddyStage.classList.add("bonking");
+
+
+        /* Unlock animation */
+
+        setTimeout(() => {
+
+            passwordScreen.classList.add("unlocking");
+
+        },650);
+
+
+        /* Open website */
+
+        setTimeout(() => {
+
+            passwordScreen.classList.add("hidden");
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+        },1550);
+
+    }
+
+    else{
+
+        passwordError.classList.remove("show");
+
+
+        /* Restart shake */
+
+        void passwordError.offsetWidth;
+
+
+        passwordError.classList.add("show");
+
+
+        secretPassword.value = "";
+
+
+        secretPassword.focus();
+
+    }
+
+}
+
+
+unlockBtn.addEventListener(
+    "click",
+    unlockWebsite
+);
+
+
+secretPassword.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Enter"){
+
+            unlockWebsite();
+
+        }
+
+    }
+);
+
 
 /* =================================
    SCROLL REVEAL
 ================================= */
 
-const reveals = document.querySelectorAll(".reveal");
+const reveals =
+    document.querySelectorAll(".reveal");
 
-const observer = new IntersectionObserver(
+const observer =
+    new IntersectionObserver(
 
-    entries => {
+        entries => {
 
-        entries.forEach(entry => {
+            entries.forEach(entry => {
 
-            if(entry.isIntersecting){
+                if(entry.isIntersecting){
 
-                entry.target.classList.add("show");
+                    entry.target.classList.add("show");
 
-            }
+                }
 
-        });
+            });
 
-    },
+        },
 
-    {
-        threshold:0.15
-    }
+        {
+            threshold:0.15
+        }
 
-);
+    );
+
 
 reveals.forEach(element => {
 
@@ -1834,9 +2936,12 @@ reveals.forEach(element => {
    MAGIC LOVE LETTER
 ================================= */
 
-const seal = document.getElementById("seal");
+const seal =
+    document.getElementById("seal");
 
-const letterScene = document.getElementById("letterScene");
+const letterScene =
+    document.getElementById("letterScene");
+
 
 seal.addEventListener("click", () => {
 
@@ -1849,108 +2954,151 @@ seal.addEventListener("click", () => {
    CLICK SPARKLES
 ================================= */
 
-document.addEventListener("click", function(e){
+document.addEventListener(
+    "click",
+    function(e){
 
-    for(let i = 0; i < 7; i++){
+        for(let i = 0; i < 7; i++){
 
-        const sparkle = document.createElement("span");
-
-        sparkle.innerHTML = "✨";
-
-        sparkle.style.position = "fixed";
-
-        sparkle.style.left = e.clientX + "px";
-
-        sparkle.style.top = e.clientY + "px";
-
-        sparkle.style.zIndex = "9999";
-
-        sparkle.style.pointerEvents = "none";
-
-        sparkle.style.fontSize =
-            (10 + Math.random() * 12) + "px";
-
-        document.body.appendChild(sparkle);
+            const sparkle =
+                document.createElement("span");
 
 
-        const angle =
-            Math.random() * Math.PI * 2;
-
-        const distance =
-            30 + Math.random() * 60;
+            sparkle.innerHTML = "✨";
 
 
-        sparkle.animate(
+            sparkle.style.position =
+                "fixed";
 
-            [
+
+            sparkle.style.left =
+                e.clientX + "px";
+
+
+            sparkle.style.top =
+                e.clientY + "px";
+
+
+            sparkle.style.zIndex =
+                "9999";
+
+
+            sparkle.style.pointerEvents =
+                "none";
+
+
+            sparkle.style.fontSize =
+                (10 + Math.random() * 12) + "px";
+
+
+            document.body.appendChild(
+                sparkle
+            );
+
+
+            const angle =
+                Math.random() *
+                Math.PI * 2;
+
+
+            const distance =
+                30 + Math.random() * 60;
+
+
+            sparkle.animate(
+
+                [
+
+                    {
+                        transform:
+                            "translate(0,0) scale(1)",
+
+                        opacity:1
+                    },
+
+                    {
+                        transform:
+                            `translate(
+                                ${Math.cos(angle) * distance}px,
+                                ${Math.sin(angle) * distance}px
+                            )
+                            scale(0)`,
+
+                        opacity:0
+                    }
+
+                ],
 
                 {
-                    transform:"translate(0,0) scale(1)",
-                    opacity:1
-                },
+                    duration:800,
 
-                {
-                    transform:
-                        `translate(
-                            ${Math.cos(angle) * distance}px,
-                            ${Math.sin(angle) * distance}px
-                        )
-                        scale(0)`,
-
-                    opacity:0
+                    easing:"ease-out"
                 }
 
-            ],
-
-            {
-                duration:800,
-                easing:"ease-out"
-            }
-
-        );
+            );
 
 
-        setTimeout(() => {
+            setTimeout(() => {
 
-            sparkle.remove();
+                sparkle.remove();
 
-        },800);
+            },800);
+
+        }
 
     }
-
-});
+);
 
 
 /* =================================
    MUSIC VISUALIZER
 ================================= */
 
-const audio = document.querySelector("audio");
+const audio =
+    document.querySelector("audio");
 
 const bars =
-    document.querySelectorAll(".equalizer span");
+    document.querySelectorAll(
+        ".equalizer span"
+    );
 
 
-audio.addEventListener("play", () => {
+audio.addEventListener(
+    "play",
+    () => {
 
-    bars.forEach(bar => {
+        bars.forEach(bar => {
 
-        bar.style.animationPlayState =
-            "running";
+            bar.style.animationPlayState =
+                "running";
 
-    });
+        });
 
-});
+    }
+);
 
 
-audio.addEventListener("pause", () => {
+audio.addEventListener(
+    "pause",
+    () => {
 
-    bars.forEach(bar => {
+        bars.forEach(bar => {
 
-        bar.style.animationPlayState =
-            "paused";
+            bar.style.animationPlayState =
+                "paused";
 
-    });
+        });
+
+    }
+);
+
+
+/* Start equalizer paused */
+
+bars.forEach(bar => {
+
+    bar.style.animationPlayState =
+        "paused";
 
 });
 
