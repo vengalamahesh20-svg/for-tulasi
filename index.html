@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,16 @@
 
 <style>
 
+/* =====================================================
+   GOOGLE FONTS
+===================================================== */
+
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+
+/* =====================================================
+   BASIC
+===================================================== */
 
 *{
     margin:0;
@@ -27,6 +37,10 @@ body{
     background:#fff8fc;
 }
 
+body.locked{
+    overflow:hidden;
+}
+
 section{
     position:relative;
     overflow:hidden;
@@ -42,124 +56,303 @@ section{
     font-family:'Noto Sans KR',sans-serif;
 }
 
-.section-title{
-    font-family:'Great Vibes',cursive;
-    font-size:55px;
-    font-weight:400;
-    text-align:center;
-    color:#a15b96;
-}
 
-.section-subtitle{
-    text-align:center;
-    margin-top:10px;
-    color:#957b91;
-}
+/* =====================================================
+   DESTINY LOCK SCREEN
+===================================================== */
 
+#lockScreen{
 
-/* ==================================================
-   PASSWORD SCREEN
-================================================== */
-
-#password-screen{
     position:fixed;
+
     inset:0;
-    z-index:99999;
+
+    z-index:999999;
 
     display:flex;
-    align-items:center;
-    justify-content:center;
 
-    background:
-        radial-gradient(circle at 15% 20%,#ffdbea,transparent 28%),
-        radial-gradient(circle at 85% 20%,#ddd2ff,transparent 30%),
-        radial-gradient(circle at 50% 100%,#dff7ff,transparent 32%),
-        linear-gradient(135deg,#fff5fa,#f5f0ff,#eefaff);
+    align-items:center;
+
+    justify-content:center;
 
     overflow:hidden;
 
+    background:
+        radial-gradient(circle at 15% 20%,#ff8fcf 0%,transparent 28%),
+        radial-gradient(circle at 85% 15%,#8fa7ff 0%,transparent 30%),
+        radial-gradient(circle at 20% 90%,#8ff4dd 0%,transparent 30%),
+        radial-gradient(circle at 85% 85%,#d99cff 0%,transparent 30%),
+        linear-gradient(
+            135deg,
+            #ffdcf0,
+            #ddd5ff,
+            #d5f9ff,
+            #ffe0f0
+        );
+
     transition:
-        opacity 1s ease,
-        visibility 1s ease;
-}
-
-#password-screen.hidden{
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
+        opacity 1.2s ease,
+        visibility 1.2s ease;
 }
 
 
-/* Password floating hearts */
+/* colorful moving glow */
 
-.secret-heart{
+#lockScreen::before{
+
+    content:"";
+
     position:absolute;
-    bottom:-60px;
 
-    font-size:25px;
+    width:700px;
+    height:700px;
 
-    opacity:.55;
+    border-radius:50%;
 
-    pointer-events:none;
+    background:
+        conic-gradient(
+            #ff9bd2,
+            #a9a4ff,
+            #8df5dc,
+            #ffd68f,
+            #ff9bd2
+        );
 
-    animation:secretHeartFloat 8s linear infinite;
+    filter:blur(90px);
+
+    opacity:.25;
+
+    animation:lockGlow 8s linear infinite;
 }
 
-@keyframes secretHeartFloat{
+@keyframes lockGlow{
 
     0%{
-        transform:translateY(0) rotate(0);
-        opacity:0;
+        transform:rotate(0deg) scale(1);
     }
 
-    15%{
-        opacity:.6;
+    50%{
+        transform:rotate(180deg) scale(1.2);
     }
 
     100%{
-        transform:
-            translateY(-115vh)
-            translateX(80px)
-            rotate(360deg);
-
-        opacity:0;
+        transform:rotate(360deg) scale(1);
     }
 }
 
 
-/* Password card */
+/* =====================================================
+   LOCK PARTICLES
+===================================================== */
 
-.secret-card{
+.lock-stars{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+}
+
+.lock-stars span{
+
+    position:absolute;
+
+    font-size:20px;
+
+    animation:starFloat 4s ease-in-out infinite;
+}
+
+.lock-stars span:nth-child(1){
+    left:10%;
+    top:18%;
+}
+
+.lock-stars span:nth-child(2){
+    left:22%;
+    top:75%;
+    animation-delay:1s;
+}
+
+.lock-stars span:nth-child(3){
+    right:12%;
+    top:25%;
+    animation-delay:2s;
+}
+
+.lock-stars span:nth-child(4){
+    right:20%;
+    bottom:15%;
+    animation-delay:1.5s;
+}
+
+.lock-stars span:nth-child(5){
+    left:48%;
+    top:12%;
+    animation-delay:.5s;
+}
+
+@keyframes starFloat{
+
+    0%,100%{
+        transform:translateY(0) rotate(0deg) scale(1);
+        opacity:.6;
+    }
+
+    50%{
+        transform:translateY(-25px) rotate(180deg) scale(1.4);
+        opacity:1;
+    }
+}
+
+
+/* =====================================================
+   BIG BUTTERFLIES
+===================================================== */
+
+.big-butterfly{
+
+    position:absolute;
+
+    font-size:clamp(80px,12vw,150px);
+
+    z-index:5;
+
+    filter:
+        drop-shadow(0 15px 20px rgba(130,70,160,.25));
+
+    animation:
+        butterflyFlyToLock 4s cubic-bezier(.2,.8,.2,1)
+        forwards,
+        butterflyWings .5s ease-in-out infinite;
+}
+
+
+/* LEFT BUTTERFLY */
+
+.big-butterfly.left{
+
+    left:-180px;
+
+    top:35%;
+
+    --targetX:calc(50vw - 230px);
+
+    animation:
+        butterflyLeft 4s cubic-bezier(.2,.8,.2,1) forwards,
+        butterflyWings .5s ease-in-out infinite;
+}
+
+
+/* RIGHT BUTTERFLY */
+
+.big-butterfly.right{
+
+    right:-180px;
+
+    top:45%;
+
+    --targetX:calc(50vw + 90px);
+
+    animation:
+        butterflyRight 4s cubic-bezier(.2,.8,.2,1) forwards,
+        butterflyWings .5s ease-in-out infinite;
+}
+
+
+@keyframes butterflyLeft{
+
+    0%{
+        left:-180px;
+        top:35%;
+        transform:rotate(-20deg) scale(.6);
+    }
+
+    35%{
+        top:25%;
+        transform:rotate(15deg) scale(.85);
+    }
+
+    70%{
+        top:52%;
+        transform:rotate(-10deg) scale(1);
+    }
+
+    100%{
+        left:calc(50% - 175px);
+        top:45%;
+        transform:rotate(5deg) scale(.72);
+    }
+}
+
+
+@keyframes butterflyRight{
+
+    0%{
+        right:-180px;
+        top:45%;
+        transform:rotate(20deg) scale(.6);
+    }
+
+    35%{
+        top:58%;
+        transform:rotate(-15deg) scale(.85);
+    }
+
+    70%{
+        top:30%;
+        transform:rotate(10deg) scale(1);
+    }
+
+    100%{
+        right:calc(50% - 175px);
+        top:45%;
+        transform:rotate(-5deg) scale(.72);
+    }
+}
+
+
+@keyframes butterflyWings{
+
+    0%,100%{
+        filter:
+            drop-shadow(0 15px 20px rgba(130,70,160,.25))
+            brightness(1);
+    }
+
+    50%{
+        filter:
+            drop-shadow(0 15px 30px rgba(255,120,210,.6))
+            brightness(1.18);
+    }
+}
+
+
+/* =====================================================
+   LOCK CONTENT
+===================================================== */
+
+.lock-content{
+
     position:relative;
-    z-index:10;
+
+    z-index:20;
 
     width:min(90%,430px);
 
-    padding:35px 30px 30px;
-
     text-align:center;
 
-    border-radius:35px;
+    padding:35px 25px;
 
-    background:rgba(255,255,255,.72);
+    opacity:0;
 
-    backdrop-filter:blur(20px);
+    transform:translateY(35px) scale(.9);
 
-    border:1px solid rgba(255,255,255,.85);
-
-    box-shadow:
-        0 30px 80px rgba(130,90,160,.22),
-        0 0 50px rgba(255,170,220,.25);
-
-    animation:secretCardAppear 1.2s ease;
+    animation:
+        lockContentAppear 1.5s ease 2.2s forwards;
 }
 
-@keyframes secretCardAppear{
-
-    from{
-        opacity:0;
-        transform:translateY(60px) scale(.82);
-    }
+@keyframes lockContentAppear{
 
     to{
         opacity:1;
@@ -168,245 +361,230 @@ section{
 }
 
 
-/* Teddy stage */
+/* Korean heading */
 
-.teddy-stage{
-    position:relative;
+.lock-korean{
 
-    height:145px;
+    font-family:'Noto Sans KR',sans-serif;
 
-    margin-bottom:5px;
+    font-size:16px;
+
+    letter-spacing:5px;
+
+    color:#8b5990;
+
+    margin-bottom:12px;
 }
 
 
-/* Teddy */
+/* Destiny title */
 
-.teddy{
-    position:absolute;
+.lock-content h1{
 
-    left:50%;
-    top:28px;
-
-    transform:translateX(-50%);
-
-    font-size:88px;
-
-    filter:drop-shadow(0 10px 10px rgba(120,80,100,.15));
-
-    animation:teddyFloat 2.5s ease-in-out infinite;
-}
-
-@keyframes teddyFloat{
-
-    0%,100%{
-        transform:
-            translateX(-50%)
-            translateY(0)
-            rotate(-2deg);
-    }
-
-    50%{
-        transform:
-            translateX(-50%)
-            translateY(-8px)
-            rotate(2deg);
-    }
-}
-
-
-/* Stick */
-
-.teddy-stick{
-    position:absolute;
-
-    left:calc(50% + 45px);
-    top:45px;
-
-    font-size:55px;
-
-    transform-origin:bottom center;
-
-    animation:stickIdle 2s ease-in-out infinite;
-
-    z-index:5;
-}
-
-@keyframes stickIdle{
-
-    0%,100%{
-        transform:rotate(-25deg);
-    }
-
-    50%{
-        transform:rotate(-10deg);
-    }
-}
-
-
-/* Bonk animation */
-
-.teddy-stage.bonking .teddy-stick{
-    animation:stickBonk .65s ease-in forwards;
-}
-
-@keyframes stickBonk{
-
-    0%{
-        transform:rotate(-25deg);
-    }
-
-    45%{
-        transform:rotate(58deg);
-    }
-
-    62%{
-        transform:rotate(-35deg);
-    }
-
-    78%{
-        transform:rotate(15deg);
-    }
-
-    100%{
-        transform:rotate(-25deg);
-    }
-}
-
-
-.teddy-stage.bonking .teddy{
-    animation:teddyBonk .8s ease-in-out;
-}
-
-@keyframes teddyBonk{
-
-    0%,100%{
-        transform:
-            translateX(-50%)
-            rotate(0);
-    }
-
-    20%{
-        transform:
-            translateX(-50%)
-            translateX(-8px)
-            rotate(-8deg);
-    }
-
-    40%{
-        transform:
-            translateX(-50%)
-            translateX(9px)
-            rotate(9deg);
-    }
-
-    60%{
-        transform:
-            translateX(-50%)
-            translateX(-6px)
-            rotate(-6deg);
-    }
-
-    80%{
-        transform:
-            translateX(-50%)
-            translateX(3px)
-            rotate(3deg);
-    }
-}
-
-
-/* Bonk stars */
-
-.bonk-star{
-    position:absolute;
-
-    left:50%;
-    top:25px;
-
-    font-size:30px;
-
-    opacity:0;
-
-    z-index:20;
-}
-
-.teddy-stage.bonking .bonk-star{
-    animation:bonkStars .8s ease-out forwards;
-}
-
-@keyframes bonkStars{
-
-    0%{
-        opacity:0;
-
-        transform:
-            translate(-50%,0)
-            scale(.3)
-            rotate(0);
-    }
-
-    30%{
-        opacity:1;
-    }
-
-    100%{
-        opacity:0;
-
-        transform:
-            translate(-50%,-50px)
-            scale(1.5)
-            rotate(30deg);
-    }
-}
-
-
-/* Secret text */
-
-.secret-korean{
-    font-size:15px;
-
-    letter-spacing:3px;
-
-    color:#a46b9b;
-
-    margin-bottom:8px;
-}
-
-.secret-card h2{
     font-family:'Great Vibes',cursive;
 
-    font-size:48px;
+    font-size:clamp(65px,15vw,105px);
 
     font-weight:400;
 
-    color:#a45191;
+    color:#9b4f91;
 
-    margin-bottom:8px;
+    margin-bottom:5px;
+
+    text-shadow:
+        0 5px 20px rgba(170,80,160,.2);
+
+    animation:
+        destinyGlow 3s ease-in-out infinite;
 }
 
-.secret-card p{
+@keyframes destinyGlow{
+
+    50%{
+        text-shadow:
+            0 0 35px rgba(225,110,200,.65);
+    }
+}
+
+
+.lock-subtitle{
+
+    color:#765d73;
+
     font-size:14px;
 
-    color:#806b7d;
-
-    margin-bottom:22px;
-
     line-height:1.7;
+
+    margin-bottom:25px;
 }
 
 
-/* Password input */
+/* =====================================================
+   LOCK ICON
+===================================================== */
 
-#secret-password{
+.lock-box{
+
+    position:relative;
+
+    width:145px;
+
+    height:155px;
+
+    margin:0 auto 25px;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:center;
+
+    cursor:pointer;
+}
+
+
+.lock-body{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:105px;
+
+    height:88px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e995cf,
+            #9f82d9
+        );
+
+    box-shadow:
+        0 20px 40px rgba(120,70,150,.3),
+        inset 0 2px 5px rgba(255,255,255,.5);
+
+    transition:.5s;
+}
+
+
+.lock-shackle{
+
+    position:absolute;
+
+    top:18px;
+
+    width:70px;
+
+    height:72px;
+
+    border:13px solid #a15d9b;
+
+    border-bottom:0;
+
+    border-radius:45px 45px 0 0;
+
+    transition:
+        transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+
+.lock-keyhole{
+
+    position:absolute;
+
+    top:35px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:15px;
+
+    height:15px;
+
+    border-radius:50%;
+
+    background:#fff5ff;
+}
+
+.lock-keyhole::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:7px;
+
+    height:28px;
+
+    left:4px;
+
+    top:11px;
+
+    border-radius:5px;
+
+    background:#fff5ff;
+}
+
+
+/* lock pulse */
+
+.lock-box{
+
+    animation:lockPulse 2s ease-in-out infinite;
+}
+
+@keyframes lockPulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.04);
+    }
+}
+
+
+/* =====================================================
+   PASSWORD INPUT
+===================================================== */
+
+.password-area{
+
+    position:relative;
+
     width:100%;
 
-    padding:15px 20px;
+    max-width:330px;
+
+    margin:auto;
+}
+
+
+.password-input{
+
+    width:100%;
+
+    padding:16px 55px 16px 20px;
+
+    border:none;
+
+    outline:none;
 
     border-radius:50px;
 
-    border:2px solid #ead5e8;
+    background:rgba(255,255,255,.78);
 
-    outline:none;
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 12px 35px rgba(130,80,150,.16);
+
+    border:2px solid rgba(255,255,255,.7);
 
     text-align:center;
 
@@ -414,158 +592,272 @@ section{
 
     font-size:15px;
 
-    color:#654b63;
-
-    background:rgba(255,255,255,.85);
+    color:#674c68;
 
     transition:.3s;
 }
 
-#secret-password:focus{
-    border-color:#c58ac0;
+.password-input:focus{
+
+    border-color:#d98bc4;
 
     box-shadow:
-        0 0 20px rgba(190,120,180,.2);
+        0 0 0 5px rgba(220,130,200,.15),
+        0 15px 40px rgba(130,80,150,.2);
 }
 
 
-/* Unlock button */
-
 .unlock-btn{
-    width:100%;
 
     margin-top:15px;
 
-    padding:15px;
+    padding:14px 32px;
 
     border:0;
 
     border-radius:50px;
 
-    cursor:pointer;
-
     color:white;
 
     font-family:'Montserrat',sans-serif;
 
-    font-size:14px;
-
     font-weight:600;
 
+    font-size:14px;
+
+    cursor:pointer;
+
     background:
-        linear-gradient(135deg,#d779b2,#9d7bd5);
+        linear-gradient(
+            135deg,
+            #d776b5,
+            #907bd8
+        );
 
     box-shadow:
-        0 15px 30px rgba(160,100,180,.25);
+        0 12px 30px rgba(150,90,180,.3);
 
     transition:.3s;
-
-    animation:unlockPulse 2s infinite;
 }
 
 .unlock-btn:hover{
-    transform:scale(1.04);
-}
 
-@keyframes unlockPulse{
+    transform:translateY(-3px) scale(1.04);
 
-    50%{
-        box-shadow:
-            0 0 30px rgba(215,120,190,.5);
-    }
+    box-shadow:
+        0 18px 40px rgba(150,90,180,.4);
 }
 
 
-/* Wrong password */
+/* error */
 
-#password-error{
-    height:22px;
+.lock-error{
 
-    margin-top:10px;
+    min-height:25px;
+
+    margin-top:12px;
 
     font-size:12px;
 
-    color:#c45c91;
+    color:#b65380;
 
     opacity:0;
+
+    transition:.3s;
 }
 
-#password-error.show{
-    opacity:1;
 
-    animation:errorShake .45s ease;
+/* shake */
+
+.shake{
+
+    animation:
+        passwordShake .5s ease;
 }
 
-@keyframes errorShake{
+@keyframes passwordShake{
 
     0%,100%{
         transform:translateX(0);
     }
 
-    25%{
+    20%{
+        transform:translateX(-12px);
+    }
+
+    40%{
+        transform:translateX(12px);
+    }
+
+    60%{
         transform:translateX(-8px);
     }
 
-    75%{
+    80%{
         transform:translateX(8px);
     }
 }
 
 
-/* Unlock animation */
+/* =====================================================
+   UNLOCK ANIMATION
+===================================================== */
 
-#password-screen.unlocking .secret-card{
-    animation:unlockCard 1.1s ease forwards;
+#lockScreen.unlocking .lock-shackle{
+
+    transform:
+        translateY(-22px)
+        rotate(-15deg);
 }
 
-@keyframes unlockCard{
+#lockScreen.unlocking .lock-body{
 
-    0%{
-        transform:scale(1);
-    }
+    transform:scale(1.1);
 
-    35%{
-        transform:scale(1.08);
-    }
+    box-shadow:
+        0 0 50px rgba(255,180,230,.9);
+}
 
-    100%{
-        transform:scale(.65);
+#lockScreen.unlocking .lock-content{
+
+    animation:
+        unlockContent .8s ease forwards;
+}
+
+@keyframes unlockContent{
+
+    to{
+        transform:scale(1.15);
         opacity:0;
     }
 }
 
 
-/* Unlock glow */
+#lockScreen.hidden{
 
-#password-screen.unlocking{
-    animation:unlockGlow 1.5s ease forwards;
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
 }
 
-@keyframes unlockGlow{
+
+/* unlock sparkles */
+
+.unlock-spark{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    z-index:30;
+
+    font-size:25px;
+
+    pointer-events:none;
+
+    opacity:0;
+}
+
+#lockScreen.unlocking .unlock-spark{
+
+    animation:
+        unlockSpark 1.2s ease forwards;
+}
+
+.unlock-spark:nth-child(1){
+    --x:-180px;
+    --y:-100px;
+}
+
+.unlock-spark:nth-child(2){
+    --x:180px;
+    --y:-100px;
+}
+
+.unlock-spark:nth-child(3){
+    --x:-220px;
+    --y:30px;
+}
+
+.unlock-spark:nth-child(4){
+    --x:220px;
+    --y:40px;
+}
+
+.unlock-spark:nth-child(5){
+    --x:-130px;
+    --y:130px;
+}
+
+.unlock-spark:nth-child(6){
+    --x:130px;
+    --y:130px;
+}
+
+@keyframes unlockSpark{
 
     0%{
-        filter:brightness(1);
-    }
-
-    50%{
-        filter:brightness(1.15);
+        opacity:1;
+        transform:
+            translate(-50%,-50%)
+            scale(.2);
     }
 
     100%{
-        filter:brightness(1.8);
+        opacity:0;
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.5);
     }
 }
 
 
-/* ==================================================
-   FLOATING PETALS
-================================================== */
+/* =====================================================
+   NORMAL WEBSITE
+===================================================== */
+
+.section-title{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:55px;
+
+    font-weight:400;
+
+    text-align:center;
+
+    color:#a15b96;
+}
+
+.section-subtitle{
+
+    text-align:center;
+
+    margin-top:10px;
+
+    color:#957b91;
+}
+
+
+/* =====================================================
+   PETALS
+===================================================== */
 
 .petal{
+
     position:fixed;
+
     top:-30px;
 
     width:13px;
+
     height:9px;
 
     border-radius:100% 0 100% 0;
@@ -592,38 +884,31 @@ section{
 @keyframes petalFall{
 
     0%{
-        transform:
-            translateY(-40px)
-            translateX(0)
-            rotate(0);
+        transform:translateY(-40px) translateX(0) rotate(0);
     }
 
     50%{
-        transform:
-            translateY(55vh)
-            translateX(80px)
-            rotate(180deg);
+        transform:translateY(55vh) translateX(80px) rotate(180deg);
     }
 
     100%{
-        transform:
-            translateY(110vh)
-            translateX(-70px)
-            rotate(360deg);
+        transform:translateY(110vh) translateX(-70px) rotate(360deg);
     }
 }
 
 
-/* ==================================================
+/* =====================================================
    OPENING
-================================================== */
+===================================================== */
 
 #opening{
+
     min-height:100vh;
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
@@ -636,14 +921,17 @@ section{
 }
 
 .sun{
+
     position:absolute;
 
     width:170px;
+
     height:170px;
 
     border-radius:50%;
 
     right:12%;
+
     top:12%;
 
     background:#ffd9b0;
@@ -666,9 +954,11 @@ section{
 /* Clouds */
 
 .cloud{
+
     position:absolute;
 
     width:190px;
+
     height:55px;
 
     border-radius:50px;
@@ -680,6 +970,7 @@ section{
 
 .cloud:before,
 .cloud:after{
+
     content:"";
 
     position:absolute;
@@ -690,28 +981,38 @@ section{
 }
 
 .cloud:before{
+
     width:80px;
+
     height:80px;
 
     left:25px;
+
     top:-38px;
 }
 
 .cloud:after{
+
     width:100px;
+
     height:100px;
 
     right:15px;
+
     top:-50px;
 }
 
 .cloud.one{
+
     left:-250px;
+
     top:23%;
 }
 
 .cloud.two{
+
     left:-300px;
+
     top:42%;
 
     animation-delay:7s;
@@ -734,6 +1035,7 @@ section{
 /* Birds */
 
 .bird{
+
     position:absolute;
 
     z-index:4;
@@ -750,6 +1052,7 @@ section{
 }
 
 .bird.two{
+
     top:30%;
 
     animation-delay:4s;
@@ -758,6 +1061,7 @@ section{
 }
 
 .bird.three{
+
     top:15%;
 
     animation-delay:7s;
@@ -769,7 +1073,6 @@ section{
 
     0%{
         left:-100px;
-
         transform:translateY(0);
     }
 
@@ -779,7 +1082,6 @@ section{
 
     100%{
         left:110%;
-
         transform:translateY(20px);
     }
 }
@@ -788,6 +1090,7 @@ section{
 /* Opening text */
 
 .opening-content{
+
     position:relative;
 
     z-index:10;
@@ -801,22 +1104,17 @@ section{
 
     from{
         opacity:0;
-
-        transform:
-            translateY(50px)
-            scale(.95);
+        transform:translateY(50px) scale(.95);
     }
 
     to{
         opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
+        transform:translateY(0) scale(1);
     }
 }
 
 .opening-korean{
+
     font-size:18px;
 
     letter-spacing:5px;
@@ -829,6 +1127,7 @@ section{
 }
 
 .opening-content h1{
+
     font-family:'Great Vibes',cursive;
 
     font-size:clamp(75px,13vw,140px);
@@ -843,13 +1142,12 @@ section{
 @keyframes nameGlow{
 
     50%{
-        text-shadow:
-            0 0 35px
-            rgba(218,111,183,.45);
+        text-shadow:0 0 35px rgba(218,111,183,.45);
     }
 }
 
 .opening-content p{
+
     margin:15px 0 30px;
 
     line-height:1.8;
@@ -858,6 +1156,7 @@ section{
 }
 
 .begin-btn{
+
     display:inline-block;
 
     padding:16px 34px;
@@ -868,12 +1167,9 @@ section{
 
     color:white;
 
-    background:
-        linear-gradient(135deg,#d779b2,#9d7bd5);
+    background:linear-gradient(135deg,#d779b2,#9d7bd5);
 
-    box-shadow:
-        0 15px 35px
-        rgba(160,100,180,.25);
+    box-shadow:0 15px 35px rgba(160,100,180,.25);
 
     animation:buttonPulse 2s infinite;
 
@@ -881,19 +1177,19 @@ section{
 }
 
 .begin-btn:hover{
+
     transform:scale(1.08);
 }
 
 @keyframes buttonPulse{
 
     50%{
-        box-shadow:
-            0 0 35px
-            rgba(215,120,190,.55);
+        box-shadow:0 0 35px rgba(215,120,190,.55);
     }
 }
 
 .scroll-text{
+
     margin-top:30px;
 
     font-size:11px;
@@ -904,11 +1200,12 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    STORY
-================================================== */
+===================================================== */
 
 #story{
+
     padding:120px 0;
 
     background:
@@ -918,6 +1215,7 @@ section{
 }
 
 .story-grid{
+
     margin-top:60px;
 
     display:grid;
@@ -928,6 +1226,7 @@ section{
 }
 
 .story-card{
+
     position:relative;
 
     padding:38px;
@@ -940,21 +1239,17 @@ section{
 
     border:1px solid #f0d7e9;
 
-    box-shadow:
-        0 20px 50px
-        rgba(170,110,160,.12);
+    box-shadow:0 20px 50px rgba(170,110,160,.12);
 
     transition:.5s;
 }
 
 .story-card:hover{
-    transform:
-        translateY(-12px)
-        rotate(1deg);
+
+    transform:translateY(-12px) rotate(1deg);
 
     box-shadow:
-        0 25px 65px
-        rgba(170,110,160,.23);
+        0 25px 65px rgba(170,110,160,.23);
 }
 
 .story-card .icon{
@@ -962,12 +1257,14 @@ section{
 }
 
 .story-card h3{
+
     margin:15px 0;
 
     color:#a35e98;
 }
 
 .story-card p{
+
     line-height:1.8;
 
     color:#756378;
@@ -977,29 +1274,34 @@ section{
 /* Butterflies */
 
 .butterfly{
+
     position:absolute;
 
     font-size:30px;
 
-    animation:
-        butterflyFly
-        7s ease-in-out infinite;
+    animation:butterflyFly 7s ease-in-out infinite;
 }
 
 .b1{
+
     left:6%;
+
     top:18%;
 }
 
 .b2{
+
     right:8%;
+
     top:60%;
 
     animation-delay:2s;
 }
 
 .b3{
+
     left:20%;
+
     bottom:10%;
 
     animation-delay:4s;
@@ -1008,38 +1310,31 @@ section{
 @keyframes butterflyFly{
 
     0%,100%{
-        transform:
-            translate(0,0)
-            rotate(5deg);
+        transform:translate(0,0) rotate(5deg);
     }
 
     50%{
-        transform:
-            translate(35px,-45px)
-            rotate(-8deg);
+        transform:translate(35px,-45px) rotate(-8deg);
     }
 }
 
 
-/* ==================================================
+/* =====================================================
    PHOTO
-================================================== */
+===================================================== */
 
 #photo-section{
+
     padding:120px 0;
 
     text-align:center;
 
     background:
-        linear-gradient(
-            135deg,
-            #fff0f7,
-            #f1edff,
-            #edfaff
-        );
+        linear-gradient(135deg,#fff0f7,#f1edff,#edfaff);
 }
 
 .photo-area{
+
     margin-top:60px;
 
     display:flex;
@@ -1048,6 +1343,7 @@ section{
 }
 
 .photo-card{
+
     width:min(90%,420px);
 
     margin:40px auto;
@@ -1059,20 +1355,16 @@ section{
     background:rgba(255,255,255,.72);
 
     box-shadow:
-        0 20px 50px
-        rgba(120,70,140,.25),
+        0 20px 50px rgba(120,70,140,.25),
+        0 0 35px rgba(255,180,220,.35);
 
-        0 0 35px
-        rgba(255,180,220,.35);
-
-    animation:
-        photoFloat
-        4s ease-in-out infinite;
+    animation:photoFloat 4s ease-in-out infinite;
 
     transition:.5s;
 }
 
 .photo-card img{
+
     display:block;
 
     width:100%;
@@ -1085,25 +1377,23 @@ section{
 }
 
 .photo-card:hover{
+
     transform:scale(1.03);
 }
 
 @keyframes photoFloat{
 
     0%,100%{
-        transform:
-            translateY(0)
-            rotate(-1deg);
+        transform:translateY(0) rotate(-1deg);
     }
 
     50%{
-        transform:
-            translateY(-10px)
-            rotate(1deg);
+        transform:translateY(-10px) rotate(1deg);
     }
 }
 
 .photo-caption{
+
     margin-top:45px;
 
     font-family:'Great Vibes',cursive;
@@ -1114,11 +1404,12 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    MAGIC LETTER
-================================================== */
+===================================================== */
 
 #letter{
+
     min-height:100vh;
 
     padding:120px 0;
@@ -1134,6 +1425,7 @@ section{
 }
 
 .letter-scene{
+
     position:relative;
 
     width:min(92vw,760px);
@@ -1145,69 +1437,51 @@ section{
     perspective:1200px;
 }
 
-
-/* Envelope */
-
 .envelope{
+
     position:absolute;
 
     left:50%;
+
     top:50%;
 
     width:min(85vw,620px);
+
     height:350px;
 
     transform:
         translate(-50%,-50%)
         rotateX(0deg);
 
-    background:
-        linear-gradient(
-            145deg,
-            #eab2d4,
-            #caa9e9
-        );
+    background:linear-gradient(145deg,#eab2d4,#caa9e9);
 
     border-radius:18px;
 
     box-shadow:
-        0 30px 70px
-        rgba(140,90,150,.25);
+        0 30px 70px rgba(140,90,150,.25);
 
     transition:
-        transform 1.5s
-        cubic-bezier(.2,.8,.2,1),
-
+        transform 1.5s cubic-bezier(.2,.8,.2,1),
         opacity .8s;
 
     transform-style:preserve-3d;
 }
 
-
-/* Flap */
-
 .flap{
+
     position:absolute;
 
     left:0;
+
     top:0;
 
     width:100%;
+
     height:100%;
 
-    background:
-        linear-gradient(
-            145deg,
-            #f4c6df,
-            #d6c0f3
-        );
+    background:linear-gradient(145deg,#f4c6df,#d6c0f3);
 
-    clip-path:
-        polygon(
-            0 0,
-            50% 58%,
-            100% 0
-        );
+    clip-path:polygon(0 0,50% 58%,100% 0);
 
     transform-origin:top;
 
@@ -1216,50 +1490,43 @@ section{
     z-index:5;
 }
 
-
-/* Envelope bottom */
-
 .envelope-bottom{
+
     position:absolute;
 
     bottom:0;
+
     left:0;
 
     width:100%;
+
     height:100%;
 
-    clip-path:
-        polygon(
-            0 100%,
-            0 35%,
-            50% 72%,
-            100% 35%,
-            100% 100%
-        );
+    clip-path:polygon(0 100%,0 35%,50% 72%,100% 35%,100% 100%);
 
     background:#d49ec8;
 
     z-index:3;
 }
 
-
-/* Heart seal */
-
 .seal{
+
     position:absolute;
 
     left:50%;
+
     top:48%;
 
-    transform:
-        translate(-50%,-50%);
+    transform:translate(-50%,-50%);
 
     width:70px;
+
     height:70px;
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     border-radius:50%;
@@ -1275,15 +1542,10 @@ section{
     cursor:pointer;
 
     box-shadow:
-        0 0 0 10px
-        rgba(255,255,255,.25),
+        0 0 0 10px rgba(255,255,255,.25),
+        0 0 35px rgba(180,80,150,.5);
 
-        0 0 35px
-        rgba(180,80,150,.5);
-
-    animation:
-        sealPulse
-        1.7s infinite;
+    animation:sealPulse 1.7s infinite;
 
     transition:.4s;
 }
@@ -1291,19 +1553,16 @@ section{
 @keyframes sealPulse{
 
     50%{
-        transform:
-            translate(-50%,-50%)
-            scale(1.12);
+        transform:translate(-50%,-50%) scale(1.12);
     }
 }
 
-
-/* Letter paper */
-
 .letter-paper{
+
     position:absolute;
 
     left:50%;
+
     top:50%;
 
     width:min(82vw,560px);
@@ -1313,16 +1572,11 @@ section{
     padding:50px 45px;
 
     background:
-        linear-gradient(
-            #fffdf8,
-            #fff8f0
-        );
+        linear-gradient(#fffdf8,#fff8f0);
 
     border-radius:8px;
 
-    box-shadow:
-        0 25px 60px
-        rgba(120,90,100,.18);
+    box-shadow:0 25px 60px rgba(120,90,100,.18);
 
     transform:
         translate(-50%,-50%)
@@ -1335,25 +1589,20 @@ section{
     z-index:2;
 
     transition:
-        transform 1.5s
-        cubic-bezier(.2,.8,.2,1),
-
+        transform 1.5s cubic-bezier(.2,.8,.2,1),
         opacity 1s;
 
     pointer-events:none;
 }
 
-
-/* Open */
-
 .letter-scene.open .flap{
+
     transform:rotateX(180deg);
 }
 
 .letter-scene.open .seal{
-    transform:
-        translate(-50%,-50%)
-        scale(0);
+
+    transform:translate(-50%,-50%) scale(0);
 
     opacity:0;
 
@@ -1361,6 +1610,7 @@ section{
 }
 
 .letter-scene.open .envelope{
+
     transform:
         translate(-50%,-50%)
         rotateX(55deg)
@@ -1370,6 +1620,7 @@ section{
 }
 
 .letter-scene.open .letter-paper{
+
     transform:
         translate(-50%,-50%)
         translateY(-20px)
@@ -1383,10 +1634,8 @@ section{
     pointer-events:auto;
 }
 
-
-/* Letter content */
-
 .letter-paper h3{
+
     font-family:'Great Vibes',cursive;
 
     font-size:38px;
@@ -1397,6 +1646,7 @@ section{
 }
 
 .letter-line{
+
     font-family:'Great Vibes',cursive;
 
     font-size:25px;
@@ -1413,24 +1663,29 @@ section{
 }
 
 .letter-scene.open .letter-line{
+
     opacity:1;
 
     transform:translateY(0);
 }
 
 .letter-scene.open .letter-line:nth-child(2){
+
     transition-delay:1.7s;
 }
 
 .letter-scene.open .letter-line:nth-child(3){
+
     transition-delay:2.4s;
 }
 
 .letter-scene.open .letter-line:nth-child(4){
+
     transition-delay:3.1s;
 }
 
 .signature{
+
     margin-top:20px;
 
     text-align:right;
@@ -1449,6 +1704,7 @@ section{
 }
 
 .letter-scene.open .signature{
+
     opacity:1;
 }
 
@@ -1456,9 +1712,11 @@ section{
 /* Magic particles */
 
 .magic-particle{
+
     position:absolute;
 
     left:50%;
+
     top:50%;
 
     pointer-events:none;
@@ -1471,9 +1729,8 @@ section{
 }
 
 .letter-scene.open .magic-particle{
-    animation:
-        magicBurst
-        1.3s ease-out forwards;
+
+    animation:magicBurst 1.3s ease-out forwards;
 }
 
 .magic-particle:nth-child(2){
@@ -1507,6 +1764,7 @@ section{
     }
 
     100%{
+
         opacity:0;
 
         transform:
@@ -1519,34 +1777,31 @@ section{
 }
 
 
-/* ==================================================
+/* =====================================================
    MEMORIES
-================================================== */
+===================================================== */
 
 #memories{
+
     padding:120px 0;
 
     background:
-        linear-gradient(
-            150deg,
-            #eefaff,
-            #fff4fa,
-            #f5efff
-        );
+        linear-gradient(150deg,#eefaff,#fff4fa,#f5efff);
 }
 
 .memory-grid{
+
     margin-top:60px;
 
     display:grid;
 
-    grid-template-columns:
-        repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
 
     gap:25px;
 }
 
 .memory{
+
     position:relative;
 
     min-height:230px;
@@ -1555,16 +1810,11 @@ section{
 
     border-radius:28px;
 
-    background:
-        rgba(255,255,255,.76);
+    background:rgba(255,255,255,.76);
 
-    border:
-        1px solid
-        rgba(220,190,220,.5);
+    border:1px solid rgba(220,190,220,.5);
 
-    box-shadow:
-        0 18px 45px
-        rgba(130,100,160,.12);
+    box-shadow:0 18px 45px rgba(130,100,160,.12);
 
     transition:.5s;
 
@@ -1572,11 +1822,13 @@ section{
 }
 
 .memory:before{
+
     content:"";
 
     position:absolute;
 
     width:100px;
+
     height:100px;
 
     border-radius:50%;
@@ -1584,6 +1836,7 @@ section{
     background:#ffd7e8;
 
     right:-35px;
+
     top:-35px;
 
     opacity:.45;
@@ -1592,16 +1845,15 @@ section{
 }
 
 .memory:hover{
-    transform:
-        translateY(-12px)
-        rotate(-1deg);
+
+    transform:translateY(-12px) rotate(-1deg);
 
     box-shadow:
-        0 25px 60px
-        rgba(130,100,160,.22);
+        0 25px 60px rgba(130,100,160,.22);
 }
 
 .memory:hover:before{
+
     transform:scale(2);
 }
 
@@ -1610,23 +1862,26 @@ section{
 }
 
 .memory h3{
+
     margin:15px 0 10px;
 
     color:#9c6094;
 }
 
 .memory p{
+
     line-height:1.7;
 
     color:#756579;
 }
 
 
-/* ==================================================
+/* =====================================================
    MUSIC
-================================================== */
+===================================================== */
 
 #music{
+
     padding:120px 0;
 
     text-align:center;
@@ -1638,6 +1893,7 @@ section{
 }
 
 .music-card{
+
     width:min(90%,620px);
 
     margin:60px auto 0;
@@ -1646,49 +1902,44 @@ section{
 
     border-radius:35px;
 
-    background:
-        rgba(255,255,255,.78);
+    background:rgba(255,255,255,.78);
 
     backdrop-filter:blur(15px);
 
-    box-shadow:
-        0 25px 65px
-        rgba(160,110,180,.18);
+    box-shadow:0 25px 65px rgba(160,110,180,.18);
 
-    border:
-        1px solid
-        rgba(230,205,230,.7);
+    border:1px solid rgba(230,205,230,.7);
 }
 
 .music-icon{
+
     font-size:55px;
 
-    animation:
-        headphoneFloat
-        2s ease-in-out infinite;
+    animation:headphoneFloat 2s ease-in-out infinite;
 }
 
 @keyframes headphoneFloat{
 
     50%{
-        transform:
-            translateY(-10px)
-            rotate(3deg);
+        transform:translateY(-10px) rotate(3deg);
     }
 }
 
 .music-card h3{
+
     margin:15px 0 25px;
 
     color:#96598d;
 }
 
 .equalizer{
+
     height:60px;
 
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     gap:7px;
@@ -1697,16 +1948,16 @@ section{
 }
 
 .equalizer span{
+
     width:7px;
+
     height:20px;
 
     border-radius:10px;
 
     background:#c78cc0;
 
-    animation:
-        equalizer
-        .8s ease-in-out infinite alternate;
+    animation:equalizer .8s ease-in-out infinite alternate;
 }
 
 .equalizer span:nth-child(2){
@@ -1741,11 +1992,12 @@ audio{
 }
 
 
-/* ==================================================
+/* =====================================================
    FINAL
-================================================== */
+===================================================== */
 
 #final{
+
     min-height:100vh;
 
     display:flex;
@@ -1759,15 +2011,11 @@ audio{
     background:
         radial-gradient(circle at 50% 25%,#ffd7e8,transparent 30%),
         radial-gradient(circle at 20% 80%,#ddd4ff,transparent 25%),
-        linear-gradient(
-            160deg,
-            #fff0f7,
-            #eee9ff,
-            #e8f8ff
-        );
+        linear-gradient(160deg,#fff0f7,#eee9ff,#e8f8ff);
 }
 
 .final-content{
+
     position:relative;
 
     z-index:10;
@@ -1776,6 +2024,7 @@ audio{
 }
 
 .final-korean{
+
     font-family:'Noto Sans KR',sans-serif;
 
     font-size:18px;
@@ -1788,32 +2037,31 @@ audio{
 }
 
 .final-content h2{
+
     font-family:'Great Vibes',cursive;
 
-    font-size:
-        clamp(75px,14vw,150px);
+    font-size:clamp(75px,14vw,150px);
 
     font-weight:400;
 
     color:#a65391;
 
-    animation:
-        finalGlow
-        3s ease-in-out infinite;
+    animation:finalGlow 3s ease-in-out infinite;
 }
 
 @keyframes finalGlow{
 
     50%{
+
         transform:scale(1.04);
 
         text-shadow:
-            0 0 35px
-            rgba(215,110,180,.45);
+            0 0 35px rgba(215,110,180,.45);
     }
 }
 
 .final-content p{
+
     margin-top:20px;
 
     line-height:1.8;
@@ -1824,15 +2072,14 @@ audio{
 }
 
 .final-heart{
+
     display:inline-block;
 
     margin-top:30px;
 
     font-size:65px;
 
-    animation:
-        heartBeat
-        1.4s infinite;
+    animation:heartBeat 1.4s infinite;
 }
 
 @keyframes heartBeat{
@@ -1854,6 +2101,7 @@ audio{
 /* Floating hearts */
 
 .floating-heart{
+
     position:absolute;
 
     bottom:-50px;
@@ -1862,14 +2110,13 @@ audio{
 
     opacity:.6;
 
-    animation:
-        heartFloat
-        8s linear infinite;
+    animation:heartFloat 8s linear infinite;
 }
 
 @keyframes heartFloat{
 
     to{
+
         bottom:110%;
 
         transform:
@@ -1879,11 +2126,12 @@ audio{
 }
 
 
-/* ==================================================
+/* =====================================================
    SCROLL REVEAL
-================================================== */
+===================================================== */
 
 .reveal{
+
     opacity:0;
 
     transform:translateY(60px);
@@ -1894,15 +2142,16 @@ audio{
 }
 
 .reveal.show{
+
     opacity:1;
 
     transform:translateY(0);
 }
 
 
-/* ==================================================
+/* =====================================================
    MOBILE
-================================================== */
+===================================================== */
 
 @media(max-width:800px){
 
@@ -1928,7 +2177,6 @@ audio{
 
     .letter-paper{
         min-height:430px;
-
         padding:40px 25px;
     }
 
@@ -1940,19 +2188,8 @@ audio{
         padding:30px 20px;
     }
 
-    .secret-card{
-        padding:
-            30px 22px 25px;
-    }
-
-    .teddy{
-        font-size:80px;
-    }
-
-    .teddy-stick{
-        left:calc(50% + 38px);
-
-        font-size:48px;
+    .big-butterfly{
+        font-size:90px;
     }
 
 }
@@ -1980,8 +2217,34 @@ audio{
         font-size:20px;
     }
 
-    .secret-card h2{
-        font-size:43px;
+    .lock-content h1{
+        font-size:70px;
+    }
+
+    .big-butterfly{
+        font-size:75px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCE MOTION
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        scroll-behavior:auto !important;
+
+        transition-duration:.01ms !important;
     }
 
 }
@@ -1990,169 +2253,154 @@ audio{
 </head>
 
 
-<body>
+<body class="locked">
 
 
-<!-- ==================================================
-     PASSWORD SCREEN
-================================================== -->
+<!-- =====================================================
+     DESTINY LOCK SCREEN
+===================================================== -->
 
-<div id="password-screen">
+<div id="lockScreen">
 
-    <div class="secret-heart"
-         style="left:5%;animation-delay:0s;">
-        💗
-    </div>
 
-    <div class="secret-heart"
-         style="left:20%;animation-delay:2s;">
-        💜
-    </div>
+    <!-- Floating stars -->
 
-    <div class="secret-heart"
-         style="left:38%;animation-delay:4s;">
-        💕
-    </div>
+    <div class="lock-stars">
 
-    <div class="secret-heart"
-         style="left:60%;animation-delay:1s;">
-        💗
-    </div>
+        <span>✨</span>
+        <span>💜</span>
+        <span>🌸</span>
+        <span>✨</span>
+        <span>💕</span>
 
-    <div class="secret-heart"
-         style="left:80%;animation-delay:3s;">
-        💜
     </div>
 
 
-    <div class="secret-card">
+    <!-- TWO BIG BUTTERFLIES -->
 
-        <div class="teddy-stage" id="teddyStage">
+    <div class="big-butterfly left">
+        🦋
+    </div>
 
-            <div class="teddy">
-                🧸
-            </div>
+    <div class="big-butterfly right">
+        🦋
+    </div>
 
-            <div class="teddy-stick">
-                🪵
-            </div>
 
-            <div class="bonk-star">
-                💫
-            </div>
+    <!-- Unlock particles -->
 
+    <span class="unlock-spark">✨</span>
+    <span class="unlock-spark">💜</span>
+    <span class="unlock-spark">🌸</span>
+    <span class="unlock-spark">✨</span>
+    <span class="unlock-spark">💕</span>
+    <span class="unlock-spark">🦋</span>
+
+
+    <!-- Lock content -->
+
+    <div class="lock-content">
+
+
+        <div class="lock-korean">
+            우리의 운명 ♡
         </div>
 
 
-        <div class="secret-korean korean">
-            우리의 작은 비밀 ♡
-        </div>
+        <h1>
+            Destiny
+        </h1>
 
 
-        <h2>
-            A Little Secret
-        </h2>
+        <p class="lock-subtitle">
 
+            Some beautiful stories<br>
+            are meant to be unlocked. ✨
 
-        <p>
-            Some things are meant to be<br>
-            opened only by the right person. ❤️
         </p>
 
 
-        <input
-            type="password"
-            id="secret-password"
-            placeholder="Enter the secret password"
-            autocomplete="off"
-        >
+        <!-- LOCK -->
 
+        <div class="lock-box" id="lockBox">
 
-        <button
-            class="unlock-btn"
-            id="unlockBtn">
+            <div class="lock-shackle"></div>
 
-            Unlock My Heart ❤️
+            <div class="lock-body">
 
-        </button>
+                <div class="lock-keyhole"></div>
 
+            </div>
 
-        <div id="password-error">
-            That's not the secret... try again 💕
         </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="password-area">
+
+            <input
+                type="password"
+                id="passwordInput"
+                class="password-input"
+                placeholder="Enter the secret password"
+                autocomplete="off"
+            >
+
+
+            <button
+                class="unlock-btn"
+                id="unlockBtn"
+            >
+                Unlock Our Story 🔐
+            </button>
+
+
+            <div
+                class="lock-error"
+                id="lockError"
+            >
+                That's not the secret... try again 💜
+            </div>
+
+        </div>
+
 
     </div>
 
 </div>
 
 
-<!-- ==================================================
-     ACTUAL WEBSITE
-================================================== -->
 
-<div id="siteContent">
+<!-- =====================================================
+     PETALS
+===================================================== -->
 
-
-<!-- ==================================================
-     FLOATING PETALS
-================================================== -->
-
-<div class="petal"
-     style="left:5%;animation-duration:8s;">
-</div>
-
-<div class="petal"
-     style="left:16%;animation-duration:11s;animation-delay:2s;">
-</div>
-
-<div class="petal"
-     style="left:28%;animation-duration:9s;animation-delay:4s;">
-</div>
-
-<div class="petal"
-     style="left:40%;animation-duration:12s;animation-delay:1s;">
-</div>
-
-<div class="petal"
-     style="left:55%;animation-duration:10s;animation-delay:5s;">
-</div>
-
-<div class="petal"
-     style="left:70%;animation-duration:13s;animation-delay:3s;">
-</div>
-
-<div class="petal"
-     style="left:85%;animation-duration:9s;animation-delay:6s;">
-</div>
-
-<div class="petal"
-     style="left:95%;animation-duration:11s;animation-delay:2s;">
-</div>
+<div class="petal" style="left:5%;animation-duration:8s;"></div>
+<div class="petal" style="left:16%;animation-duration:11s;animation-delay:2s;"></div>
+<div class="petal" style="left:28%;animation-duration:9s;animation-delay:4s;"></div>
+<div class="petal" style="left:40%;animation-duration:12s;animation-delay:1s;"></div>
+<div class="petal" style="left:55%;animation-duration:10s;animation-delay:5s;"></div>
+<div class="petal" style="left:70%;animation-duration:13s;animation-delay:3s;"></div>
+<div class="petal" style="left:85%;animation-duration:9s;animation-delay:6s;"></div>
+<div class="petal" style="left:95%;animation-duration:11s;animation-delay:2s;"></div>
 
 
-<!-- ==================================================
+
+<!-- =====================================================
      OPENING
-================================================== -->
+===================================================== -->
 
 <section id="opening">
 
     <div class="sun"></div>
 
     <div class="cloud one"></div>
-
     <div class="cloud two"></div>
 
-    <div class="bird one">
-        🕊️
-    </div>
-
-    <div class="bird two">
-        🕊️
-    </div>
-
-    <div class="bird three">
-        🕊️
-    </div>
+    <div class="bird one">🕊️</div>
+    <div class="bird two">🕊️</div>
+    <div class="bird three">🕊️</div>
 
 
     <div class="opening-content">
@@ -2161,25 +2409,21 @@ audio{
             우리의 이야기 ♡
         </div>
 
-
         <h1>
             Tulasi
         </h1>
-
 
         <p>
             Some stories are written in books...<br>
             but ours is written in my heart.
         </p>
 
-
-        <a href="#story"
-           class="begin-btn">
-
+        <a
+            href="#story"
+            class="begin-btn"
+        >
             Begin Our Story ♡
-
         </a>
-
 
         <div class="scroll-text">
             ✦ SCROLL SLOWLY ✦
@@ -2190,9 +2434,10 @@ audio{
 </section>
 
 
-<!-- ==================================================
+
+<!-- =====================================================
      STORY
-================================================== -->
+===================================================== -->
 
 <section id="story">
 
@@ -2216,9 +2461,7 @@ audio{
 
             <div class="story-card reveal">
 
-                <div class="icon">
-                    🌸
-                </div>
+                <div class="icon">🌸</div>
 
                 <h3>
                     A Beautiful Beginning
@@ -2236,9 +2479,7 @@ audio{
 
             <div class="story-card reveal">
 
-                <div class="icon">
-                    🦋
-                </div>
+                <div class="icon">🦋</div>
 
                 <h3>
                     You Became My Favorite
@@ -2256,9 +2497,7 @@ audio{
 
             <div class="story-card reveal">
 
-                <div class="icon">
-                    ☁️
-                </div>
+                <div class="icon">☁️</div>
 
                 <h3>
                     My Safe Place
@@ -2275,9 +2514,7 @@ audio{
 
             <div class="story-card reveal">
 
-                <div class="icon">
-                    💜
-                </div>
+                <div class="icon">💜</div>
 
                 <h3>
                     And Then...
@@ -2292,29 +2529,23 @@ audio{
 
             </div>
 
+
         </div>
 
     </div>
 
 
-    <div class="butterfly b1">
-        🦋
-    </div>
-
-    <div class="butterfly b2">
-        🦋
-    </div>
-
-    <div class="butterfly b3">
-        🦋
-    </div>
+    <div class="butterfly b1">🦋</div>
+    <div class="butterfly b2">🦋</div>
+    <div class="butterfly b3">🦋</div>
 
 </section>
 
 
-<!-- ==================================================
+
+<!-- =====================================================
      PHOTO
-================================================== -->
+===================================================== -->
 
 <section id="photo-section">
 
@@ -2349,28 +2580,23 @@ audio{
 
         <div class="photo-caption reveal">
 
-            My favorite person.
-            My favorite smile. ❤️
+            My favorite person. My favorite smile. ❤️
 
         </div>
 
     </div>
 
 
-    <div class="butterfly b1">
-        🦋
-    </div>
-
-    <div class="butterfly b2">
-        🦋
-    </div>
+    <div class="butterfly b1">🦋</div>
+    <div class="butterfly b2">🦋</div>
 
 </section>
 
 
-<!-- ==================================================
+
+<!-- =====================================================
      MAGIC LOVE LETTER
-================================================== -->
+===================================================== -->
 
 <section id="letter">
 
@@ -2391,44 +2617,51 @@ audio{
 
         <div
             class="letter-scene reveal"
-            id="letterScene">
+            id="letterScene"
+        >
 
 
             <!-- MAGIC PARTICLES -->
 
             <span
                 class="magic-particle"
-                style="--x:-180px;--y:-100px;">
+                style="--x:-180px;--y:-100px;"
+            >
                 ✨
             </span>
 
             <span
                 class="magic-particle"
-                style="--x:160px;--y:-110px;">
+                style="--x:160px;--y:-110px;"
+            >
                 💜
             </span>
 
             <span
                 class="magic-particle"
-                style="--x:-220px;--y:40px;">
+                style="--x:-220px;--y:40px;"
+            >
                 🌸
             </span>
 
             <span
                 class="magic-particle"
-                style="--x:210px;--y:50px;">
+                style="--x:210px;--y:50px;"
+            >
                 ✨
             </span>
 
             <span
                 class="magic-particle"
-                style="--x:-120px;--y:130px;">
+                style="--x:-120px;--y:130px;"
+            >
                 💕
             </span>
 
             <span
                 class="magic-particle"
-                style="--x:130px;--y:140px;">
+                style="--x:130px;--y:140px;"
+            >
                 🌸
             </span>
 
@@ -2443,16 +2676,15 @@ audio{
 
                 <div
                     class="seal"
-                    id="seal">
-
+                    id="seal"
+                >
                     ❤️
-
                 </div>
 
             </div>
 
 
-            <!-- LETTER PAPER -->
+            <!-- PAPER -->
 
             <div class="letter-paper">
 
@@ -2462,32 +2694,40 @@ audio{
 
 
                 <p class="letter-line">
+
                     I don't know if words can ever explain
                     exactly what you mean to me.
+
                 </p>
 
 
                 <p class="letter-line">
+
                     But if I had to choose one word,
                     it would simply be <b>you</b>.
+
                 </p>
 
 
                 <p class="letter-line">
+
                     Thank you for becoming a beautiful part
                     of my story. Some moments may pass,
                     but some people stay in the heart forever.
+
                 </p>
 
 
                 <div class="signature">
 
                     With love,<br>
+
                     Bunny ❤️
 
                 </div>
 
             </div>
+
 
         </div>
 
@@ -2496,9 +2736,10 @@ audio{
 </section>
 
 
-<!-- ==================================================
+
+<!-- =====================================================
      MEMORIES
-================================================== -->
+===================================================== -->
 
 <section id="memories">
 
@@ -2627,6 +2868,7 @@ audio{
 
             </div>
 
+
         </div>
 
     </div>
@@ -2634,9 +2876,10 @@ audio{
 </section>
 
 
-<!-- ==================================================
+
+<!-- =====================================================
      MUSIC
-================================================== -->
+===================================================== -->
 
 <section id="music">
 
@@ -2660,7 +2903,6 @@ audio{
             <div class="music-icon">
                 🎧
             </div>
-
 
             <h3>
                 Sahana Sahana
@@ -2696,55 +2938,51 @@ audio{
 </section>
 
 
-<!-- ==================================================
+
+<!-- =====================================================
      FINAL
-================================================== -->
+===================================================== -->
 
 <section id="final">
 
 
     <div
         class="floating-heart"
-        style="left:8%;animation-delay:0s;">
-
+        style="left:8%;animation-delay:0s;"
+    >
         💗
-
     </div>
 
 
     <div
         class="floating-heart"
-        style="left:22%;animation-delay:2s;">
-
+        style="left:22%;animation-delay:2s;"
+    >
         💜
-
     </div>
 
 
     <div
         class="floating-heart"
-        style="left:40%;animation-delay:4s;">
-
+        style="left:40%;animation-delay:4s;"
+    >
         💕
-
     </div>
 
 
     <div
         class="floating-heart"
-        style="left:62%;animation-delay:1s;">
-
+        style="left:62%;animation-delay:1s;"
+    >
         💗
-
     </div>
 
 
     <div
         class="floating-heart"
-        style="left:82%;animation-delay:3s;">
-
+        style="left:82%;animation-delay:3s;"
+    >
         💜
-
     </div>
 
 
@@ -2760,24 +2998,32 @@ audio{
     <div class="final-content reveal">
 
         <div class="final-korean">
+
             너와 나 · 영원히
+
         </div>
 
 
         <h2>
+
             Always You
+
         </h2>
 
 
         <p>
+
             Out of all the stories I could have lived...
             <br>
             I'm glad one of them had you in it. ❤️
+
         </p>
 
 
         <div class="final-heart">
+
             ❤️
+
         </div>
 
     </div>
@@ -2785,94 +3031,91 @@ audio{
 </section>
 
 
-</div>
-
-
-<!-- ==================================================
-     JAVASCRIPT
-================================================== -->
 
 <script>
 
 
-/* =================================
-   PASSWORD + TEDDY UNLOCK
-================================= */
+/* =====================================================
+   DESTINY PASSWORD LOCK
+===================================================== */
 
-const passwordScreen =
-    document.getElementById("password-screen");
+const lockScreen =
+    document.getElementById("lockScreen");
 
-const secretPassword =
-    document.getElementById("secret-password");
+const passwordInput =
+    document.getElementById("passwordInput");
 
 const unlockBtn =
     document.getElementById("unlockBtn");
 
-const passwordError =
-    document.getElementById("password-error");
+const lockError =
+    document.getElementById("lockError");
 
-const teddyStage =
-    document.getElementById("teddyStage");
+const lockBox =
+    document.getElementById("lockBox");
 
 
 function unlockWebsite(){
 
-    if(secretPassword.value === "Destiny"){
-
-        passwordError.classList.remove("show");
-
-
-        /* Teddy bonk */
-
-        teddyStage.classList.add("bonking");
+    const password =
+        passwordInput.value.trim();
 
 
-        /* Unlock animation */
+    /* Correct password */
 
-        setTimeout(() => {
+    if(password === "Destiny"){
 
-            passwordScreen.classList.add("unlocking");
+        lockError.style.opacity = "0";
 
-        },650);
+        lockScreen.classList.add("unlocking");
 
 
-        /* Open website */
+        /* little lock movement */
+
+        lockBox.style.animation =
+            "none";
+
 
         setTimeout(() => {
 
-            passwordScreen.classList.add("hidden");
+            lockScreen.classList.add("hidden");
 
-            window.scrollTo({
-                top:0,
-                behavior:"smooth"
-            });
+            document.body.classList.remove("locked");
 
-        },1550);
+        },1400);
 
     }
 
+
+    /* Wrong password */
+
     else{
 
-        passwordError.classList.remove("show");
+        lockError.textContent =
+            "Wrong password... Destiny is the key 💜";
+
+        lockError.style.opacity = "1";
 
 
-        /* Restart shake */
-
-        void passwordError.offsetWidth;
+        passwordInput.classList.remove("shake");
 
 
-        passwordError.classList.add("show");
+        void passwordInput.offsetWidth;
 
 
-        secretPassword.value = "";
+        passwordInput.classList.add("shake");
 
 
-        secretPassword.focus();
+        passwordInput.value = "";
+
+        passwordInput.focus();
 
     }
 
 }
 
+
+/* Button */
 
 unlockBtn.addEventListener(
     "click",
@@ -2880,11 +3123,13 @@ unlockBtn.addEventListener(
 );
 
 
-secretPassword.addEventListener(
-    "keydown",
-    function(e){
+/* Enter key */
 
-        if(e.key === "Enter"){
+passwordInput.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
 
             unlockWebsite();
 
@@ -2894,12 +3139,23 @@ secretPassword.addEventListener(
 );
 
 
-/* =================================
+/* Focus password after butterfly animation */
+
+setTimeout(() => {
+
+    passwordInput.focus();
+
+},3500);
+
+
+
+/* =====================================================
    SCROLL REVEAL
-================================= */
+===================================================== */
 
 const reveals =
     document.querySelectorAll(".reveal");
+
 
 const observer =
     new IntersectionObserver(
@@ -2932,9 +3188,10 @@ reveals.forEach(element => {
 });
 
 
-/* =================================
+
+/* =====================================================
    MAGIC LOVE LETTER
-================================= */
+===================================================== */
 
 const seal =
     document.getElementById("seal");
@@ -2943,20 +3200,36 @@ const letterScene =
     document.getElementById("letterScene");
 
 
-seal.addEventListener("click", () => {
+seal.addEventListener(
+    "click",
+    () => {
 
-    letterScene.classList.add("open");
+        letterScene.classList.add("open");
 
-});
+    }
+);
 
 
-/* =================================
+
+/* =====================================================
    CLICK SPARKLES
-================================= */
+===================================================== */
 
 document.addEventListener(
     "click",
     function(e){
+
+        /* Don't create click sparkles while typing */
+
+        if(
+            e.target.tagName === "INPUT" ||
+            e.target.tagName === "BUTTON"
+        ){
+
+            return;
+
+        }
+
 
         for(let i = 0; i < 7; i++){
 
@@ -2964,7 +3237,8 @@ document.addEventListener(
                 document.createElement("span");
 
 
-            sparkle.innerHTML = "✨";
+            sparkle.innerHTML =
+                "✨";
 
 
             sparkle.style.position =
@@ -2998,11 +3272,14 @@ document.addEventListener(
 
             const angle =
                 Math.random() *
-                Math.PI * 2;
+                Math.PI *
+                2;
 
 
             const distance =
-                30 + Math.random() * 60;
+                30 +
+                Math.random() *
+                60;
 
 
             sparkle.animate(
@@ -3030,9 +3307,11 @@ document.addEventListener(
                 ],
 
                 {
+
                     duration:800,
 
                     easing:"ease-out"
+
                 }
 
             );
@@ -3050,9 +3329,10 @@ document.addEventListener(
 );
 
 
-/* =================================
+
+/* =====================================================
    MUSIC VISUALIZER
-================================= */
+===================================================== */
 
 const audio =
     document.querySelector("audio");
@@ -3061,6 +3341,16 @@ const bars =
     document.querySelectorAll(
         ".equalizer span"
     );
+
+
+/* Initially paused */
+
+bars.forEach(bar => {
+
+    bar.style.animationPlayState =
+        "paused";
+
+});
 
 
 audio.addEventListener(
@@ -3093,16 +3383,9 @@ audio.addEventListener(
 );
 
 
-/* Start equalizer paused */
-
-bars.forEach(bar => {
-
-    bar.style.animationPlayState =
-        "paused";
-
-});
-
 </script>
+
 
 </body>
 </html>
+```
